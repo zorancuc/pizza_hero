@@ -2,7 +2,7 @@ import React from 'react';
 
 import './prize-total.scss';
 
-export default function FriendWrapper() {
+export default function FriendRefferal() {
   return (
     <div
       data-w-id="d7a61ff6-901e-efec-c7eb-a30e9e632553"
