@@ -39,6 +39,7 @@ import '!file-loader?name=[name].[ext]!./images/evo-icon-white.svg';
 import '!file-loader?name=[name].[ext]!./images/tron-icon-white.svg';
 import '!file-loader?name=[name].[ext]!./images/za-text-white.svg';
 import '!file-loader?name=[name].[ext]!./images/avatar_1avatar.jpg';
+import '!file-loader?name=[name].[ext]!./images/pizza-heroes-logo.png';
 
 import configureStore from './configureStore';
 

@@ -7,7 +7,7 @@ export default function NavbarWrapper() {
         <div className="navbar-container">
           <a
             id="w-node-22521a87e90d-1a87e8c5"
-            href="#"
+            href="/#"
             className="add-friends-button w-inline-block"
           >
             <img
@@ -20,7 +20,7 @@ export default function NavbarWrapper() {
           <a
             id="w-node-22521a87e90f-1a87e8c5"
             data-w-id="f0ab1070-570f-ab2c-44f4-22521a87e90f"
-            href="#"
+            href="/#"
             className="menu-icon-wrapper w-inline-block"
           >
             <div className="text-block-2">|||</div>
@@ -32,7 +32,7 @@ export default function NavbarWrapper() {
             className="pizza-heroes-logo-link-wrapper w-inline-block w--current"
           >
             <img
-              src="images/pizza-heroes-logo.png"
+              src="/pizza-heroes-logo.png"
               width="149"
               alt=""
               className="pizza-heroes-logo"
@@ -52,14 +52,14 @@ export default function NavbarWrapper() {
               <div className="sub-menu-text">my inventory</div>
             </a>
             <a
-              href="#"
+              href="/#"
               className="sub-menu-link last-sub-menu-item w-inline-block"
             >
               <div className="sub-menu-text">guides</div>
             </a>
           </div>
           <div id="w-node-22521a87e91e-1a87e8c5" className="tokens-wrapper">
-            <a href="#" className="token-link w-inline-block">
+            <a href="/#" className="token-link w-inline-block">
               <div className="icon-wrapper">
                 <img src="/evo-icon-white.svg" alt="" />
               </div>
@@ -72,7 +72,7 @@ export default function NavbarWrapper() {
                 <div className="token-tooltip-arrow" />
               </div>
             </a>
-            <a href="#" className="token-link w-inline-block">
+            <a href="/#" className="token-link w-inline-block">
               <div className="icon-wrapper tron">
                 <img src="/tron-icon-white.svg" alt="" />
               </div>
@@ -82,7 +82,7 @@ export default function NavbarWrapper() {
                 <div className="token-tooltip-arrow" />
               </div>
             </a>
-            <a href="#" className="token-link w-inline-block">
+            <a href="/#" className="token-link w-inline-block">
               <div className="icon-wrapper za">
                 <img src="/za-text-white.svg" alt="" />
               </div>
@@ -124,13 +124,13 @@ export default function NavbarWrapper() {
             <div className="sub-menu-text">my-inventory</div>
           </a>
           <a
-            href="#"
+            href="/#"
             className="sub-menu-link last-sub-menu-item w-inline-block"
           >
             <div className="sub-menu-text">guides</div>
           </a>
         </div>
-        <a href="#" className="add-friends-button mobile w-inline-block">
+        <a href="/#" className="add-friends-button mobile w-inline-block">
           <img
             src="/add-friends-icon.svg"
             width="47"
@@ -140,7 +140,7 @@ export default function NavbarWrapper() {
           <div className="sub-menu-text">refer a friend</div>
         </a>
         <div className="tokens-wrapper mobile">
-          <a href="#" className="token-link mobile w-inline-block">
+          <a href="/#" className="token-link mobile w-inline-block">
             <div className="icon-wrapper">
               <img src="/evo-icon-white.svg" alt="" />
             </div>
@@ -150,7 +150,7 @@ export default function NavbarWrapper() {
               <div className="token-tooltip-arrow" />
             </div>
           </a>
-          <a href="#" className="token-link mobile w-inline-block">
+          <a href="/#" className="token-link mobile w-inline-block">
             <div className="icon-wrapper tron">
               <img src="/tron-icon-white.svg" alt="" />
             </div>
@@ -160,7 +160,7 @@ export default function NavbarWrapper() {
               <div className="token-tooltip-arrow" />
             </div>
           </a>
-          <a href="#" className="token-link mobile last w-inline-block">
+          <a href="/#" className="token-link mobile last w-inline-block">
             <div className="icon-wrapper za">
               <img src="/za-text-white.svg" alt="" />
             </div>
@@ -171,7 +171,7 @@ export default function NavbarWrapper() {
             </div>
           </a>
         </div>
-        <a href="#" className="account-button mobile w-inline-block">
+        <a href="/#" className="account-button mobile w-inline-block">
           <img src="/avatar_1avatar.jpg" alt="" className="account-image" />
           <div className="account-info-wrapper">
             <div className="account-name">Elliot T. Wainman</div>

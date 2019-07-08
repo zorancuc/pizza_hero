@@ -16,17 +16,13 @@ import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 
-import GlobalStyle from '../../global-styles';
-
-const AppWrapper = styled.div``;
-
 export default function App() {
   useEffect(() => {
     loadjs(['/jquery-3.3.1.min.js', '/webflow.js'], 'foobar');
   }, []);
 
   return (
-    <AppWrapper>
+    <div>
       <Helmet
         titleTemplate="%s - React.js Boilerplate"
         defaultTitle="React.js Boilerplate"
@@ -39,7 +35,6 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
-      <GlobalStyle />
-    </AppWrapper>
+    </div>
   );
 }
