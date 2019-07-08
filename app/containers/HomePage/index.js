@@ -11,6 +11,9 @@ import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
 import reducer from './reducer';
 import saga from './saga';
+import Hero from './components/Hero';
+
+import '!file-loader?name=[name].[ext]!../../images/play.svg';
 
 const key = 'home';
 
@@ -31,7 +34,9 @@ export function HomePage() {
           content="A React.js Boilerplate application homepage"
         />
       </Helmet>
-      <div>HomePage</div>
+      <div>
+        <Hero />
+      </div>
     </article>
   );
 }
