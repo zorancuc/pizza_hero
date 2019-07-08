@@ -16,6 +16,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import FontFaceObserver from 'fontfaceobserver';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
+import 'styles/main.scss';
 
 // Import root app
 import App from 'containers/App';
@@ -26,6 +27,18 @@ import LanguageProvider from 'containers/LanguageProvider';
 // Load the favicon and the .htaccess file
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'file-loader?name=.htaccess!./.htaccess'; // eslint-disable-line import/extensions
+
+import '!file-loader?name=[name].[ext]!./scripts/jquery-3.3.1.min.js';
+import '!file-loader?name=[name].[ext]!./scripts/webflow.js';
+
+import '!file-loader?name=[name].[ext]!./images/add-friends-icon.svg';
+import '!file-loader?name=[name].[ext]!./images/link.svg';
+import '!file-loader?name=[name].[ext]!./images/close.svg';
+import '!file-loader?name=[name].[ext]!./images/tron-gold.svg';
+import '!file-loader?name=[name].[ext]!./images/evo-icon-white.svg';
+import '!file-loader?name=[name].[ext]!./images/tron-icon-white.svg';
+import '!file-loader?name=[name].[ext]!./images/za-text-white.svg';
+import '!file-loader?name=[name].[ext]!./images/avatar_1avatar.jpg';
 
 import configureStore from './configureStore';
 

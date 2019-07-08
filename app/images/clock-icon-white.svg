@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>clock icon white</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="clock-icon-white" fill="#FFFFFF" fill-rule="nonzero">
+            <path d="M15,30 C6.729,30 0,23.271 0,15 C0,6.729 6.729,0 15,0 C23.271,0 30,6.729 30,15 C30,23.271 23.271,30 15,30 Z M15,2 C7.832,2 2,7.832 2,15 C2,22.168 7.832,28 15,28 C22.168,28 28,22.168 28,15 C28,7.832 22.168,2 15,2 Z" id="Shape"></path>
+            <polygon id="Path" points="22 16 14 16 14 8 16 8 16 14 22 14"></polygon>
+        </g>
+    </g>
+</svg>
