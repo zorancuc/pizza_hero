@@ -27,6 +27,7 @@ import '!file-loader?name=[name].[ext]!../../images/hat_1hat.png';
 import '!file-loader?name=[name].[ext]!../../images/armor_1armor.png';
 import '!file-loader?name=[name].[ext]!../../images/crown_1crown.png';
 import '!file-loader?name=[name].[ext]!../../images/unboxed-item.png';
+import Treasure from './components/Treasure';
 
 const key = 'home';
 
@@ -52,6 +53,7 @@ export function HomePage() {
         <PreSale />
         <Referral />
         <UnboxedItems />
+        <Treasure prizeTotal={2493} />
       </div>
     </article>
   );
