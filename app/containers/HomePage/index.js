@@ -16,6 +16,8 @@ import Hero from './components/Hero';
 import PreSale from './components/PreSale';
 import Referral from './components/Referral';
 import UnboxedItems from './components/UnboxedItems';
+import Treasure from './components/Treasure';
+import About from './components/About';
 
 import '!file-loader?name=[name].[ext]!../../images/play.svg';
 import '!file-loader?name=[name].[ext]!../../images/blue-chest.png';
@@ -27,7 +29,10 @@ import '!file-loader?name=[name].[ext]!../../images/hat_1hat.png';
 import '!file-loader?name=[name].[ext]!../../images/armor_1armor.png';
 import '!file-loader?name=[name].[ext]!../../images/crown_1crown.png';
 import '!file-loader?name=[name].[ext]!../../images/unboxed-item.png';
-import Treasure from './components/Treasure';
+import '!file-loader?name=[name].[ext]!../../images/blockchain-icon_1blockchain-icon.png';
+import '!file-loader?name=[name].[ext]!../../images/activities-icon_1activities-icon.png';
+import '!file-loader?name=[name].[ext]!../../images/rare-items-icon_1rare-items-icon.png';
+import '!file-loader?name=[name].[ext]!../../images/trx-icon_1trx-icon.png';
 
 const key = 'home';
 
@@ -54,6 +59,7 @@ export function HomePage() {
         <Referral />
         <UnboxedItems />
         <Treasure prizeTotal={2493} />
+        <About />
       </div>
     </article>
   );

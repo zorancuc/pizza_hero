@@ -1,20 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Item({ image, unboxedItemId, rarity, generation, chance, timestamp }) {
+export default function Item({
+  image,
+  unboxedItemId,
+  rarity,
+  generation,
+  chance,
+  timestamp,
+}) {
   return (
-    <div class="slide w-slide">
-      <div class="unboxed-item-wrapper">
-        <img src={image} alt="" class="unboxed-item-image" />
-        <div class="unboxed-item-id">{unboxedItemId}</div>
-        <div class="item-info-wrapper">
-          <div class="rarity blue-text">{rarity}</div>
-          <div class="separator">/</div>
-          <div class="generation">Gen {generation}</div>
-          <div class="separator">/</div>
-          <div class="chance">{chance}% Chance</div>
+    <div className="slide w-slide">
+      <div className="unboxed-item-wrapper">
+        <img src={image} alt="" className="unboxed-item-image" />
+        <div className="unboxed-item-id">{unboxedItemId}</div>
+        <div className="item-info-wrapper">
+          <div className="rarity blue-text">{rarity}</div>
+          <div className="separator">/</div>
+          <div className="generation">Gen {generation}</div>
+          <div className="separator">/</div>
+          <div className="chance">{chance}% Chance</div>
         </div>
-        <div class="timestamp">{timestamp} ago</div>
+        <div className="timestamp">{timestamp} ago</div>
       </div>
     </div>
   );
