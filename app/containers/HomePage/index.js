@@ -13,7 +13,17 @@ import reducer from './reducer';
 import saga from './saga';
 import Hero from './components/Hero';
 
+import PreSale from './components/PreSale';
+
 import '!file-loader?name=[name].[ext]!../../images/play.svg';
+import '!file-loader?name=[name].[ext]!../../images/blue-chest.png';
+import '!file-loader?name=[name].[ext]!../../images/purple-chest.png';
+import '!file-loader?name=[name].[ext]!../../images/gold-chest.png';
+import '!file-loader?name=[name].[ext]!../../images/white-chest.png';
+import '!file-loader?name=[name].[ext]!../../images/tron-icon-white.svg';
+import '!file-loader?name=[name].[ext]!../../images/hat_1hat.png';
+import '!file-loader?name=[name].[ext]!../../images/armor_1armor.png';
+import '!file-loader?name=[name].[ext]!../../images/crown_1crown.png';
 
 const key = 'home';
 
@@ -36,6 +46,7 @@ export function HomePage() {
       </Helmet>
       <div>
         <Hero />
+        <PreSale />
       </div>
     </article>
   );
