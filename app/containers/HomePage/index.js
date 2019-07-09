@@ -19,6 +19,7 @@ import UnboxedItems from './components/UnboxedItems';
 import Treasure from './components/Treasure';
 import About from './components/About';
 import ItemRarities from './components/ItemRarities';
+import Features from './components/Features';
 
 import '!file-loader?name=[name].[ext]!../../images/play.svg';
 import '!file-loader?name=[name].[ext]!../../images/blue-chest.png';
@@ -40,6 +41,13 @@ import '!file-loader?name=[name].[ext]!../../images/epic_1epic.png';
 import '!file-loader?name=[name].[ext]!../../images/rare_1rare.png';
 import '!file-loader?name=[name].[ext]!../../images/uncommon_1uncommon.png';
 import '!file-loader?name=[name].[ext]!../../images/common_1common.png';
+import '!file-loader?name=[name].[ext]!../../images/breeding_1breeding.png';
+import '!file-loader?name=[name].[ext]!../../images/treasure_1treasure.png';
+import '!file-loader?name=[name].[ext]!../../images/crafting_1crafting.png';
+import '!file-loader?name=[name].[ext]!../../images/guilds_1guilds.png';
+import '!file-loader?name=[name].[ext]!../../images/marketplace_1marketplace.png';
+import '!file-loader?name=[name].[ext]!../../images/upgrades_1upgrades.png';
+import '!file-loader?name=[name].[ext]!../../images/season_1season.png';
 
 const key = 'home';
 
@@ -68,6 +76,7 @@ export function HomePage() {
         <Treasure prizeTotal={2493} />
         <About />
         <ItemRarities />
+        <Features />
       </div>
     </article>
   );
