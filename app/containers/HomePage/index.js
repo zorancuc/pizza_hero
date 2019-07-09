@@ -20,6 +20,7 @@ import Treasure from './components/Treasure';
 import About from './components/About';
 import ItemRarities from './components/ItemRarities';
 import Features from './components/Features';
+import GettingStarted from './components/GettingStarted';
 
 import '!file-loader?name=[name].[ext]!../../images/play.svg';
 import '!file-loader?name=[name].[ext]!../../images/blue-chest.png';
@@ -48,6 +49,14 @@ import '!file-loader?name=[name].[ext]!../../images/guilds_1guilds.png';
 import '!file-loader?name=[name].[ext]!../../images/marketplace_1marketplace.png';
 import '!file-loader?name=[name].[ext]!../../images/upgrades_1upgrades.png';
 import '!file-loader?name=[name].[ext]!../../images/season_1season.png';
+import '!file-loader?name=[name].[ext]!../../images/tronlink.png';
+import '!file-loader?name=[name].[ext]!../../images/coinbase.png';
+import '!file-loader?name=[name].[ext]!../../images/trust.png';
+import '!file-loader?name=[name].[ext]!../../images/right-arrow_1right-arrow.png';
+import '!file-loader?name=[name].[ext]!../../images/divider-left-p-500.png';
+import '!file-loader?name=[name].[ext]!../../images/divider-left.png';
+import '!file-loader?name=[name].[ext]!../../images/divider-right-p-500.png';
+import '!file-loader?name=[name].[ext]!../../images/divider-right.png';
 
 const key = 'home';
 
@@ -77,6 +86,7 @@ export function HomePage() {
         <About />
         <ItemRarities />
         <Features />
+        <GettingStarted />
       </div>
     </article>
   );
