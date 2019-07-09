@@ -18,6 +18,7 @@ import Referral from './components/Referral';
 import UnboxedItems from './components/UnboxedItems';
 import Treasure from './components/Treasure';
 import About from './components/About';
+import ItemRarities from './components/ItemRarities';
 
 import '!file-loader?name=[name].[ext]!../../images/play.svg';
 import '!file-loader?name=[name].[ext]!../../images/blue-chest.png';
@@ -33,6 +34,12 @@ import '!file-loader?name=[name].[ext]!../../images/blockchain-icon_1blockchain-
 import '!file-loader?name=[name].[ext]!../../images/activities-icon_1activities-icon.png';
 import '!file-loader?name=[name].[ext]!../../images/rare-items-icon_1rare-items-icon.png';
 import '!file-loader?name=[name].[ext]!../../images/trx-icon_1trx-icon.png';
+import '!file-loader?name=[name].[ext]!../../images/heirloom_1heirloom.png';
+import '!file-loader?name=[name].[ext]!../../images/legendary_1legendary.png';
+import '!file-loader?name=[name].[ext]!../../images/epic_1epic.png';
+import '!file-loader?name=[name].[ext]!../../images/rare_1rare.png';
+import '!file-loader?name=[name].[ext]!../../images/uncommon_1uncommon.png';
+import '!file-loader?name=[name].[ext]!../../images/common_1common.png';
 
 const key = 'home';
 
@@ -60,6 +67,7 @@ export function HomePage() {
         <UnboxedItems />
         <Treasure prizeTotal={2493} />
         <About />
+        <ItemRarities />
       </div>
     </article>
   );
