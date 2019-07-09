@@ -11,9 +11,11 @@ import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
 import reducer from './reducer';
 import saga from './saga';
-import Hero from './components/Hero';
 
+import Hero from './components/Hero';
 import PreSale from './components/PreSale';
+import Referral from './components/Referral';
+import UnboxedItems from './components/UnboxedItems';
 
 import '!file-loader?name=[name].[ext]!../../images/play.svg';
 import '!file-loader?name=[name].[ext]!../../images/blue-chest.png';
@@ -24,6 +26,7 @@ import '!file-loader?name=[name].[ext]!../../images/tron-icon-white.svg';
 import '!file-loader?name=[name].[ext]!../../images/hat_1hat.png';
 import '!file-loader?name=[name].[ext]!../../images/armor_1armor.png';
 import '!file-loader?name=[name].[ext]!../../images/crown_1crown.png';
+import '!file-loader?name=[name].[ext]!../../images/unboxed-item.png';
 
 const key = 'home';
 
@@ -47,6 +50,8 @@ export function HomePage() {
       <div>
         <Hero />
         <PreSale />
+        <Referral />
+        <UnboxedItems />
       </div>
     </article>
   );
