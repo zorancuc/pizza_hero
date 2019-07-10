@@ -53,7 +53,7 @@ export default function NavbarWrapper({
         className="mobile-menu-wrapper"
       >
         <SubMenuMobile />
-        <a href="/#" className="add-friends-button mobile w-inline-block">
+        <a className="add-friends-button mobile w-inline-block">
           <img
             src="/add-friends-icon.svg"
             width="47"
