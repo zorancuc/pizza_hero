@@ -1,0 +1,14 @@
+.item-tooltip {
+  transform: translate3d(0px, 10px, 0px);
+  transform-style: preserve-3d;
+  display: none;
+  opacity: 0;
+  -webkit-transition: transform 5s ease-in-out;
+  transition: transform 5s ease-in-out;
+}
+
+.item-image-wrapper:hover + .item-tooltip {
+  transform: translate3d(0px, 0px, 0px);
+  display: flex;
+  opacity: 1;
+}

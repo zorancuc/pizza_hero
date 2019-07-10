@@ -11,7 +11,7 @@ import produce from 'immer';
 
 // The initial state of the App
 export const initialState = {
-  username: '',
+
 };
 
 /* eslint-disable default-case, no-param-reassign */
