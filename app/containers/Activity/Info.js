@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export default function Info({ profileName, profileImage }) {
   return (
@@ -15,9 +16,9 @@ export default function Info({ profileName, profileImage }) {
               Copy address
             </a>
             <div className="hyphen">-</div>
-            <a href="settings.html" className="account-link">
+            <Link to="/settings" className="account-link">
               Settings
-            </a>
+            </Link>
           </div>
         </div>
       </div>

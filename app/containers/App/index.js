@@ -16,6 +16,7 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 import MyInventory from 'containers/MyInventory/Loadable';
 import Activity from 'containers/Activity/Loadable';
+import Settings from 'containers/Settings/Loadable';
 
 export default function App() {
   useScript('/jquery-3.3.1.min.js');
@@ -31,6 +32,7 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/my-inventory" component={MyInventory} />
         <Route path="/activity" component={Activity} />
+        <Route path="/settings" component={Settings} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />
