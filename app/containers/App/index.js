@@ -15,6 +15,7 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import MyInventory from 'containers/MyInventory/Loadable';
+import Activity from 'containers/Activity/Loadable';
 
 export default function App() {
   useScript('/jquery-3.3.1.min.js');
@@ -22,16 +23,14 @@ export default function App() {
 
   return (
     <div>
-      <Helmet
-        titleTemplate="%s - Pizza Heroes"
-        defaultTitle="Pizza Heroes"
-      >
+      <Helmet titleTemplate="%s - Pizza Heroes" defaultTitle="Pizza Heroes">
         <meta name="description" content="Pizza Heroes application" />
       </Helmet>
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/my-inventory" component={MyInventory} />
+        <Route path="/activity" component={Activity} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />
