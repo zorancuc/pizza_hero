@@ -17,6 +17,8 @@ import Footer from 'components/Footer';
 import MyInventory from 'containers/MyInventory/Loadable';
 
 export default function App() {
+  useScript('/jquery-3.3.1.min.js');
+  useScript('/webflow.js');
 
   return (
     <div>
