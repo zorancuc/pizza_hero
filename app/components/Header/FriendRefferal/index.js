@@ -1,14 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import './prize-total.scss';
+import './styles.scss';
 
-export default function FriendRefferal() {
+export default function FriendRefferal({ show, toggleReferral }) {
   return (
     <div
       data-w-id="d7a61ff6-901e-efec-c7eb-a30e9e632553"
-      className="refer-a-friend-wrapper"
+      className={classNames('refer-a-friend-wrapper', { show })}
     >
-      <a href="/#" className="refer-a-friend-tab w-inline-block">
+      <a
+        onClick={toggleReferral}
+        href="/#"
+        className="refer-a-friend-tab w-inline-block"
+      >
         <img
           src="/add-friends-icon.svg"
           width="47"
@@ -18,9 +24,13 @@ export default function FriendRefferal() {
       </a>
       <div
         data-w-id="d7a61ff6-901e-efec-c7eb-a30e9e632556"
-        className="refer-a-friend-menu"
+        className={classNames('refer-a-friend-menu', { show })}
       >
-        <a href="/#" className="close-refer-a-friend-menu w-inline-block">
+        <a
+          onClick={toggleReferral}
+          href="/#"
+          className="close-refer-a-friend-menu w-inline-block"
+        >
           <img src="/close.svg" width="15" alt="" />
         </a>
         <div className="refer-a-friend-content-wrapper">
@@ -54,3 +64,8 @@ export default function FriendRefferal() {
     </div>
   );
 }
+
+FriendRefferal.propTypes = {
+  show: PropTypes.bool,
+  toggleReferral: PropTypes.func,
+};

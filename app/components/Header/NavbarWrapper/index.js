@@ -13,6 +13,7 @@ export default function NavbarWrapper({
   evoBalance,
   trxBalance,
   zaCoinBalance,
+  toggleReferral,
 }) {
   return (
     <div className="navbar-wrapper">
@@ -22,6 +23,7 @@ export default function NavbarWrapper({
             id="w-node-22521a87e90d-1a87e8c5"
             href="/#"
             className="add-friends-button w-inline-block"
+            onClick={toggleReferral}
           >
             <img
               src="/add-friends-icon.svg"
@@ -53,7 +55,7 @@ export default function NavbarWrapper({
         className="mobile-menu-wrapper"
       >
         <SubMenuMobile />
-        <a className="add-friends-button mobile w-inline-block">
+        <a href="/#" className="add-friends-button mobile w-inline-block">
           <img
             src="/add-friends-icon.svg"
             width="47"
@@ -77,4 +79,5 @@ NavbarWrapper.propTypes = {
   evoBalance: PropTypes.number,
   trxBalance: PropTypes.number,
   zaCoinBalance: PropTypes.number,
+  toggleReferral: PropTypes.func,
 };
