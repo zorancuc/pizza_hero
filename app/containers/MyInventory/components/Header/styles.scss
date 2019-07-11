@@ -1,0 +1,12 @@
+.filters-wrapper {
+  display: grid;
+  opacity: 1;
+  -webkit-transition: all .3s ease .15s;
+  transition: all .3s ease .15s;
+}
+
+.filters-wrapper.hide {
+  opacity:0;
+  height: 0;
+  overflow: hidden;
+}
