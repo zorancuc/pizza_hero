@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 export default function Logo() {
   return (
-    <Link
+    <a
       id="w-node-22521a87e912-1a87e8c5"
       data-w-id="f0ab1070-570f-ab2c-44f4-22521a87e912"
-      to="/"
+      href="/"
       className="pizza-heroes-logo-link-wrapper w-inline-block w--current"
     >
       <img
@@ -15,6 +15,6 @@ export default function Logo() {
         alt=""
         className="pizza-heroes-logo"
       />
-    </Link>
+    </a>
   );
 }

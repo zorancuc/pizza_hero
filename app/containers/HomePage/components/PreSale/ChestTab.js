@@ -17,7 +17,6 @@ export default function ChestTab({
     // eslint-disable-next-line jsx-a11y/anchor-is-valid
     <a
       href="/#"
-      data-w-tab={tabName}
       className={classNames(
         'tab-link',
         linkClass,

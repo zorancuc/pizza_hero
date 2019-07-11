@@ -72,10 +72,7 @@ export function HomePage() {
     <article>
       <Helmet>
         <title>Home</title>
-        <meta
-          name="description"
-          content="Pizza Heroes application homepage"
-        />
+        <meta name="description" content="Pizza Heroes application homepage" />
       </Helmet>
       <div>
         <Hero />

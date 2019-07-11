@@ -19,8 +19,8 @@ import Activity from 'containers/Activity/Loadable';
 import Settings from 'containers/Settings/Loadable';
 
 export default function App() {
-  // useScript('/jquery-3.3.1.min.js');
-  // useScript('/webflow.js');
+  useScript('/jquery-3.3.1.min.js');
+  useScript('/webflow.js');
 
   return (
     <div>

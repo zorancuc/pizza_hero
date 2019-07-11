@@ -114,14 +114,6 @@ export default function UnboxedItems() {
               rarity="Rare"
               generation={0}
               chance={22}
-              timestamp="2 hours"
-            />
-            <Item
-              image="/unboxed-item.png"
-              unboxedItemId="0x55b4dc..."
-              rarity="Rare"
-              generation={0}
-              chance={22}
               timestamp="1 day"
             />
             <Item
