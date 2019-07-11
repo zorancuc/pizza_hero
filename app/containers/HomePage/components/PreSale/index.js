@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './styles.scss';
 import PreSaleHeader from './PreSaleHeader';
@@ -6,6 +6,15 @@ import ChestTab from './ChestTab';
 import ChestTabContent from './ChestTabContent';
 
 export default function PreSale() {
+  const [state, setState] = useState({
+    currentTabIndex: 0,
+  });
+  const onSelectTab = index => e => {
+    e.preventDefault();
+    setState({
+      currentTabIndex: index,
+    });
+  }
   return (
     <div>
       <PreSaleHeader />
@@ -17,7 +26,8 @@ export default function PreSale() {
             title="Rare Chest"
             titleClass="blue-chest"
             trxAmount={100}
-            current
+            current={state.currentTabIndex === 0}
+            onSelectTab={onSelectTab(0)}
           />
           <ChestTab
             tabName="Tab 2"
@@ -26,6 +36,8 @@ export default function PreSale() {
             title="Epic Chest"
             titleClass="purple-chest"
             trxAmount={100}
+            current={state.currentTabIndex === 1}
+            onSelectTab={onSelectTab(1)}
           />
           <ChestTab
             tabName="Tab 3"
@@ -34,6 +46,8 @@ export default function PreSale() {
             title="Legendary Chest"
             titleClass="legendary-chest"
             trxAmount={100}
+            current={state.currentTabIndex === 2}
+            onSelectTab={onSelectTab(2)}
           />
           <ChestTab
             tabName="Tab 4"
@@ -43,6 +57,8 @@ export default function PreSale() {
             titleClass="evo-legendary-chest"
             trxAmount={100}
             last
+            current={state.currentTabIndex === 3}
+            onSelectTab={onSelectTab(3)}
           />
         </div>
         <div className="w-tab-content">
@@ -53,7 +69,7 @@ export default function PreSale() {
             image="/blue-chest.png"
             chestNumber={2342}
             chestTotalNumber={10000}
-            active
+            active={state.currentTabIndex === 0}
           />
           <ChestTabContent
             tabName="Tab 2"
@@ -63,6 +79,7 @@ export default function PreSale() {
             chestNumber={2342}
             chestTotalNumber={10000}
             bgClass="purple-bg"
+            active={state.currentTabIndex === 1}
           />
           <ChestTabContent
             tabName="Tab 3"
@@ -72,6 +89,7 @@ export default function PreSale() {
             chestNumber={2342}
             chestTotalNumber={10000}
             bgClass="yellow-bg"
+            active={state.currentTabIndex === 2}
           />
           <ChestTabContent
             tabName="Tab 4"
@@ -80,6 +98,7 @@ export default function PreSale() {
             chestNumber={2342}
             chestTotalNumber={10000}
             bgClass="white-bg"
+            active={state.currentTabIndex === 3}
           />
         </div>
       </div>

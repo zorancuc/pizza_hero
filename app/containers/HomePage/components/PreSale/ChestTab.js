@@ -11,10 +11,12 @@ export default function ChestTab({
   trxAmount,
   current,
   last,
+  onSelectTab,
 }) {
   return (
     // eslint-disable-next-line jsx-a11y/anchor-is-valid
     <a
+      href="/#"
       data-w-tab={tabName}
       className={classNames(
         'tab-link',
@@ -28,6 +30,7 @@ export default function ChestTab({
           'last-tab': last,
         },
       )}
+      onClick={onSelectTab}
     >
       <div className="tab-content">
         <img src={image} alt="" className="chest-image" />
@@ -49,4 +52,5 @@ ChestTab.propTypes = {
   trxAmount: PropTypes.number,
   current: PropTypes.bool,
   last: PropTypes.bool,
+  onSelectTab: PropTypes.func,
 };
