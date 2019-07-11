@@ -17,6 +17,7 @@ export default function Activities() {
             for sale.
           </div>
         }
+        detailTo="view-item"
       />
       <ActivityItem
         image="/breed-icon-with-bg.png"
@@ -38,6 +39,7 @@ export default function Activities() {
             should have a new bear cub soon!
           </div>
         }
+        detailTo="view-item"
       />
       <ActivityItem
         image="/request-icon-with-bg.svg"
@@ -51,6 +53,7 @@ export default function Activities() {
             . Hope no one beats you to it!
           </div>
         }
+        detailTo="view-item"
       />
       <ActivityItem
         image="/open-chest-icon-with-bg.svg"
@@ -64,6 +67,7 @@ export default function Activities() {
             !
           </div>
         }
+        detailTo="view-item"
       />
       <ActivityItem
         image="/closed-chest-icon-with-bg.svg"
@@ -77,6 +81,7 @@ export default function Activities() {
             !
           </div>
         }
+        detailTo="view-item"
       />
       <ActivityItem
         image="/opened-egg-icon-with-bg.svg"
@@ -90,6 +95,7 @@ export default function Activities() {
             !
           </div>
         }
+        detailTo="view-item"
       />
     </div>
   );

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-export default function ActivityItem({ image, timeStamp, detail }) {
+export default function ActivityItem({ image, timeStamp, detail, detailTo }) {
   return (
     <div className="activity-item">
       <div className="activity-info">
@@ -13,9 +14,9 @@ export default function ActivityItem({ image, timeStamp, detail }) {
           {detail}
         </div>
       </div>
-      <a href="view-item.html" className="view-details-button w-inline-block">
+      <Link to={`/${detailTo}`} className="view-details-button w-inline-block">
         <div>View Details</div>
-      </a>
+      </Link>
     </div>
   );
 }
@@ -24,4 +25,5 @@ ActivityItem.propTypes = {
   image: PropTypes.string,
   timeStamp: PropTypes.string,
   detail: PropTypes.object,
+  detailTo: PropTypes.string,
 };
