@@ -10,14 +10,14 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import HomePage from 'containers/HomePage';
+import NotFoundPage from 'containers/NotFoundPage';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import MyInventory from 'containers/MyInventory/Loadable';
-import Activity from 'containers/Activity/Loadable';
-import Settings from 'containers/Settings/Loadable';
-import ViewItem from 'containers/ViewItem/Loadable';
+import MyInventory from 'containers/MyInventory';
+import Activity from 'containers/Activity';
+import Settings from 'containers/Settings';
+import ViewItem from 'containers/ViewItem';
 
 export default function App() {
   return (

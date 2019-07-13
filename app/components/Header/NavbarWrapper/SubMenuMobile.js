@@ -11,14 +11,14 @@ function SubMenuMobile({ location }) {
   const { pathname } = location;
   return (
     <div className="sub-menu-wrapper mobile">
-      <a
-        href="/"
+      <Link
+        href="/to"
         className={classNames('sub-menu-link mobile', 'w-inline-block', {
           'w--current': pathname === '/',
         })}
       >
         <div className="sub-menu-text">pre-order</div>
-      </a>
+      </Link>
       <Link
         to="/my-inventory"
         className={classNames('sub-menu-link', 'mobile', 'w-inline-block', {
