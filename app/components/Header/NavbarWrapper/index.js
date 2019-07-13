@@ -13,17 +13,16 @@ export default function NavbarWrapper({
   evoBalance,
   trxBalance,
   zaCoinBalance,
-  toggleReferral,
+  setActiveReferral,
 }) {
   return (
     <div className="navbar-wrapper">
       <div className="navbar">
         <div className="navbar-container">
           <a
-            id="w-node-22521a87e90d-1a87e8c5"
             href="/#"
             className="add-friends-button w-inline-block"
-            onClick={toggleReferral}
+            onClick={setActiveReferral}
           >
             <img
               src="/add-friends-icon.svg"
@@ -79,5 +78,5 @@ NavbarWrapper.propTypes = {
   evoBalance: PropTypes.number,
   trxBalance: PropTypes.number,
   zaCoinBalance: PropTypes.number,
-  toggleReferral: PropTypes.func,
+  setActiveReferral: PropTypes.func,
 };

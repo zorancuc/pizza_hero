@@ -5,23 +5,30 @@
   position: relative;
 }
 .refer-a-friend-wrapper {
-  display: none;
+  display: flex;
   opacity: 0;
-  transition: opacity .1s;
+  transition: opacity .3s;
 
   &.show {
-    display: block;
     opacity: 1;
     width: 400px;
     height: 400px;
   }
+  &.active {
+    z-index: 7;
+  }
 }
 .refer-a-friend-menu {
-  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(-15deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-  transform-style: preserve-3d;
-  transition: all .1s;
+  -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(-25deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  -moz-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(-25deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  -ms-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(-25deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(-25deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  transition: transform .5s;
 
   &.show {
+    -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -moz-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    -ms-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
     transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
   }
 }

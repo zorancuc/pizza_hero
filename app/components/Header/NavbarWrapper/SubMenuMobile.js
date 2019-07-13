@@ -12,7 +12,7 @@ function SubMenuMobile({ location }) {
   return (
     <div className="sub-menu-wrapper mobile">
       <Link
-        href="/to"
+        to="/"
         className={classNames('sub-menu-link mobile', 'w-inline-block', {
           'w--current': pathname === '/',
         })}

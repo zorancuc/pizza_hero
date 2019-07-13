@@ -15,25 +15,38 @@ import '!file-loader?name=[name].[ext]!../../images/pizza-heroes-logo.png';
 
 function Header() {
   const [state, setState] = useState({
-    showReferral: false,
+    isActiveReferral: false,
+    isShowReferral: false,
   });
-  const toggleReferral = event => {
-    event.preventDefault();
+  const setActiveReferral = e => {
+    e.preventDefault();
     setState({
-      showReferral: !state.showReferral,
+      ...state,
+      isActiveReferral: true,
+      isShowReferral: true,
     });
   };
+  const setHideReferral = e => {
+    if (e) e.preventDefault();
+    setState({
+      ...state,
+      isShowReferral: false,
+      isActiveReferral: false,
+    });
+  };
+
   return (
     <div>
       <FriendRefferal
-        show={state.showReferral}
-        toggleReferral={toggleReferral}
+        active={state.isActiveReferral}
+        show={state.isShowReferral}
+        setHide={setHideReferral}
       />
       <NavbarWrapper
         evoBalance={9000}
         trxBalance={180000}
         zaCoinBalance={180000}
-        toggleReferral={toggleReferral}
+        setActiveReferral={setActiveReferral}
       />
     </div>
   );
