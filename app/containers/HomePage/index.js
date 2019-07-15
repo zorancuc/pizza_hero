@@ -4,7 +4,7 @@
  * This is the first thing users see of our App, at the '/' route
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 
 import { useInjectReducer } from 'utils/injectReducer';
@@ -57,21 +57,31 @@ import '!file-loader?name=[name].[ext]!../../images/divider-left-p-500.png';
 import '!file-loader?name=[name].[ext]!../../images/divider-left.png';
 import '!file-loader?name=[name].[ext]!../../images/divider-right-p-500.png';
 import '!file-loader?name=[name].[ext]!../../images/divider-right.png';
+import YoutubeVideo from '../../components/YoutubeVideo';
 
 const key = 'home';
 
 function HomePage() {
+  const [isOpenVideo, openVideo] = useState(false);
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
+  const openVideoHandler = e => {
+    e.preventDefault();
+    openVideo(true);
+  };
+  const closeVideoHandler = e => {
+    e.preventDefault();
+    openVideo(false);
+  };
 
   return (
-    <article>
+    <div>
       <Helmet>
         <title>Home</title>
         <meta name="description" content="Pizza Heroes application homepage" />
       </Helmet>
       <div>
-        <Hero />
+        <Hero openVideo={openVideoHandler} />
         <PreSale />
         <Referral />
         <UnboxedItems />
@@ -81,7 +91,8 @@ function HomePage() {
         <Features />
         <GettingStarted />
       </div>
-    </article>
+      {isOpenVideo && <YoutubeVideo close={closeVideoHandler} />}
+    </div>
   );
 }
 
