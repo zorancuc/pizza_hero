@@ -23,7 +23,7 @@ export default function Hero({ openVideo }) {
             <div>start collecting</div>
           </a>
           <div className="watch-trailer-wrapper">
-            <a href="/#" className="lightbox-link w-inline-block w-lightbox">
+            <div className="lightbox-link w-inline-block w-lightbox">
               <div className="watch-trailer-button-wrapper">
                 <div className="watch-trailer-circle-border">
                   <div className="watch-trailer-circle">
@@ -34,7 +34,7 @@ export default function Hero({ openVideo }) {
                   Watch trailer
                 </a>
               </div>
-            </a>
+            </div>
           </div>
         </div>
       </div>

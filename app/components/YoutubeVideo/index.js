@@ -34,10 +34,13 @@ export default function YoutubeVideo({ close }) {
           <div className="w-lightbox-spinner w-lightbox-hide" />
           <div className="w-lightbox-control w-lightbox-left w-lightbox-inactive" />
           <div className="w-lightbox-control w-lightbox-right w-lightbox-inactive" />
-          <a
+          <div
             href="/#"
             className="w-lightbox-control w-lightbox-close"
             onClick={close}
+            onKeyDown={() => {}}
+            role="button"
+            tabIndex="0"
           />
         </div>
         <div className="w-lightbox-strip" />
