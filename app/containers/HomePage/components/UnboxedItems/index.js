@@ -1,8 +1,42 @@
 import React from 'react';
 
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+
 import Item from './Item';
 
+const responsive = {
+  0: {
+    items: 2,
+  },
+  500: {
+    items: 3,
+  },
+  676: {
+    items: 4,
+  },
+  767: {
+    items: 3,
+  },
+  1023: {
+    items: 4,
+  },
+  1200: {
+    items: 5,
+  },
+};
+
 export default function UnboxedItems() {
+  let Carousel = null;
+  const slidePrev = e => {
+    e.preventDefault();
+    Carousel.slidePrev();
+  };
+  const slideNext = e => {
+    e.preventDefault();
+    Carousel.slideNext();
+  };
+
   return (
     <div className="section latest-unboxed-items-section">
       <div className="container">
@@ -12,14 +46,14 @@ export default function UnboxedItems() {
         >
           Latest Unboxed Items
         </h2>
-        <div
-          data-animation="slide"
-          data-hide-arrows="1"
-          data-duration="500"
-          data-infinite="1"
-          className="slider w-slider"
-        >
-          <div className="mask w-slider-mask">
+        <div className="slider w-slider">
+          <AliceCarousel
+            mouseDragEnabled
+            buttonsDisabled
+            dotsDisabled
+            responsive={responsive}
+            ref={/* eslint no-return-assign: "error" */ el => (Carousel = el)}
+          >
             <Item
               image="/unboxed-item.png"
               unboxedItemId="0x55b4dc..."
@@ -140,13 +174,21 @@ export default function UnboxedItems() {
               chance={22}
               timestamp="1 week"
             />
-          </div>
-          <div className="slider-arrow-wrapper left w-slider-arrow-left">
+          </AliceCarousel>
+          <a
+            href="/#"
+            className="slider-arrow-wrapper left w-slider-arrow-left"
+            onClick={slidePrev}
+          >
             <div className="slider-arrow-icon w-icon-slider-left" />
-          </div>
-          <div className="slider-arrow-wrapper w-slider-arrow-right">
+          </a>
+          <a
+            href="/#"
+            className="slider-arrow-wrapper w-slider-arrow-right"
+            onClick={slideNext}
+          >
             <div className="slider-arrow-icon w-icon-slider-right" />
-          </div>
+          </a>
           <div className="slide-nav w-slider-nav w-round" />
         </div>
       </div>
