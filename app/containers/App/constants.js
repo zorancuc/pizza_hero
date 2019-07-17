@@ -8,3 +8,9 @@
  * Follow this format:
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
+
+export const LOGIN = 'pizza_hero/App/LOGIN';
+export const LOGIN_SUCCESS = 'pizza_hero/App/LOGIN_SUCCESS';
+
+export const OPEN_SIGNUP_MODAL = 'pizza_hero/App/OPEN_SIGNUP_MODAL';
+export const CLOSE_SIGNUP_MODAL = 'pizza_hero/App/CLOSE_SIGNUP_MODAL';

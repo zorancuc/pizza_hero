@@ -14,3 +14,24 @@
  *        return { type: YOUR_ACTION_CONSTANT, var: var }
  *    }
  */
+
+import {
+  LOGIN,
+  OPEN_SIGNUP_MODAL,
+  CLOSE_SIGNUP_MODAL,
+  LOGIN_SUCCESS,
+} from './constants';
+
+export function login() {
+  return { type: LOGIN };
+}
+export function loginSuccess() {
+  return { type: LOGIN_SUCCESS };
+}
+
+export function openSignupModal() {
+  return { type: OPEN_SIGNUP_MODAL };
+}
+export function closeSignupModal() {
+  return { type: CLOSE_SIGNUP_MODAL };
+}

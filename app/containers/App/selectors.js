@@ -27,9 +27,23 @@ const makeSelectLocation = () =>
     routerState => routerState.location,
   );
 
+const makeSelectIsLogged = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.isLogged,
+  );
+
+const makeSelectIsOpenSignupModal = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.isOpenSignupModal,
+  );
+
 export {
   selectGlobal,
   makeSelectLoading,
   makeSelectError,
   makeSelectLocation,
+  makeSelectIsLogged,
+  makeSelectIsOpenSignupModal,
 };

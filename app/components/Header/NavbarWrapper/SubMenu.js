@@ -7,10 +7,10 @@ import { createStructuredSelector } from 'reselect';
 import classNames from 'classnames';
 import { makeSelectLocation } from 'containers/App/selectors';
 
-function SubMenu({ location }) {
+function SubMenu({ location, id }) {
   const { pathname } = location;
   return (
-    <div id="w-node-22521a87e914-1a87e8c5" className="sub-menu-wrapper">
+    <div id={id} className="sub-menu-wrapper">
       <Link
         to="/"
         className={classNames('sub-menu-link', 'w-inline-block', {
@@ -44,6 +44,7 @@ function SubMenu({ location }) {
 
 SubMenu.propTypes = {
   location: PropTypes.object,
+  id: PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({

@@ -1,0 +1,23 @@
+.create-account-modal-wrapper {
+  display: flex;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity .5s;
+
+  &.open {
+    opacity: 1;
+    z-index: 20;
+  }
+}
+.create-account-modal {
+  -webkit-transform: translate3d(0, 0, 0) scale3d(1.1500000000000001, 1.1500000000000001, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+  -moz-transform: translate3d(0, 0, 0) scale3d(1.1500000000000001, 1.1500000000000001, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+  -ms-transform: translate3d(0, 0, 0) scale3d(1.1500000000000001, 1.1500000000000001, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+  transform: translate3d(0, 0, 0) scale3d(1.1500000000000001, 1.1500000000000001, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+  transition: transform .5s;
+
+  &.open {
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+  }
+}

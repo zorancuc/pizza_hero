@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export default function Logo() {
+export default function Logo({ id }) {
   return (
     <Link
-      id="w-node-22521a87e912-1a87e8c5"
+      id={id}
       data-w-id="f0ab1070-570f-ab2c-44f4-22521a87e912"
       to="/"
       className="pizza-heroes-logo-link-wrapper w-inline-block w--current"
@@ -18,3 +19,7 @@ export default function Logo() {
     </Link>
   );
 }
+
+Logo.propTypes = {
+  id: PropTypes.string,
+};
