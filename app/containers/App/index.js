@@ -73,7 +73,7 @@ export function mapDispatchToProps(dispatch) {
       dispatch(login());
     },
     onCloseSignupModal: e => {
-      e.preventDefault();
+      if (e) e.preventDefault();
       dispatch(closeSignupModal());
     },
   };
