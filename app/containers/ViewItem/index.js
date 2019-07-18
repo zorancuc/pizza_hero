@@ -38,9 +38,19 @@ export default function ViewItem() {
       showDialog: !state.showDialog,
     });
   };
+  const closeDialog = () => {
+    setState({
+      ...state,
+      showDialog: false,
+    });
+  };
   return (
     <div>
-      <Dialog show={state.showDialog} toggleDialog={toggleDialog} />
+      <Dialog
+        show={state.showDialog}
+        toggleDialog={toggleDialog}
+        closeDialog={closeDialog}
+      />
       <div className="section view-character-section">
         <div className="item-header">
           <img
