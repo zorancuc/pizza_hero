@@ -39,6 +39,42 @@ const makeSelectIsOpenSignupModal = () =>
     globalState => globalState.isOpenSignupModal,
   );
 
+const makeSelectEvoBalance = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.evoBalance,
+  );
+
+const makeSelectTrxBalance = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.trxBalance,
+  );
+
+const makeSelectTronWebState = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.tronWebState,
+  );
+
+const makeSelectWalletAddress = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.walletAddress,
+  );
+
+const makeSelectAccountName = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.accountName,
+  );
+
+const makeSelectTronWeb = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.tronWeb,
+  );
+
 export {
   selectGlobal,
   makeSelectLoading,
@@ -46,4 +82,11 @@ export {
   makeSelectLocation,
   makeSelectIsLogged,
   makeSelectIsOpenSignupModal,
+  makeSelectEvoBalance,
+  // makeSelectIsWalletLogged,
+  makeSelectTronWebState,
+  makeSelectWalletAddress,
+  makeSelectAccountName,
+  makeSelectTronWeb,
+  makeSelectTrxBalance,
 };

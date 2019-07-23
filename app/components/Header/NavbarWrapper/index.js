@@ -17,6 +17,8 @@ export default function NavbarWrapper({
   zaCoinBalance,
   setActiveReferral,
   openSignupModal,
+  accountName,
+  accountAddress,
 }) {
   return (
     <div className="navbar-wrapper">
@@ -81,7 +83,12 @@ export default function NavbarWrapper({
               zaCoinBalance={zaCoinBalance}
             />
           )}
-          {isLogged && <AccountInfo />}
+          {isLogged && (
+            <AccountInfo
+              accountName={accountName}
+              accountAddress={accountAddress}
+            />
+          )}
         </div>
       </div>
       <div
@@ -103,7 +110,10 @@ export default function NavbarWrapper({
           trxBalance={trxBalance}
           zaCoinBalance={zaCoinBalance}
         />
-        <AccountInfoMobile />
+        <AccountInfoMobile
+          accountName={accountName}
+          accountAddress={accountAddress}
+        />
       </div>
     </div>
   );
@@ -114,6 +124,8 @@ NavbarWrapper.propTypes = {
   evoBalance: PropTypes.number,
   trxBalance: PropTypes.number,
   zaCoinBalance: PropTypes.number,
+  accountName: PropTypes.string,
+  accountAddress: PropTypes.string,
   setActiveReferral: PropTypes.func,
   openSignupModal: PropTypes.func,
 };

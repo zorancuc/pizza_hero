@@ -20,6 +20,15 @@ import {
   OPEN_SIGNUP_MODAL,
   CLOSE_SIGNUP_MODAL,
   LOGIN_SUCCESS,
+  CHECK_TRONLINK_STATUS,
+  CHECK_TRONLINK_STATUS_SUCCESS,
+  CHECK_TRONLINK_STATUS_FAIL,
+  UPDATE_TRONLINK_STATUS,
+  GET_TRX_BALANCE,
+  GET_TRX_BALANCE_SUCCESS,
+  GET_TRX_BALANCE_FAIL,
+  SET_WALLET_ADDRESS,
+  SET_TRONWEB,
 } from './constants';
 
 export function login() {
@@ -34,4 +43,34 @@ export function openSignupModal() {
 }
 export function closeSignupModal() {
   return { type: CLOSE_SIGNUP_MODAL };
+}
+
+export function checkTronlinkStatus() {
+  return { type: CHECK_TRONLINK_STATUS };
+}
+export function checkTronlinkStatusSuccess() {
+  return { type: CHECK_TRONLINK_STATUS_SUCCESS };
+}
+export function checkTronlinkStatusFail() {
+  return { type: CHECK_TRONLINK_STATUS_FAIL };
+}
+
+export function updateTronlinkStatus(tronWebState) {
+  return { type: UPDATE_TRONLINK_STATUS, tronWebState };
+}
+export function setWalletAddress(walletAddress) {
+  return { type: SET_WALLET_ADDRESS, walletAddress };
+}
+export function setTronWeb(tronWeb) {
+  return { type: SET_TRONWEB, tronWeb };
+}
+
+export function getTrxBalance() {
+  return { type: GET_TRX_BALANCE };
+}
+export function getTrxBalanceSuccess(evoBalance, trxBalance) {
+  return { type: GET_TRX_BALANCE_SUCCESS, evoBalance, trxBalance };
+}
+export function getTrxBalanceFail(err) {
+  return { type: GET_TRX_BALANCE_FAIL, err };
 }

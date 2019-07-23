@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
-import { makeSelectIsLogged } from 'containers/App/selectors';
+import {
+  makeSelectIsLogged,
+  makeSelectEvoBalance,
+  makeSelectTrxBalance,
+  makeSelectWalletAddress,
+  makeSelectAccountName,
+} from 'containers/App/selectors';
 import { openSignupModal } from 'containers/App/actions';
 
 import FriendRefferal from './FriendRefferal';
@@ -19,7 +25,15 @@ import '!file-loader?name=[name].[ext]!../../images/za-text-white.svg';
 import '!file-loader?name=[name].[ext]!../../images/avatar_1avatar.jpg';
 import '!file-loader?name=[name].[ext]!../../images/pizza-heroes-logo.png';
 
-function Header({ isLogged, onOpenSignupModal }) {
+function Header({
+  isLogged,
+  onOpenSignupModal,
+  evoBalance,
+  trxBalance,
+  zaCoinBalance,
+  accountName,
+  accountAddress,
+}) {
   const [state, setState] = useState({
     isActiveReferral: false,
     isShowReferral: false,
@@ -51,10 +65,12 @@ function Header({ isLogged, onOpenSignupModal }) {
       <NavbarWrapper
         isLogged={isLogged}
         openSignupModal={onOpenSignupModal}
-        evoBalance={9000}
-        trxBalance={180000}
-        zaCoinBalance={180000}
+        evoBalance={evoBalance}
+        trxBalance={trxBalance}
+        zaCoinBalance={zaCoinBalance}
         setActiveReferral={setActiveReferral}
+        accountName={accountName}
+        accountAddress={accountAddress}
       />
     </div>
   );
@@ -63,10 +79,19 @@ function Header({ isLogged, onOpenSignupModal }) {
 Header.propTypes = {
   isLogged: PropTypes.bool,
   onOpenSignupModal: PropTypes.func,
+  evoBalance: PropTypes.number,
+  trxBalance: PropTypes.number,
+  zaCoinBalance: PropTypes.number,
+  accountName: PropTypes.string,
+  accountAddress: PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({
   isLogged: makeSelectIsLogged(),
+  evoBalance: makeSelectEvoBalance(),
+  trxBalance: makeSelectTrxBalance(),
+  accountAddress: makeSelectWalletAddress(),
+  accountName: makeSelectAccountName(),
 });
 
 export function mapDispatchToProps(dispatch) {

@@ -98,7 +98,8 @@
     "reselect": "4.0.0",
     "sanitize.css": "8.0.0",
     "sass-loader": "^7.1.0",
-    "styled-components": "4.2.0"
+    "styled-components": "4.2.0",
+    "tronweb": "^2.6.6"
   },
   "devDependencies": {
     "@babel/cli": "7.4.3",

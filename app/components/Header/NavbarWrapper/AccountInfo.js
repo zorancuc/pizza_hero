@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { walletAddressShorten } from 'utils/walletAddressShorten';
 
-export default function AccountInfo() {
+export default function AccountInfo({ accountName, accountAddress }) {
   return (
     <Link
       id="w-node-22521a87e932-1a87e8c5"
@@ -9,10 +11,17 @@ export default function AccountInfo() {
       className="account-button w-inline-block"
     >
       <div className="account-info-wrapper">
-        <div className="account-name">Elliot T. Wainman</div>
-        <div className="account-name">(TVt3AG...)</div>
+        <div className="account-name">{accountName}</div>
+        <div className="account-name">
+          {walletAddressShorten(accountAddress)}
+        </div>
       </div>
       <img src="/avatar_1avatar.jpg" alt="" className="account-image" />
     </Link>
   );
 }
+
+AccountInfo.propTypes = {
+  accountName: PropTypes.string,
+  accountAddress: PropTypes.string,
+};
