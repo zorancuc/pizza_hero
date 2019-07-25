@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import OutsideClickHandler from 'react-outside-click-handler';
@@ -6,6 +6,22 @@ import OutsideClickHandler from 'react-outside-click-handler';
 import './styles.scss';
 
 export default function SignupModal({ isOpen, closeSignupModal, onSignup }) {
+  const [state, setState] = useState({
+    email: '',
+    nickname: '',
+    password: '',
+  });
+  const signupHandler = e => {
+    e.preventDefault();
+    onSignup(state);
+  };
+  const changeInputHander = e => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <div
       className={classNames('create-account-modal-wrapper', { open: isOpen })}
@@ -34,7 +50,7 @@ export default function SignupModal({ isOpen, closeSignupModal, onSignup }) {
               name="email-form"
               data-name="Email Form"
               className="create-account-form"
-              onSubmit={onSignup}
+              onSubmit={signupHandler}
             >
               <input
                 type="email"
@@ -45,15 +61,31 @@ export default function SignupModal({ isOpen, closeSignupModal, onSignup }) {
                 placeholder="Your email address"
                 id="email"
                 required=""
+                value={state.email}
+                onChange={changeInputHander}
+              />
+              <input
+                type="password"
+                className="create-account-password-field w-input"
+                maxLength="256"
+                name="password"
+                data-name="Password"
+                placeholder="Your password"
+                id="email"
+                required=""
+                value={state.password}
+                onChange={changeInputHander}
               />
               <input
                 type="text"
                 className="create-account-nickname-field w-input"
                 maxLength="256"
-                name="Nickname"
+                name="nickname"
                 data-name="Nickname"
                 placeholder="Nickname (optional)"
                 id="Nickname"
+                value={state.nickname}
+                onChange={changeInputHander}
               />
               <input
                 type="submit"

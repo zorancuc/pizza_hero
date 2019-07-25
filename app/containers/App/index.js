@@ -200,8 +200,8 @@ const mapStateToProps = createStructuredSelector({
 
 export function mapDispatchToProps(dispatch) {
   return {
-    onSignup: e => {
-      e.preventDefault();
+    onSignup: form => {
+      console.log(form);
       dispatch(login());
     },
     onCloseSignupModal: e => {
