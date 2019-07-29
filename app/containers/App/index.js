@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
+import { auth, db } from 'utils/firebase';
 
 import HomePage from 'containers/HomePage';
 import NotFoundPage from 'containers/NotFoundPage';
@@ -127,7 +128,8 @@ function App({
         clearInterval(timer);
         return resolve();
       }, 1000);
-      return resolve();
+      // return resolve();
+      return 0;
     });
 
     console.log('Logged in');
@@ -201,6 +203,31 @@ const mapStateToProps = createStructuredSelector({
 export function mapDispatchToProps(dispatch) {
   return {
     onSignup: form => {
+      auth
+        .doCreateUserWithEmailAndPassword(form.email, form.password)
+        // it the above functions resolves, reset the state to its initial state values, otherwise, set the error object
+        .then(authUser => {
+          // creating a user in the database after the sign up through Firebase auth API
+          db.doCreateUser(authUser.user.uid, form.nickname, form.email)
+            .then(result => {
+              // this.setState({
+              //   ...INITIAL_STATE
+              // });
+              // history.push(routes.HOME); // redirects to Home Page
+              console.log(result);
+            })
+            .catch(error => {
+              // this.setState(byPropKey("error", error));
+              // this.timer(); // show alert message for some seconds
+              console.log(error);
+            });
+        })
+        .catch(err => {
+          // this.setState(byPropKey("error", err));
+          // this.timer(); // show alert message for some seconds
+          console.log(err);
+        });
+
       console.log(form);
       dispatch(login());
     },

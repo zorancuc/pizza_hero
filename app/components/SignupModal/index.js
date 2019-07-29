@@ -71,7 +71,7 @@ export default function SignupModal({ isOpen, closeSignupModal, onSignup }) {
                 name="password"
                 data-name="Password"
                 placeholder="Your password"
-                id="email"
+                id="password"
                 required=""
                 value={state.password}
                 onChange={changeInputHander}
