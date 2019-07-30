@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
+import localforage from 'localforage';
 import { auth, db } from 'utils/firebase';
 
 import HomePage from 'containers/HomePage';
@@ -24,6 +25,7 @@ import Activity from 'containers/Activity';
 import Settings from 'containers/Settings';
 import ViewItem from 'containers/ViewItem';
 import SignupModal from 'components/SignupModal';
+import PrivateRoute from 'components/PrivateRoute';
 import { useInjectSaga } from 'utils/injectSaga';
 import {
   makeSelectIsOpenSignupModal,
@@ -31,12 +33,12 @@ import {
 } from './selectors';
 import {
   closeSignupModal,
-  login,
   updateTronlinkStatus,
   setWalletAddress,
   getTrxBalance,
   setTronWeb,
   getTrxBalanceSuccess,
+  loginSuccess,
 } from './actions';
 import saga from './saga';
 
@@ -48,6 +50,7 @@ function App({
   tronWebState,
   onCloseSignupModal,
   onSignup,
+  onLoginSuccess,
   onUpdateTronlinkStatus,
   onSetWalletAddress,
   onGetTrxBalance,
@@ -155,6 +158,11 @@ function App({
   };
 
   useEffect(() => {
+    localforage.getItem('pizza_hero', (err, user) => {
+      if (user.email && user.username) {
+        onLoginSuccess(user);
+      }
+    });
     console.log('Did mount');
     process();
   }, []);
@@ -172,7 +180,7 @@ function App({
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/my-inventory" component={MyInventory} />
+        <PrivateRoute path="/my-inventory" component={MyInventory} />
         <Route path="/activity" component={Activity} />
         <Route path="/settings" component={Settings} />
         <Route path="/view-item" component={ViewItem} />
@@ -188,6 +196,7 @@ App.propTypes = {
   tronWebState: PropTypes.object,
   onCloseSignupModal: PropTypes.func,
   onSignup: PropTypes.func,
+  onLoginSuccess: PropTypes.func,
   onUpdateTronlinkStatus: PropTypes.func,
   onSetWalletAddress: PropTypes.func,
   onGetTrxBalance: PropTypes.func,
@@ -209,12 +218,19 @@ export function mapDispatchToProps(dispatch) {
         .then(authUser => {
           // creating a user in the database after the sign up through Firebase auth API
           db.doCreateUser(authUser.user.uid, form.nickname, form.email)
-            .then(result => {
+            .then(docRef => {
               // this.setState({
               //   ...INITIAL_STATE
               // });
               // history.push(routes.HOME); // redirects to Home Page
-              console.log(result);
+              console.log(docRef);
+              docRef.get().then(function(docSnapshot) {
+                const result = docSnapshot.data();
+                console.log('user info', result);
+                localforage.setItem('pizza_hero', result).then(function() {
+                  dispatch(loginSuccess(result));
+                });
+              });
             })
             .catch(error => {
               // this.setState(byPropKey("error", error));
@@ -229,7 +245,9 @@ export function mapDispatchToProps(dispatch) {
         });
 
       console.log(form);
-      dispatch(login());
+    },
+    onLoginSuccess: user => {
+      dispatch(loginSuccess(user));
     },
     onCloseSignupModal: e => {
       if (e) e.preventDefault();

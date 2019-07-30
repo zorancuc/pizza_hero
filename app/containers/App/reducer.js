@@ -43,6 +43,7 @@ const appReducer = (state = initialState, action) =>
       case LOGIN_SUCCESS:
         draft.isLogged = true;
         draft.isOpenSignupModal = false;
+        draft.accountName = action.user.username;
         break;
       case OPEN_SIGNUP_MODAL:
         draft.isOpenSignupModal = true;

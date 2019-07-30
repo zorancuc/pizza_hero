@@ -34,8 +34,8 @@ import {
 export function login() {
   return { type: LOGIN };
 }
-export function loginSuccess() {
-  return { type: LOGIN_SUCCESS };
+export function loginSuccess(user) {
+  return { type: LOGIN_SUCCESS, user };
 }
 
 export function openSignupModal() {
