@@ -181,9 +181,9 @@ function App({
       <Switch>
         <Route exact path="/" component={HomePage} />
         <PrivateRoute path="/my-inventory" component={MyInventory} />
-        <Route path="/activity" component={Activity} />
-        <Route path="/settings" component={Settings} />
-        <Route path="/view-item" component={ViewItem} />
+        <PrivateRoute path="/activity" component={Activity} />
+        <PrivateRoute path="/settings" component={Settings} />
+        <PrivateRoute path="/view-item" component={ViewItem} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />
