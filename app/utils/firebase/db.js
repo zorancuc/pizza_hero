@@ -5,10 +5,16 @@ import { db } from './firebase';
 
 // create an user and store it at users/id path (it's an asynchronous func)
 export const doCreateUser = (id, username, email) =>
-  db.ref(`users/${id}`).set({
+  db.collection('user').add({
     username,
     email,
   });
+
+// export const doCreateUser = (id, username, email) =>
+//   db.ref(`users/${id}`).set({
+//     username,
+//     email,
+//   });
 
 // returns all users from firebase realtime db
 export const onceGetUsers = () => db.ref('users').once('value');
