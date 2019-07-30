@@ -14,6 +14,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import FontFaceObserver from 'fontfaceobserver';
+import localforage from 'localforage';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
 import 'styles/main.scss';
@@ -23,6 +24,7 @@ import App from 'containers/App';
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
+import { loginSuccess } from 'containers/App/actions';
 
 // Load the favicon and the .htaccess file
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
@@ -46,6 +48,12 @@ openSansObserver.load().then(() => {
 const initialState = {};
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
+
+localforage.getItem('pizza_hero', (err, user) => {
+  if (user && user.email && user.username) {
+    store.dispatch(loginSuccess(user));
+  }
+});
 
 const render = messages => {
   ReactDOM.render(

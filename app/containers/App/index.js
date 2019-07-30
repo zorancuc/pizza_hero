@@ -50,7 +50,6 @@ function App({
   tronWebState,
   onCloseSignupModal,
   onSignup,
-  onLoginSuccess,
   onUpdateTronlinkStatus,
   onSetWalletAddress,
   onGetTrxBalance,
@@ -158,11 +157,6 @@ function App({
   };
 
   useEffect(() => {
-    localforage.getItem('pizza_hero', (err, user) => {
-      if (user.email && user.username) {
-        onLoginSuccess(user);
-      }
-    });
     console.log('Did mount');
     process();
   }, []);
@@ -196,7 +190,6 @@ App.propTypes = {
   tronWebState: PropTypes.object,
   onCloseSignupModal: PropTypes.func,
   onSignup: PropTypes.func,
-  onLoginSuccess: PropTypes.func,
   onUpdateTronlinkStatus: PropTypes.func,
   onSetWalletAddress: PropTypes.func,
   onGetTrxBalance: PropTypes.func,
@@ -245,9 +238,6 @@ export function mapDispatchToProps(dispatch) {
         });
 
       console.log(form);
-    },
-    onLoginSuccess: user => {
-      dispatch(loginSuccess(user));
     },
     onCloseSignupModal: e => {
       if (e) e.preventDefault();
