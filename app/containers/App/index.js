@@ -25,14 +25,18 @@ import Activity from 'containers/Activity';
 import Settings from 'containers/Settings';
 import ViewItem from 'containers/ViewItem';
 import SignupModal from 'components/SignupModal';
+import LoginModal from 'components/LoginModal';
 import PrivateRoute from 'components/PrivateRoute';
 import { useInjectSaga } from 'utils/injectSaga';
 import {
   makeSelectIsOpenSignupModal,
+  makeSelectIsOpenLoginModal,
   makeSelectTronWebState,
 } from './selectors';
 import {
   closeSignupModal,
+  openLoginModal,
+  closeLoginModal,
   updateTronlinkStatus,
   setWalletAddress,
   getTrxBalance,
@@ -47,9 +51,13 @@ const key = 'global';
 
 function App({
   isOpenSignupModal,
+  isOpenLoginModal,
   tronWebState,
-  onCloseSignupModal,
   onSignup,
+  onLogin,
+  onCloseSignupModal,
+  onOpenLoginModal,
+  onCloseLoginModal,
   onUpdateTronlinkStatus,
   onSetWalletAddress,
   onGetTrxBalance,
@@ -170,6 +178,12 @@ function App({
         isOpen={isOpenSignupModal}
         closeSignupModal={onCloseSignupModal}
         onSignup={onSignup}
+        onLogin={onOpenLoginModal}
+      />
+      <LoginModal
+        isOpen={isOpenLoginModal}
+        closeModal={onCloseLoginModal}
+        onLogin={onLogin}
       />
       <Header />
       <Switch>
@@ -187,9 +201,13 @@ function App({
 
 App.propTypes = {
   isOpenSignupModal: PropTypes.bool,
+  isOpenLoginModal: PropTypes.bool,
   tronWebState: PropTypes.object,
   onCloseSignupModal: PropTypes.func,
   onSignup: PropTypes.func,
+  onLogin: PropTypes.func,
+  onOpenLoginModal: PropTypes.func,
+  onCloseLoginModal: PropTypes.func,
   onUpdateTronlinkStatus: PropTypes.func,
   onSetWalletAddress: PropTypes.func,
   onGetTrxBalance: PropTypes.func,
@@ -199,6 +217,7 @@ App.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   isOpenSignupModal: makeSelectIsOpenSignupModal(),
+  isOpenLoginModal: makeSelectIsOpenLoginModal(),
   tronWebState: makeSelectTronWebState(),
 });
 
@@ -239,6 +258,21 @@ export function mapDispatchToProps(dispatch) {
 
       console.log(form);
     },
+    onLogin: form => {
+      console.log(form);
+      auth
+        .doSignInWithEmailAndPassword(form.email, form.password)
+        .then(result => {
+          console.log(result);
+        })
+        .catch(error => {
+          // this.setState(byPropKey("error", error));
+          // this.timer(); // show alert message for some seconds
+          console.log(error);
+        });
+    },
+    onOpenLoginModal: () => dispatch(openLoginModal()),
+    onCloseLoginModal: () => dispatch(closeLoginModal()),
     onCloseSignupModal: e => {
       if (e) e.preventDefault();
       dispatch(closeSignupModal());

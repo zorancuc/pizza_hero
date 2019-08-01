@@ -19,6 +19,8 @@ import {
   LOGIN,
   OPEN_SIGNUP_MODAL,
   CLOSE_SIGNUP_MODAL,
+  OPEN_LOGIN_MODAL,
+  CLOSE_LOGIN_MODAL,
   LOGIN_SUCCESS,
   CHECK_TRONLINK_STATUS,
   CHECK_TRONLINK_STATUS_SUCCESS,
@@ -43,6 +45,13 @@ export function openSignupModal() {
 }
 export function closeSignupModal() {
   return { type: CLOSE_SIGNUP_MODAL };
+}
+
+export function openLoginModal() {
+  return { type: OPEN_LOGIN_MODAL };
+}
+export function closeLoginModal() {
+  return { type: CLOSE_LOGIN_MODAL };
 }
 
 export function checkTronlinkStatus() {

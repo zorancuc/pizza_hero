@@ -12,6 +12,8 @@ import {
   LOGIN_SUCCESS,
   OPEN_SIGNUP_MODAL,
   CLOSE_SIGNUP_MODAL,
+  OPEN_LOGIN_MODAL,
+  CLOSE_LOGIN_MODAL,
   UPDATE_TRONLINK_STATUS,
   GET_TRX_BALANCE_SUCCESS,
   SET_WALLET_ADDRESS,
@@ -24,6 +26,7 @@ export const initialState = {
   error: false,
   isLogged: false,
   isOpenSignupModal: false,
+  isOpenLoginModal: false,
   evoBalance: 5000,
   trxBalance: 0,
   zaCoinBalance: 0,
@@ -50,6 +53,13 @@ const appReducer = (state = initialState, action) =>
         break;
       case CLOSE_SIGNUP_MODAL:
         draft.isOpenSignupModal = false;
+        break;
+      case OPEN_LOGIN_MODAL:
+        draft.isOpenLoginModal = true;
+        draft.isOpenSignupModal = false;
+        break;
+      case CLOSE_LOGIN_MODAL:
+        draft.isOpenLoginModal = false;
         break;
       case UPDATE_TRONLINK_STATUS:
         draft.tronWebState = action.tronWebState;

@@ -39,6 +39,12 @@ const makeSelectIsOpenSignupModal = () =>
     globalState => globalState.isOpenSignupModal,
   );
 
+const makeSelectIsOpenLoginModal = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.isOpenLoginModal,
+  );
+
 const makeSelectEvoBalance = () =>
   createSelector(
     selectGlobal,
@@ -82,6 +88,7 @@ export {
   makeSelectLocation,
   makeSelectIsLogged,
   makeSelectIsOpenSignupModal,
+  makeSelectIsOpenLoginModal,
   makeSelectEvoBalance,
   // makeSelectIsWalletLogged,
   makeSelectTronWebState,

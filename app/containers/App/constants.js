@@ -16,6 +16,9 @@ export const LOGIN_SUCCESS = 'pizza_hero/App/LOGIN_SUCCESS';
 export const OPEN_SIGNUP_MODAL = 'pizza_hero/App/OPEN_SIGNUP_MODAL';
 export const CLOSE_SIGNUP_MODAL = 'pizza_hero/App/CLOSE_SIGNUP_MODAL';
 
+export const OPEN_LOGIN_MODAL = 'pizza_hero/App/OPEN_LOGIN_MODAL';
+export const CLOSE_LOGIN_MODAL = 'pizza_hero/App/CLOSE_LOGIN_MODAL';
+
 export const CHECK_TRONLINK_STATUS = 'pizza_hero/App/CHECK_TRONLINK_STATUS';
 export const CHECK_TRONLINK_STATUS_SUCCESS =
   'pizza_hero/App/CHECK_TRONLINK_STATUS_SUCCESS';

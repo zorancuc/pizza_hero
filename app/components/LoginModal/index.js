@@ -3,26 +3,16 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import OutsideClickHandler from 'react-outside-click-handler';
 
-import './styles.scss';
+import '../SignupModal/styles.scss';
 
-export default function SignupModal({
-  isOpen,
-  closeSignupModal,
-  onSignup,
-  onLogin,
-}) {
+export default function LoginModal({ isOpen, closeModal, onLogin }) {
   const [state, setState] = useState({
     email: '',
-    nickname: '',
     password: '',
   });
-  const signupHandler = e => {
-    e.preventDefault();
-    onSignup(state);
-  };
   const loginHandler = e => {
     e.preventDefault();
-    onLogin();
+    onLogin(state);
   };
   const changeInputHander = e => {
     setState({
@@ -35,7 +25,7 @@ export default function SignupModal({
     <div
       className={classNames('create-account-modal-wrapper', { open: isOpen })}
     >
-      <OutsideClickHandler onOutsideClick={closeSignupModal}>
+      <OutsideClickHandler onOutsideClick={closeModal}>
         <div
           data-w-id="9fe7871c-d820-415a-1d2f-9bde1800b8ae"
           className={classNames('create-account-modal', { open: isOpen })}
@@ -43,15 +33,14 @@ export default function SignupModal({
           <a
             href="/#"
             className="close-create-account-modal w-inline-block"
-            onClick={closeSignupModal}
+            onClick={closeModal}
           >
             <img src="/close.svg" width="15" alt="" />
           </a>
-          <h3 className="modal-heading">Create Account</h3>
+          <h3 className="modal-heading">Login</h3>
           <p className="modal-blurb">
             Your email address is used to send you crucial and account related
-            updates. Your nickname is public and is how other users will
-            identify you.
+            updates.
           </p>
           <div className="create-account-form-block w-form">
             <form
@@ -59,7 +48,7 @@ export default function SignupModal({
               name="email-form"
               data-name="Email Form"
               className="create-account-form"
-              onSubmit={signupHandler}
+              onSubmit={loginHandler}
             >
               <input
                 type="email"
@@ -86,29 +75,11 @@ export default function SignupModal({
                 onChange={changeInputHander}
               />
               <input
-                type="text"
-                className="create-account-nickname-field w-input"
-                maxLength="256"
-                name="nickname"
-                data-name="Nickname"
-                placeholder="Nickname (optional)"
-                id="Nickname"
-                value={state.nickname}
-                onChange={changeInputHander}
-              />
-              <input
                 type="submit"
-                value="Continue"
+                value="Login"
                 data-wait="Please wait..."
                 className="continue-button w-button"
               />
-              <button
-                type="button"
-                className="continue-button w-button login-button"
-                onClick={loginHandler}
-              >
-                Login
-              </button>
             </form>
             <div className="w-form-done">
               <div>Thank you! Your submission has been received!</div>
@@ -117,16 +88,6 @@ export default function SignupModal({
               <div>Oops! Something went wrong while submitting the form.</div>
             </div>
           </div>
-          <p className="create-account-terms">
-            by signing up you agree to our{' '}
-            <a href="/#">
-              <strong className="black-link">terms of service</strong>
-            </a>{' '}
-            and{' '}
-            <a href="/#">
-              <strong className="black-link">privacy policy</strong>
-            </a>
-          </p>
         </div>
       </OutsideClickHandler>
       <div className="create-account-modal-bg" />
@@ -134,9 +95,8 @@ export default function SignupModal({
   );
 }
 
-SignupModal.propTypes = {
+LoginModal.propTypes = {
   isOpen: PropTypes.bool,
-  closeSignupModal: PropTypes.func,
-  onSignup: PropTypes.func,
+  closeModal: PropTypes.func,
   onLogin: PropTypes.func,
 };
