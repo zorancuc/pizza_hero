@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-export default function Info({ profileName, profileImage }) {
+export default function Info({ profileName, profileImage, logout }) {
   return (
     <div className="activity-info-header">
       <div className="user-title-info">
@@ -19,6 +19,10 @@ export default function Info({ profileName, profileImage }) {
             <Link to="/settings" className="account-link">
               Settings
             </Link>
+            &nbsp;
+            <a href="/#" className="account-link" onClick={logout}>
+              Logout
+            </a>
           </div>
         </div>
       </div>
@@ -29,4 +33,5 @@ export default function Info({ profileName, profileImage }) {
 Info.propTypes = {
   profileName: PropTypes.string,
   profileImage: PropTypes.string,
+  logout: PropTypes.func,
 };

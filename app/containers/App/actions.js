@@ -17,11 +17,13 @@
 
 import {
   LOGIN,
+  LOGIN_SUCCESS,
+  LOGOUT,
+  LOGOUT_SUCCESS,
   OPEN_SIGNUP_MODAL,
   CLOSE_SIGNUP_MODAL,
   OPEN_LOGIN_MODAL,
   CLOSE_LOGIN_MODAL,
-  LOGIN_SUCCESS,
   CHECK_TRONLINK_STATUS,
   CHECK_TRONLINK_STATUS_SUCCESS,
   CHECK_TRONLINK_STATUS_FAIL,
@@ -38,6 +40,13 @@ export function login() {
 }
 export function loginSuccess(user) {
   return { type: LOGIN_SUCCESS, user };
+}
+
+export function logout() {
+  return { type: LOGOUT };
+}
+export function logoutSuccess() {
+  return { type: LOGOUT_SUCCESS };
 }
 
 export function openSignupModal() {

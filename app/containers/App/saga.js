@@ -1,8 +1,15 @@
 import { put, call, takeLatest, select } from 'redux-saga/effects';
+import localforage from 'localforage';
 
-import { LOGIN, CHECK_TRONLINK_STATUS, GET_TRX_BALANCE } from './constants';
+import {
+  LOGIN,
+  LOGOUT,
+  CHECK_TRONLINK_STATUS,
+  GET_TRX_BALANCE,
+} from './constants';
 import {
   loginSuccess,
+  logoutSuccess,
   checkTronlinkStatusSuccess,
   // getTrxBalanceSuccess,
   getTrxBalanceFail,
@@ -12,6 +19,15 @@ import { makeSelectWalletAddress, makeSelectTronWeb } from './selectors';
 export function* login() {
   try {
     yield put(loginSuccess());
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+function* logout() {
+  try {
+    localforage.removeItem('pizza_hero');
+    yield put(logoutSuccess());
   } catch (err) {
     console.log(err);
   }
@@ -94,6 +110,7 @@ export function* getTrxBalance() {
  */
 export default function* appData() {
   yield takeLatest(LOGIN, login);
+  yield takeLatest(LOGOUT, logout);
   yield takeLatest(CHECK_TRONLINK_STATUS, checkTronlinkStatus);
   yield takeLatest(GET_TRX_BALANCE, getTrxBalance);
 }

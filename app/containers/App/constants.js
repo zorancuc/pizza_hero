@@ -13,6 +13,9 @@
 export const LOGIN = 'pizza_hero/App/LOGIN';
 export const LOGIN_SUCCESS = 'pizza_hero/App/LOGIN_SUCCESS';
 
+export const LOGOUT = 'pizza_hero/App/LOGOUT';
+export const LOGOUT_SUCCESS = 'pizza_hero/App/LOGOUT_SUCCESS';
+
 export const OPEN_SIGNUP_MODAL = 'pizza_hero/App/OPEN_SIGNUP_MODAL';
 export const CLOSE_SIGNUP_MODAL = 'pizza_hero/App/CLOSE_SIGNUP_MODAL';
 

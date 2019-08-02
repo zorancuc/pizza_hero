@@ -10,6 +10,7 @@
 import produce from 'immer';
 import {
   LOGIN_SUCCESS,
+  LOGOUT_SUCCESS,
   OPEN_SIGNUP_MODAL,
   CLOSE_SIGNUP_MODAL,
   OPEN_LOGIN_MODAL,
@@ -47,6 +48,10 @@ const appReducer = (state = initialState, action) =>
         draft.isLogged = true;
         draft.isOpenSignupModal = false;
         draft.accountName = action.user.username;
+        break;
+      case LOGOUT_SUCCESS:
+        draft.isLogged = false;
+        draft.accountName = '';
         break;
       case OPEN_SIGNUP_MODAL:
         draft.isOpenSignupModal = true;
