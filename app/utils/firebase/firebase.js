@@ -8,7 +8,7 @@ import 'firebase/firestore';
 const config = {
   apiKey: 'AIzaSyDbZvzWRSBuv3obz6IJ_WqkTP97wH4EZno',
   authDomain: 'geometric-watch-246204.firebaseapp.com',
-  databaseURL: 'https://geometric-watch-246204.firebaseio.com',
+  // databaseURL: 'https://geometric-watch-246204.firebaseio.com',
   projectId: 'geometric-watch-246204',
   //   storageBucket: 'geometric-watch-246204.appspot.com',
   //   messagingSenderId: '502482847019'

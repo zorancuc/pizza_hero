@@ -7,6 +7,7 @@ import {
   makeSelectIsLogged,
   makeSelectEvoBalance,
   makeSelectTrxBalance,
+  makeSelectZACoinBalance,
   makeSelectWalletAddress,
   makeSelectAccountName,
 } from 'containers/App/selectors';
@@ -90,6 +91,7 @@ const mapStateToProps = createStructuredSelector({
   isLogged: makeSelectIsLogged(),
   evoBalance: makeSelectEvoBalance(),
   trxBalance: makeSelectTrxBalance(),
+  zaCoinBalance: makeSelectZACoinBalance(),
   accountAddress: makeSelectWalletAddress(),
   accountName: makeSelectAccountName(),
 });

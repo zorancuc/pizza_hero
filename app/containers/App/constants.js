@@ -28,6 +28,9 @@ export const CHECK_TRONLINK_STATUS_SUCCESS =
 export const CHECK_TRONLINK_STATUS_FAIL =
   'pizza_hero/App/CHECK_TRONLINK_STATUS_FAIL';
 
+export const GET_ZACOIN_BALANCE_SUCCESS =
+  'pizza_hero/App/GET_ZACOIN_BALANCE_SUCCESS';
+
 export const GET_TRX_BALANCE = 'pizza_hero/App/GET_TRX_BALANCE';
 export const GET_TRX_BALANCE_SUCCESS = 'pizza_hero/App/GET_TRX_BALANCE_SUCCESS';
 export const GET_TRX_BALANCE_FAIL = 'pizza_hero/App/GET_TRX_BALANCE_FAIL';

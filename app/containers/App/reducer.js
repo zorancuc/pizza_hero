@@ -19,6 +19,7 @@ import {
   GET_TRX_BALANCE_SUCCESS,
   SET_WALLET_ADDRESS,
   SET_TRONWEB,
+  GET_ZACOIN_BALANCE_SUCCESS,
 } from './constants';
 
 // The initial state of the App
@@ -47,6 +48,7 @@ const appReducer = (state = initialState, action) =>
       case LOGIN_SUCCESS:
         draft.isLogged = true;
         draft.isOpenSignupModal = false;
+        draft.isOpenLoginModal = false;
         draft.accountName = action.user.username;
         break;
       case LOGOUT_SUCCESS:
@@ -75,6 +77,9 @@ const appReducer = (state = initialState, action) =>
       case GET_TRX_BALANCE_SUCCESS:
         draft.trxBalance = action.trxBalance;
         draft.evoBalance = action.evoBalance;
+        break;
+      case GET_ZACOIN_BALANCE_SUCCESS:
+        draft.zaCoinBalance = action.zaCoinBalance;
         break;
       case SET_TRONWEB:
         draft.tronWeb = action.tronWeb;

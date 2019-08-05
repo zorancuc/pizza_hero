@@ -57,6 +57,12 @@ const makeSelectTrxBalance = () =>
     globalState => globalState.trxBalance,
   );
 
+const makeSelectZACoinBalance = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.zaCoinBalance,
+  );
+
 const makeSelectTronWebState = () =>
   createSelector(
     selectGlobal,
@@ -96,4 +102,5 @@ export {
   makeSelectAccountName,
   makeSelectTronWeb,
   makeSelectTrxBalance,
+  makeSelectZACoinBalance,
 };

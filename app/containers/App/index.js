@@ -43,6 +43,7 @@ import {
   setTronWeb,
   getTrxBalanceSuccess,
   loginSuccess,
+  getZACoinBalanceSuccess,
 } from './actions';
 import saga from './saga';
 
@@ -229,24 +230,34 @@ export function mapDispatchToProps(dispatch) {
         // it the above functions resolves, reset the state to its initial state values, otherwise, set the error object
         .then(authUser => {
           // creating a user in the database after the sign up through Firebase auth API
+          console.log(authUser.user.uid);
           db.doCreateUser(authUser.user.uid, form.nickname, form.email)
-            .then(docRef => {
+            .then(() => {
               // this.setState({
               //   ...INITIAL_STATE
               // });
               // history.push(routes.HOME); // redirects to Home Page
-              console.log(docRef);
-              docRef.get().then(function(docSnapshot) {
-                const result = docSnapshot.data();
-                console.log('user info', result);
-                localforage.setItem('pizza_hero', result).then(function() {
-                  dispatch(loginSuccess(result));
-                });
+              const user = {
+                email: form.email,
+                username: form.nickname,
+              };
+
+              localforage.setItem('pizza_hero', user).then(function() {
+                dispatch(loginSuccess(user));
               });
             })
             .catch(error => {
               // this.setState(byPropKey("error", error));
               // this.timer(); // show alert message for some seconds
+              console.log(error);
+            });
+
+          db.doSaveZACoin(authUser.user.uid, 100)
+            .then(() => {
+              console.log();
+              dispatch(getZACoinBalanceSuccess(Number(100)));
+            })
+            .catch(error => {
               console.log(error);
             });
         })
@@ -263,7 +274,22 @@ export function mapDispatchToProps(dispatch) {
       auth
         .doSignInWithEmailAndPassword(form.email, form.password)
         .then(result => {
-          console.log(result);
+          console.log(result.user.uid);
+
+          db.doGetAnUnser(result.user.uid).then(res => {
+            const user = res.data();
+            console.log(user);
+            if (user && user.email && user.username) {
+              localforage.setItem('pizza_hero', res.data()).then(function() {
+                dispatch(loginSuccess(res.data()));
+              });
+            }
+          });
+
+          db.doGetZACoin(result.user.uid).then(res => {
+            console.log(res.data());
+            dispatch(getZACoinBalanceSuccess(Number(res.data().coin)));
+          });
         })
         .catch(error => {
           // this.setState(byPropKey("error", error));
@@ -291,6 +317,9 @@ export function mapDispatchToProps(dispatch) {
     },
     onSetWalletBalance: (evobalance, trxBalance) => {
       dispatch(getTrxBalanceSuccess(evobalance, trxBalance));
+    },
+    onSetZACoinBalance: (evobalance, trxBalance) => {
+      dispatch(getZACoinBalanceSuccess(evobalance, trxBalance));
     },
   };
 }

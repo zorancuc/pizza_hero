@@ -33,6 +33,7 @@ import {
   GET_TRX_BALANCE_FAIL,
   SET_WALLET_ADDRESS,
   SET_TRONWEB,
+  GET_ZACOIN_BALANCE_SUCCESS,
 } from './constants';
 
 export function login() {
@@ -91,4 +92,8 @@ export function getTrxBalanceSuccess(evoBalance, trxBalance) {
 }
 export function getTrxBalanceFail(err) {
   return { type: GET_TRX_BALANCE_FAIL, err };
+}
+
+export function getZACoinBalanceSuccess(zaCoinBalance) {
+  return { type: GET_ZACOIN_BALANCE_SUCCESS, zaCoinBalance };
 }
