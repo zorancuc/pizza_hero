@@ -7,7 +7,10 @@ export default function Balance({ evoBalance, trxBalance, zaCoinBalance }) {
     <div id="w-node-22521a87e91e-1a87e8c5" className="tokens-wrapper">
       <a href="/#" className="token-link w-inline-block">
         <div className="icon-wrapper">
-          <img src="/evo-icon-white.svg" alt="" />
+          <img
+            src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/evo-icon-white.svg"
+            alt=""
+          />
         </div>
         <div className="token-amount">
           {accounting.formatNumber(evoBalance, 0, ',')}
@@ -22,7 +25,10 @@ export default function Balance({ evoBalance, trxBalance, zaCoinBalance }) {
       </a>
       <a href="/#" className="token-link w-inline-block">
         <div className="icon-wrapper tron">
-          <img src="/tron-icon-white.svg" alt="" />
+          <img
+            src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/tron-icon-white.svg"
+            alt=""
+          />
         </div>
         <div className="token-amount">
           {accounting.formatNumber(trxBalance, 0, ',')}
@@ -34,7 +40,10 @@ export default function Balance({ evoBalance, trxBalance, zaCoinBalance }) {
       </a>
       <a href="/#" className="token-link w-inline-block">
         <div className="icon-wrapper za">
-          <img src="/za-text-white.svg" alt="" />
+          <img
+            src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/za-text-white.svg"
+            alt=""
+          />
         </div>
         <div className="token-amount">
           {accounting.formatNumber(zaCoinBalance, 0, ',')}

@@ -49,7 +49,11 @@ export default function Dialog({ show, toggleDialog, closeDialog }) {
             className="close-share-modal w-inline-block"
             onClick={toggleDialog}
           >
-            <img src="/close.svg" width="15" alt="" />
+            <img
+              src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/close.svg"
+              width="15"
+              alt=""
+            />
           </a>
         </div>
       </OutsideClickHandler>

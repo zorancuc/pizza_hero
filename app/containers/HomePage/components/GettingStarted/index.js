@@ -12,16 +12,28 @@ export default function GettingStarted() {
             <h2 className="step-title">Step 1</h2>
             <h5 className="step-subtitle">Choose your wallet</h5>
             <a href="/#" className="wallet-link w-inline-block">
-              <img src="/tronlink.png" alt="" className="wallet-logo" />
+              <img
+                src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/tronlink.png"
+                alt=""
+                className="wallet-logo"
+              />
               <div>TronLink</div>
             </a>
             <div className="desktop-or-mobile-tip">Mobile:</div>
             <a href="/#" className="wallet-link w-inline-block">
-              <img src="/coinbase.png" alt="" className="wallet-logo" />
+              <img
+                src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/coinbase.png"
+                alt=""
+                className="wallet-logo"
+              />
               <div>Coinbase</div>
             </a>
             <a href="/#" className="wallet-link w-inline-block">
-              <img src="/trust.png" alt="" className="wallet-logo" />
+              <img
+                src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/trust.png"
+                alt=""
+                className="wallet-logo"
+              />
               <div>Trust</div>
             </a>
           </div>

@@ -27,7 +27,10 @@ export default function Hero({ openVideo }) {
               <div className="watch-trailer-button-wrapper">
                 <div className="watch-trailer-circle-border">
                   <div className="watch-trailer-circle">
-                    <img src="/play.svg" alt="" />
+                    <img
+                      src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/play.svg"
+                      alt=""
+                    />
                   </div>
                 </div>
                 <a href="/#" className="watch-trailer-text" onClick={openVideo}>

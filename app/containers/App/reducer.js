@@ -29,7 +29,7 @@ export const initialState = {
   isLogged: false,
   isOpenSignupModal: false,
   isOpenLoginModal: false,
-  evoBalance: 5000,
+  evoBalance: 0,
   trxBalance: 0,
   zaCoinBalance: 0,
   accountName: 'Test',

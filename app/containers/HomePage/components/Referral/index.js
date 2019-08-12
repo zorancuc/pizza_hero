@@ -17,8 +17,15 @@ export default function Referral() {
           </div>
           <div className="column w-col w-col-6">
             <div className="main-referral-link-wrapper">
-              <img src="/link.svg" width="15" alt="" className="image" />
-              <div className="referral-link">https://pizzaheroes.com/?r=5NST612897be1</div>
+              <img
+                src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/link.svg"
+                width="15"
+                alt=""
+                className="image"
+              />
+              <div className="referral-link">
+                https://pizzaheroes.com/?r=5NST612897be1
+              </div>
               <a href="/#" className="copy-referral-link-button w-inline-block">
                 <div>copy</div>
               </a>

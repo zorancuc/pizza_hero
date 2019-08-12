@@ -5,7 +5,7 @@ export default function SearchForm({ toggleFilters }) {
   const toggleFilter = e => {
     e.preventDefault();
     toggleFilters();
-  }
+  };
   return (
     <form action="/search" className="search w-form">
       <div className="search-field-wrapper">
@@ -30,7 +30,11 @@ export default function SearchForm({ toggleFilters }) {
         href="/#"
         className="filters-button w-inline-block"
       >
-        <img src="/filters-icon.svg" alt="" className="filters-icon" />
+        <img
+          src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/filters-icon.svg"
+          alt=""
+          className="filters-icon"
+        />
         <div className="text-block-3">filter</div>
       </a>
     </form>

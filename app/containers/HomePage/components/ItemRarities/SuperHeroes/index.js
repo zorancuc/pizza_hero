@@ -16,21 +16,21 @@ export default function SuperHeroes() {
       <div className="super-heroes-main-wrapper">
         <Hero
           name="Bee-yonce"
-          image="/unboxed-item.png"
+          image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
           rarity="Heirloom"
           generation={0}
           chance={0.001}
         />
         <Hero
           name="Justin Beaver"
-          image="/unboxed-item.png"
+          image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
           rarity="Heirloom"
           generation={0}
           chance={0.0006}
         />
         <Hero
           name="Not Yet Discovered!"
-          image="/unboxed-item.png"
+          image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
           notDiscovered
           last
         />

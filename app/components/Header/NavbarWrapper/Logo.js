@@ -11,7 +11,7 @@ export default function Logo({ id }) {
       className="pizza-heroes-logo-link-wrapper w-inline-block w--current"
     >
       <img
-        src="/pizza-heroes-logo.png"
+        src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/pizza-heroes-logo.png"
         width="149"
         alt=""
         className="pizza-heroes-logo"

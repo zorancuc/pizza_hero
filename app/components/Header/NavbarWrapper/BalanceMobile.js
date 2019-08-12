@@ -11,7 +11,10 @@ export default function BalanceMobile({
     <div className="tokens-wrapper mobile">
       <a href="/#" className="token-link mobile w-inline-block">
         <div className="icon-wrapper">
-          <img src="/evo-icon-white.svg" alt="" />
+          <img
+            src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/evo-icon-white.svg"
+            alt=""
+          />
         </div>
         <div className="token-amount">
           {accounting.formatNumber(evoBalance, 0, ',')}
@@ -23,7 +26,10 @@ export default function BalanceMobile({
       </a>
       <a href="/#" className="token-link mobile w-inline-block">
         <div className="icon-wrapper tron">
-          <img src="/tron-icon-white.svg" alt="" />
+          <img
+            src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/tron-icon-white.svg"
+            alt=""
+          />
         </div>
         <div className="token-amount">
           {accounting.formatNumber(trxBalance, 0, ',')}
@@ -35,7 +41,10 @@ export default function BalanceMobile({
       </a>
       <a href="/#" className="token-link mobile last w-inline-block">
         <div className="icon-wrapper za">
-          <img src="/za-text-white.svg" alt="" />
+          <img
+            src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/za-text-white.svg"
+            alt=""
+          />
         </div>
         <div className="token-amount">
           {accounting.formatNumber(zaCoinBalance, 0, ',')}

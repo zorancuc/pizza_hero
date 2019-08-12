@@ -7,20 +7,34 @@ import './styles.scss';
 export default function ButtonsWrapper({ liked, toggleLiked, toggleDialog }) {
   return (
     <div className="interaction-buttons-wrapper">
-      <a href="#" className="item-interact-button w-inline-block">
-        <img src="/gear-icon-2-white.svg" alt="" className="item-icon" />
+      <a href="/#" className="item-interact-button w-inline-block">
+        <img
+          src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/gear-icon-2-white.svg"
+          alt=""
+          className="item-icon"
+        />
       </a>
       <a
-        href="#"
+        href="/#"
         className={classNames('like-button', 'w-inline-block', {
           'like-bg-color': !liked,
           'liked-bg-color': liked,
         })}
         onClick={toggleLiked}
       >
-        {!liked && <img src="/heart-icon.svg" alt="" className="heart-icon" />}
+        {!liked && (
+          <img
+            src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/heart-icon.svg"
+            alt=""
+            className="heart-icon"
+          />
+        )}
         {liked && (
-          <img src="/heart-icon-2.svg" alt="" className="heart-icon-active" />
+          <img
+            src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/heart-icon-2.svg"
+            alt=""
+            className="heart-icon-active"
+          />
         )}
         {!liked && <div className="like-text">Like</div>}
         {liked && <div className="liked-text">Liked</div>}
@@ -28,11 +42,15 @@ export default function ButtonsWrapper({ liked, toggleLiked, toggleDialog }) {
         {liked && <div className="like-count-1">1</div>}
       </a>
       <a
-        href="#"
+        href="/#"
         className="share-button w-inline-block"
         onClick={toggleDialog}
       >
-        <img src="/share-icon.svg" alt="" className="item-icon" />
+        <img
+          src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/share-icon.svg"
+          alt=""
+          className="item-icon"
+        />
       </a>
     </div>
   );

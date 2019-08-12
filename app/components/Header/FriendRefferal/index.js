@@ -33,7 +33,11 @@ function FriendRefferal({ active, show, setHide }) {
             href="/#"
             className="close-refer-a-friend-menu w-inline-block"
           >
-            <img src="/close.svg" width="15" alt="" />
+            <img
+              src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/close.svg"
+              width="15"
+              alt=""
+            />
           </a>
           <div className="refer-a-friend-content-wrapper">
             <div className="share-your-referral-link">
@@ -42,7 +46,12 @@ function FriendRefferal({ active, show, setHide }) {
             </div>
             <div className="your-referral-link">your referral link:</div>
             <div className="referral-link-wrapper">
-              <img src="/link.svg" width="15" alt="" className="image" />
+              <img
+                src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/link.svg"
+                width="15"
+                alt=""
+                className="image"
+              />
               <div className="referral-link">
                 https://blockbears.io/purchase?r=5NST612897be1
               </div>

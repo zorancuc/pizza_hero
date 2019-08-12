@@ -13,18 +13,6 @@ import Inventories from './components/Inventories';
 import { makeSelectCurrentTab } from './selectors';
 import { changeCurrentTab } from './actions';
 
-import '!file-loader?name=[name].[ext]!../../images/filters-icon.svg';
-import '!file-loader?name=[name].[ext]!../../images/dancing-icon_1dancing-icon.png';
-import '!file-loader?name=[name].[ext]!../../images/emote-icon.svg';
-import '!file-loader?name=[name].[ext]!../../images/blue-chest.png';
-import '!file-loader?name=[name].[ext]!../../images/chest-icon.svg';
-import '!file-loader?name=[name].[ext]!../../images/hero-icon.svg';
-import '!file-loader?name=[name].[ext]!../../images/staff_1staff.png';
-import '!file-loader?name=[name].[ext]!../../images/gear-icon-2.svg';
-import '!file-loader?name=[name].[ext]!../../images/bear-mask_1bear-mask.png';
-import '!file-loader?name=[name].[ext]!../../images/legs_1legs.png';
-import '!file-loader?name=[name].[ext]!../../images/chest.png';
-
 const key = 'myInventory';
 
 function MyInventory({ currentTab, onChangeCurrentTab }) {
@@ -42,7 +30,10 @@ function MyInventory({ currentTab, onChangeCurrentTab }) {
       <div className="section my-inventory-section">
         <div className="container">
           <Header />
-          <Inventories currentTab={currentTab} onChangeCurrentTab={onChangeCurrentTab} />
+          <Inventories
+            currentTab={currentTab}
+            onChangeCurrentTab={onChangeCurrentTab}
+          />
           <Footer />
         </div>
       </div>

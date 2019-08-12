@@ -9,7 +9,10 @@ export default function Settings() {
       <div className="container">
         <h2 className="settings-tab">User Settings</h2>
         <div className="large-profile-image">
-          <img src="/avatar_1avatar.jpg" alt="" />
+          <img
+            src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/avatar_1avatar.jpg"
+            alt=""
+          />
         </div>
         <div className="settings-wrapper">
           <Wallet wallet="TVt3AGWGYVojpiBVhqGJPGL93A63PJbYAH" />

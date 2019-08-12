@@ -35,7 +35,11 @@ export default function LoginModal({ isOpen, closeModal, onLogin }) {
             className="close-create-account-modal w-inline-block"
             onClick={closeModal}
           >
-            <img src="/close.svg" width="15" alt="" />
+            <img
+              src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/close.svg"
+              width="15"
+              alt=""
+            />
           </a>
           <h3 className="modal-heading">Login</h3>
           <p className="modal-blurb">

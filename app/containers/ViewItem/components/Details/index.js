@@ -21,7 +21,7 @@ export default function Details() {
             <div className="item-rarity">Raritiy: Epic</div>
           </div>
           <div className="item-interact-buttons-wrapper-b">
-            <a href="#" className="item-interact-button-b w-inline-block">
+            <a href="/#" className="item-interact-button-b w-inline-block">
               <img
                 src="/price-icon.svg"
                 width="20"
@@ -30,23 +30,36 @@ export default function Details() {
               />
               <div>Sell</div>
             </a>
-            <a href="#" className="item-interact-button-b w-inline-block">
-              <img src="/gift-icon.svg" width="20" alt="" className="image-4" />
+            <a href="/#" className="item-interact-button-b w-inline-block">
+              <img
+                src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/gift-icon.svg"
+                width="20"
+                alt=""
+                className="image-4"
+              />
               <div>Gift</div>
             </a>
-            <a href="#" className="item-interact-button-b last w-inline-block">
+            <a href="/#" className="item-interact-button-b last w-inline-block">
               <div>Equip</div>
             </a>
           </div>
         </div>
-        <a href="#" className="owner-info-wrapper w-inline-block">
+        <a href="/#" className="owner-info-wrapper w-inline-block">
           <div className="owner-name-wrapper">
             <div className="owner-name">JR Tellem</div>
             <div className="owner">Owner</div>
           </div>
           <div className="owner-image-wrapper">
-            <img src="/owner-image.jpg" alt="" className="image-3" />
-            <img src="/circle-dots.svg" alt="" className="circle-dots" />
+            <img
+              src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/owner-image.jpg"
+              alt=""
+              className="image-3"
+            />
+            <img
+              src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/circle-dots.svg"
+              alt=""
+              className="circle-dots"
+            />
             <img
               src="/circle-dots-active.svg"
               alt=""
@@ -79,7 +92,7 @@ export default function Details() {
         lacus vel facilisis.
       </p>
       <h3 className="equipped-on-header">Currently Equipped On</h3>
-      <a href="#" className="equipped-character w-inline-block" />
+      <a href="/#" className="equipped-character w-inline-block" />
     </div>
   );
 }
