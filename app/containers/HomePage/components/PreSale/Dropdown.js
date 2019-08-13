@@ -33,7 +33,7 @@ export default function Dropdown({ onChangePayType }) {
           tabIndex="0"
         >
           <img
-            src="/tron-icon-white.svg"
+            src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/tron-icon-white.svg"
             width="15"
             alt=""
             className="trx-icon"

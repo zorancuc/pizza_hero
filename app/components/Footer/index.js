@@ -70,7 +70,7 @@ function Footer() {
             <a href="/#" className="footer-token tron w-inline-block">
               <div className="footer-icon-wrapper tron">
                 <img
-                  src="/tron-icon-white.svg"
+                  src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/tron-icon-white.svg"
                   alt=""
                   className="footer-icon"
                 />

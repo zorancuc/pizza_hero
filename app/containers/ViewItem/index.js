@@ -40,7 +40,7 @@ export default function ViewItem() {
       <div className="section view-character-section">
         <div className="item-header">
           <img
-            src="/crown-item.png"
+            src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/crown-item.png"
             srcSet="/crown-item-p-500.png 500w, /crown-item.png 703w"
             sizes="100vw"
             alt=""

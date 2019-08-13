@@ -37,7 +37,7 @@ export default function NavbarWrapper({
               onClick={setActiveReferral}
             >
               <img
-                src="/add-friends-icon.svg"
+                src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/add-friends-icon.svg"
                 width="47"
                 alt=""
                 className="add-friends-icon"
@@ -98,7 +98,7 @@ export default function NavbarWrapper({
         <SubMenuMobile />
         <a href="/#" className="add-friends-button mobile w-inline-block">
           <img
-            src="/add-friends-icon.svg"
+            src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/add-friends-icon.svg"
             width="47"
             alt=""
             className="add-friends-icon"

@@ -38,7 +38,7 @@ export default function GettingStarted() {
             </a>
           </div>
           <img
-            src="/right-arrow_1right-arrow.png"
+            src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/right-arrow_1right-arrow.png"
             alt=""
             className="right-arrow"
           />
@@ -55,7 +55,7 @@ export default function GettingStarted() {
             </p>
           </div>
           <img
-            src="/right-arrow_1right-arrow.png"
+            src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/right-arrow_1right-arrow.png"
             alt=""
             className="right-arrow"
           />
