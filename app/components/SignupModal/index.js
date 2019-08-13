@@ -46,7 +46,7 @@ export default function SignupModal({
             onClick={closeSignupModal}
           >
             <img
-              src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/close.svg"
+              src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/close.svg"
               width="15"
               alt=""
             />

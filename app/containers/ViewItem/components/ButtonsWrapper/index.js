@@ -9,7 +9,7 @@ export default function ButtonsWrapper({ liked, toggleLiked, toggleDialog }) {
     <div className="interaction-buttons-wrapper">
       <a href="/#" className="item-interact-button w-inline-block">
         <img
-          src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/gear-icon-2-white.svg"
+          src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gear-icon-2-white.svg"
           alt=""
           className="item-icon"
         />
@@ -24,14 +24,14 @@ export default function ButtonsWrapper({ liked, toggleLiked, toggleDialog }) {
       >
         {!liked && (
           <img
-            src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/heart-icon.svg"
+            src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/heart-icon.svg"
             alt=""
             className="heart-icon"
           />
         )}
         {liked && (
           <img
-            src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/heart-icon-2.svg"
+            src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/heart-icon-2.svg"
             alt=""
             className="heart-icon-active"
           />
@@ -47,7 +47,7 @@ export default function ButtonsWrapper({ liked, toggleLiked, toggleDialog }) {
         onClick={toggleDialog}
       >
         <img
-          src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/share-icon.svg"
+          src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/share-icon.svg"
           alt=""
           className="item-icon"
         />

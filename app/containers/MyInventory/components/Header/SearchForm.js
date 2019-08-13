@@ -31,7 +31,7 @@ export default function SearchForm({ toggleFilters }) {
         className="filters-button w-inline-block"
       >
         <img
-          src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/filters-icon.svg"
+          src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/filters-icon.svg"
           alt=""
           className="filters-icon"
         />

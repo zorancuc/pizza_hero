@@ -61,7 +61,7 @@ function Footer() {
             <a href="/#" className="footer-token w-inline-block">
               <div className="footer-icon-wrapper">
                 <img
-                  src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/evo-icon-white.svg"
+                  src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/evo-icon-white.svg"
                   alt=""
                   className="footer-icon"
                 />

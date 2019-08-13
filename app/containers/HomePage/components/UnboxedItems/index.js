@@ -55,7 +55,7 @@ export default function UnboxedItems() {
             ref={/* eslint no-return-assign: "error" */ el => (Carousel = el)}
           >
             <Item
-              image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
+              image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
               unboxedItemId="0x55b4dc..."
               rarity="Rare"
               generation={0}
@@ -63,7 +63,7 @@ export default function UnboxedItems() {
               timestamp="3 minutes"
             />
             <Item
-              image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
+              image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
               unboxedItemId="0x55b4dc..."
               rarity="Rare"
               generation={0}
@@ -71,7 +71,7 @@ export default function UnboxedItems() {
               timestamp="5 minutes"
             />
             <Item
-              image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
+              image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
               unboxedItemId="0x55b4dc..."
               rarity="Rare"
               generation={0}
@@ -79,7 +79,7 @@ export default function UnboxedItems() {
               timestamp="10 minutes"
             />
             <Item
-              image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
+              image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
               unboxedItemId="0x55b4dc..."
               rarity="Rare"
               generation={0}
@@ -87,7 +87,7 @@ export default function UnboxedItems() {
               timestamp="15 minutes"
             />
             <Item
-              image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
+              image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
               unboxedItemId="0x55b4dc..."
               rarity="Rare"
               generation={0}
@@ -95,7 +95,7 @@ export default function UnboxedItems() {
               timestamp="20 minutes"
             />
             <Item
-              image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
+              image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
               unboxedItemId="0x55b4dc..."
               rarity="Rare"
               generation={0}
@@ -103,7 +103,7 @@ export default function UnboxedItems() {
               timestamp="30 minutes"
             />
             <Item
-              image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
+              image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
               unboxedItemId="0x55b4dc..."
               rarity="Rare"
               generation={0}
@@ -111,7 +111,7 @@ export default function UnboxedItems() {
               timestamp="45 minutes"
             />
             <Item
-              image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
+              image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
               unboxedItemId="0x55b4dc..."
               rarity="Rare"
               generation={0}
@@ -119,7 +119,7 @@ export default function UnboxedItems() {
               timestamp="1 hour"
             />
             <Item
-              image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
+              image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
               unboxedItemId="0x55b4dc..."
               rarity="Rare"
               generation={0}
@@ -127,7 +127,7 @@ export default function UnboxedItems() {
               timestamp="2 hours"
             />
             <Item
-              image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
+              image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
               unboxedItemId="0x55b4dc..."
               rarity="Rare"
               generation={0}
@@ -135,7 +135,7 @@ export default function UnboxedItems() {
               timestamp="3 hours"
             />
             <Item
-              image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
+              image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
               unboxedItemId="0x55b4dc..."
               rarity="Rare"
               generation={0}
@@ -143,7 +143,7 @@ export default function UnboxedItems() {
               timestamp="5 hours"
             />
             <Item
-              image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
+              image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
               unboxedItemId="0x55b4dc..."
               rarity="Rare"
               generation={0}
@@ -151,7 +151,7 @@ export default function UnboxedItems() {
               timestamp="1 day"
             />
             <Item
-              image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
+              image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
               unboxedItemId="0x55b4dc..."
               rarity="Rare"
               generation={0}
@@ -159,7 +159,7 @@ export default function UnboxedItems() {
               timestamp="2 days"
             />
             <Item
-              image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
+              image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
               unboxedItemId="0x55b4dc..."
               rarity="Rare"
               generation={0}
@@ -167,7 +167,7 @@ export default function UnboxedItems() {
               timestamp="3 days"
             />
             <Item
-              image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
+              image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/unboxed-item.png"
               unboxedItemId="0x55b4dc..."
               rarity="Rare"
               generation={0}

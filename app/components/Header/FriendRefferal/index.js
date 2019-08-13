@@ -34,7 +34,7 @@ function FriendRefferal({ active, show, setHide }) {
             className="close-refer-a-friend-menu w-inline-block"
           >
             <img
-              src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/close.svg"
+              src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/close.svg"
               width="15"
               alt=""
             />
@@ -47,7 +47,7 @@ function FriendRefferal({ active, show, setHide }) {
             <div className="your-referral-link">your referral link:</div>
             <div className="referral-link-wrapper">
               <img
-                src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/link.svg"
+                src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/link.svg"
                 width="15"
                 alt=""
                 className="image"

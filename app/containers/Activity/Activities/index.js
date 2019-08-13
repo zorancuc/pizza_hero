@@ -6,7 +6,7 @@ export default function Activities() {
   return (
     <div className="activity-items">
       <ActivityItem
-        image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/sale-icon-with-bg.svg"
+        image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/sale-icon-with-bg.svg"
         timeStamp="22 Jan, 2019, 2:50am"
         detail={
           <div>
@@ -20,7 +20,7 @@ export default function Activities() {
         detailTo="view-item"
       />
       <ActivityItem
-        image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/breed-icon-with-bg.png"
+        image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/breed-icon-with-bg.png"
         timeStamp="21 Jan, 2019, 2:46am"
         detail={
           <div>
@@ -42,7 +42,7 @@ export default function Activities() {
         detailTo="view-item"
       />
       <ActivityItem
-        image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/request-icon-with-bg.svg"
+        image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/request-icon-with-bg.svg"
         timeStamp="21 Jan, 2019, 2:46am"
         detail={
           <div>
@@ -56,7 +56,7 @@ export default function Activities() {
         detailTo="view-item"
       />
       <ActivityItem
-        image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/open-chest-icon-with-bg.svg"
+        image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/open-chest-icon-with-bg.svg"
         timeStamp="21 Jan, 2019, 2:46am"
         detail={
           <div>
@@ -70,7 +70,7 @@ export default function Activities() {
         detailTo="view-item"
       />
       <ActivityItem
-        image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/closed-chest-icon-with-bg.svg"
+        image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/closed-chest-icon-with-bg.svg"
         timeStamp="21 Jan, 2019, 2:46am"
         detail={
           <div>
@@ -84,7 +84,7 @@ export default function Activities() {
         detailTo="view-item"
       />
       <ActivityItem
-        image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/opened-egg-icon-with-bg.svg"
+        image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/opened-egg-icon-with-bg.svg"
         timeStamp="21 Jan, 2019, 2:46am"
         detail={
           <div>

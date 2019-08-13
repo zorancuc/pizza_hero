@@ -12,7 +12,7 @@ export default function BalanceMobile({
       <a href="/#" className="token-link mobile w-inline-block">
         <div className="icon-wrapper">
           <img
-            src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/evo-icon-white.svg"
+            src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/evo-icon-white.svg"
             alt=""
           />
         </div>
@@ -27,7 +27,7 @@ export default function BalanceMobile({
       <a href="/#" className="token-link mobile w-inline-block">
         <div className="icon-wrapper tron">
           <img
-            src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/tron-icon-white.svg"
+            src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/tron-icon-white.svg"
             alt=""
           />
         </div>
@@ -42,7 +42,7 @@ export default function BalanceMobile({
       <a href="/#" className="token-link mobile last w-inline-block">
         <div className="icon-wrapper za">
           <img
-            src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/za-text-white.svg"
+            src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/za-text-white.svg"
             alt=""
           />
         </div>

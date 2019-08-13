@@ -18,7 +18,7 @@ export default function Referral() {
           <div className="column w-col w-col-6">
             <div className="main-referral-link-wrapper">
               <img
-                src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/link.svg"
+                src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/link.svg"
                 width="15"
                 alt=""
                 className="image"

@@ -17,7 +17,7 @@ export default function AccountInfo({ accountName, accountAddress }) {
         </div>
       </div>
       <img
-        src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/avatar_1avatar.jpg"
+        src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/avatar_1avatar.jpg"
         alt=""
         className="account-image"
       />

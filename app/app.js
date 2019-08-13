@@ -27,7 +27,7 @@ import LanguageProvider from 'containers/LanguageProvider';
 import { loginSuccess } from 'containers/App/actions';
 
 // Load the favicon and the .htaccess file
-import '!file-loader?name=[name].[ext]!./images/favicon.ico';
+// import 'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/favicon.ico';
 import 'file-loader?name=.htaccess!./.htaccess'; // eslint-disable-line import/extensions
 
 import configureStore from './configureStore';

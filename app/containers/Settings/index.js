@@ -10,7 +10,7 @@ export default function Settings() {
         <h2 className="settings-tab">User Settings</h2>
         <div className="large-profile-image">
           <img
-            src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/avatar_1avatar.jpg"
+            src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/avatar_1avatar.jpg"
             alt=""
           />
         </div>

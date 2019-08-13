@@ -32,7 +32,7 @@ export default function Details() {
             </a>
             <a href="/#" className="item-interact-button-b w-inline-block">
               <img
-                src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/gift-icon.svg"
+                src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gift-icon.svg"
                 width="20"
                 alt=""
                 className="image-4"
@@ -51,12 +51,12 @@ export default function Details() {
           </div>
           <div className="owner-image-wrapper">
             <img
-              src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/owner-image.jpg"
+              src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/owner-image.jpg"
               alt=""
               className="image-3"
             />
             <img
-              src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/circle-dots.svg"
+              src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/circle-dots.svg"
               alt=""
               className="circle-dots"
             />

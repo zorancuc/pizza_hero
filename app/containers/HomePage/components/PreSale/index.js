@@ -22,7 +22,7 @@ export default function PreSale() {
         <div className="tabs-menu w-tab-menu">
           <ChestTab
             tabName="Tab 1"
-            image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/blue-chest.png"
+            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/blue-chest.png"
             title="Rare Chest"
             titleClass="blue-chest"
             trxAmount={100}
@@ -32,7 +32,7 @@ export default function PreSale() {
           <ChestTab
             tabName="Tab 2"
             linkClass="tab-link-2"
-            image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/purple-chest.png"
+            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/purple-chest.png"
             title="Epic Chest"
             titleClass="purple-chest"
             trxAmount={100}
@@ -42,7 +42,7 @@ export default function PreSale() {
           <ChestTab
             tabName="Tab 3"
             linkClass="tab-link-3"
-            image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/gold-chest.png"
+            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gold-chest.png"
             title="Legendary Chest"
             titleClass="legendary-chest"
             trxAmount={100}
@@ -52,7 +52,7 @@ export default function PreSale() {
           <ChestTab
             tabName="Tab 4"
             linkClass="tab-link-4"
-            image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/white-chest.png"
+            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/white-chest.png"
             title="EVO Legendary Chest"
             titleClass="evo-legendary-chest"
             trxAmount={100}
@@ -66,7 +66,7 @@ export default function PreSale() {
             tabName="Tab 1"
             title="Rare Chest"
             titleClass="blue-glow"
-            image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/blue-chest.png"
+            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/blue-chest.png"
             chestNumber={2342}
             chestTotalNumber={10000}
             active={state.currentTabIndex === 0}
@@ -75,7 +75,7 @@ export default function PreSale() {
             tabName="Tab 2"
             title="Epic Chest"
             titleClass="purple-glow"
-            image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/purple-chest.png"
+            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/purple-chest.png"
             chestNumber={2342}
             chestTotalNumber={10000}
             bgClass="purple-bg"
@@ -85,7 +85,7 @@ export default function PreSale() {
             tabName="Tab 3"
             title="Legendary Chest"
             titleClass="yellow-glow"
-            image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/gold-chest.png"
+            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gold-chest.png"
             chestNumber={2342}
             chestTotalNumber={10000}
             bgClass="yellow-bg"
@@ -94,7 +94,7 @@ export default function PreSale() {
           <ChestTabContent
             tabName="Tab 4"
             title="EVO Legedary Chest"
-            image="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/white-chest.png"
+            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/white-chest.png"
             chestNumber={2342}
             chestTotalNumber={10000}
             bgClass="white-bg"

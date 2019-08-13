@@ -13,7 +13,7 @@ function Activity({ onLogout }) {
       <div className="container">
         <Info
           profileName="Elliot T. Wainman"
-          profileimage="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/avatar_1avatar.jpg"
+          profileimage="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/avatar_1avatar.jpg"
           logout={onLogout}
         />
         <h2 className="activity-tab">Activity</h2>

@@ -28,7 +28,7 @@ export default function Hero({ openVideo }) {
                 <div className="watch-trailer-circle-border">
                   <div className="watch-trailer-circle">
                     <img
-                      src="https://storage.cloud.google.com/geometric-watch-246204.appspot.com/images/play.svg"
+                      src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/play.svg"
                       alt=""
                     />
                   </div>
