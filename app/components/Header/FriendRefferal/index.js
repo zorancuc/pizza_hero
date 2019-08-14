@@ -66,7 +66,7 @@ function FriendRefferal({ active, show, setHide }) {
             </div>
             <div className="total-earned-wrapper">
               <img
-                src="/tron-gold.svg"
+                src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/tron-gold.svg"
                 height="25"
                 alt=""
                 className="image-2"

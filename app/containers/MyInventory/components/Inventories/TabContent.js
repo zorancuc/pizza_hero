@@ -23,36 +23,39 @@ export default function TabContent({ currentTab }) {
         <div className="item-grid-wrapper">
           <Inventory
             image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/dancing-icon_1dancing-icon.png"
-            icon="/emote-icon.svg"
+            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/emote-icon.svg"
           />
           <Inventory
             image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/blue-chest.png"
-            icon="/chest-icon.svg"
+            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/chest-icon.svg"
             type="blue"
           />
-          <Inventory icon="/hero-icon.svg" type="hero" />
+          <Inventory
+            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/hero-icon.svg"
+            type="hero"
+          />
           <Inventory
             image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/blue-chest.png"
-            icon="/chest-icon.svg"
+            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/chest-icon.svg"
             type="white"
           />
           <Inventory
             image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/staff_1staff.png"
-            icon="/gear-icon-2.svg"
+            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gear-icon-2.svg"
           />
           <Inventory
             image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/bear-mask_1bear-mask.png"
-            icon="/gear-icon-2.svg"
+            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gear-icon-2.svg"
             type="purple"
           />
           <Inventory
             image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/legs_1legs.png"
-            icon="/gear-icon-2.svg"
+            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gear-icon-2.svg"
             type="gold"
           />
           <Inventory
             image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/chest.png"
-            icon="/gear-icon-2.svg"
+            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gear-icon-2.svg"
             type="gold"
           />
           <Inventory empty />
@@ -74,7 +77,10 @@ export default function TabContent({ currentTab }) {
         })}
       >
         <div className="item-grid-wrapper">
-          <Inventory icon="/hero-icon.svg" type="hero" />
+          <Inventory
+            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/hero-icon.svg"
+            type="hero"
+          />
           <Inventory empty />
           <Inventory empty />
           <Inventory empty />
@@ -103,21 +109,21 @@ export default function TabContent({ currentTab }) {
         <div className="item-grid-wrapper">
           <Inventory
             image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/staff_1staff.png"
-            icon="/gear-icon-2.svg"
+            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gear-icon-2.svg"
           />
           <Inventory
             image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/bear-mask_1bear-mask.png"
-            icon="/gear-icon-2.svg"
+            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gear-icon-2.svg"
             type="purple"
           />
           <Inventory
             image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/legs_1legs.png"
-            icon="/gear-icon-2.svg"
+            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gear-icon-2.svg"
             type="gold"
           />
           <Inventory
             image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/chest.png"
-            icon="/gear-icon-2.svg"
+            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gear-icon-2.svg"
             type="gold"
           />
           <Inventory empty />
@@ -145,7 +151,7 @@ export default function TabContent({ currentTab }) {
         <div className="item-grid-wrapper">
           <Inventory
             image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/dancing-icon_1dancing-icon.png"
-            icon="/emote-icon.svg"
+            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/emote-icon.svg"
           />
           <Inventory empty />
           <Inventory empty />
@@ -175,12 +181,12 @@ export default function TabContent({ currentTab }) {
         <div className="item-grid-wrapper">
           <Inventory
             image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/blue-chest.png"
-            icon="/chest-icon.svg"
+            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/chest-icon.svg"
             type="white"
           />
           <Inventory
             image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/blue-chest.png"
-            icon="/chest-icon.svg"
+            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/chest-icon.svg"
             type="blue"
           />
           <Inventory empty />
