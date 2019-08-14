@@ -25,7 +25,7 @@ export default function Dialog({ show, toggleDialog, closeDialog }) {
             <div className="social-share-links-wrapper">
               <a href="/#" className="social-share-button w-inline-block">
                 <img
-                  src="/facebook-f-icon.svg"
+                  src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/facebook-f-icon.svg"
                   alt=""
                   className="social-icon"
                 />
@@ -36,7 +36,7 @@ export default function Dialog({ show, toggleDialog, closeDialog }) {
                 className="social-share-button twitter w-inline-block"
               >
                 <img
-                  src="/twitter-icon-white.svg"
+                  src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/twitter-icon-white.svg"
                   alt=""
                   className="social-icon"
                 />

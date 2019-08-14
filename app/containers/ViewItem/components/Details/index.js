@@ -23,7 +23,7 @@ export default function Details() {
           <div className="item-interact-buttons-wrapper-b">
             <a href="/#" className="item-interact-button-b w-inline-block">
               <img
-                src="/price-icon.svg"
+                src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/price-icon.svg"
                 width="20"
                 alt=""
                 className="image-4"
@@ -61,7 +61,7 @@ export default function Details() {
               className="circle-dots"
             />
             <img
-              src="/circle-dots-active.svg"
+              src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/circle-dots-active.svg"
               alt=""
               className="circle-dots-active"
             />

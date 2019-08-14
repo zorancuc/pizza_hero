@@ -41,7 +41,7 @@ export default function ViewItem() {
         <div className="item-header">
           <img
             src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/crown-item.png"
-            srcSet="/crown-item-p-500.png 500w, /crown-item.png 703w"
+            srcSet="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/crown-item-p-500.png 500w, https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/crown-item.png 703w"
             sizes="100vw"
             alt=""
             className="main-item-image"
