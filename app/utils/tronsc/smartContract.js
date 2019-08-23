@@ -17,28 +17,33 @@ const smartContract = {
     this.pzHeroContract = await tronWeb.contract().at(pzHeroContractAddress);
     this.pzEggContract = await tronWeb.contract().at(pzEggContractAddress);
   },
+  // getChestContract() {
+  //   return this.pzChestContract;
+  // },
 
-  getChestContract() {
-    return this.pzChestContract;
-  },
+  // getItemContract() {
+  //   return this.pzItemContract;
+  // },
 
-  getItemContract() {
-    return this.pzItemContract;
-  },
+  // getHeroContract() {
+  //   return this.pzHeroContract;
+  // },
 
-  getHeroContract() {
-    return this.pzHeroContract;
-  },
-
-  getEggContract() {
-    return this.pzEggContract;
-  },
+  // getEggContract() {
+  //   return this.pzEggContract;
+  // },
 };
 
-const pzChestContract = smartContract.getChestContract();
-const pzItemContract = smartContract.getItemContract();
-const pzHeroContract = smartContract.getHeroContract();
-const pzEggContract = smartContract.getEggContract();
+// const pzChestContract = smartContract.getChestContract();
+// const pzItemContract = smartContract.getItemContract();
+// const pzHeroContract = smartContract.getHeroContract();
+// const pzEggContract = smartContract.getEggContract();
+
+const pzChestContract = () => smartContract.pzChestContract;
+
+const pzItemContract = () => this.pzItemContract;
+const pzHeroContract = () => this.pzHeroContract;
+const pzEggContract = () => this.pzEggContract;
 
 export {
   smartContract,

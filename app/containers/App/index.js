@@ -15,6 +15,7 @@ import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import localforage from 'localforage';
 import { auth, db } from 'utils/firebase';
+import { smartContract, chest } from 'utils/tronsc';
 
 import HomePage from 'containers/HomePage';
 import NotFoundPage from 'containers/NotFoundPage';
@@ -163,6 +164,9 @@ function App({
         onUpdateTronlinkStatus(tronWebState);
       });
     }
+
+    await smartContract.smartContract.setTronWeb(window.tronWeb);
+    await chest.buyChest(10, 'TNRbh7ZWXNpymf8pcWexeKUh7EFefT6sZA', true, 50);
   };
 
   useEffect(() => {
