@@ -41,9 +41,9 @@ const smartContract = {
 
 const pzChestContract = () => smartContract.pzChestContract;
 
-const pzItemContract = () => this.pzItemContract;
-const pzHeroContract = () => this.pzHeroContract;
-const pzEggContract = () => this.pzEggContract;
+const pzItemContract = () => smartContract.pzItemContract;
+const pzHeroContract = () => smartContract.pzHeroContract;
+const pzEggContract = () => smartContract.pzEggContract;
 
 export {
   smartContract,
