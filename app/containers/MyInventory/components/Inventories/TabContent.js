@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -12,6 +12,48 @@ import {
 } from '../../constants';
 
 export default function TabContent({ currentTab }) {
+  const [state, setState] = useState({
+    inventories: [],
+  });
+
+  const inventoryCount = 18;
+
+  useEffect(() => {
+    // api Call then
+    if (currentTab === TAB_MENU_ITEM_CHEST) {
+      const result = [
+        {
+          image:
+            'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/blue-chest.png',
+          icon:
+            'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/chest-icon.svg',
+          type: 'white',
+        },
+        {
+          image:
+            'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/blue-chest.png',
+          icon:
+            'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/chest-icon.svg',
+          type: 'blue',
+        },
+      ];
+
+      if (result.length > inventoryCount) {
+        result.slice(0, inventoryCount);
+      } else {
+        for (let i = result.length; i < inventoryCount; i += 1) {
+          result[i] = {
+            empty: true,
+          };
+        }
+      }
+
+      setState({
+        inventories: result,
+      });
+    }
+  }, [currentTab]);
+
   return (
     <div className="item-tabs-content w-tab-content">
       <div
@@ -179,32 +221,18 @@ export default function TabContent({ currentTab }) {
         })}
       >
         <div className="item-grid-wrapper">
-          <Inventory
-            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/blue-chest.png"
-            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/chest-icon.svg"
-            type="white"
-          />
-          <Inventory
-            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/blue-chest.png"
-            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/chest-icon.svg"
-            type="blue"
-          />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
+          {state.inventories.map(item =>
+            item.empty ? (
+              <Inventory empty />
+            ) : (
+              <Inventory
+                image={item.image}
+                icon={item.icon}
+                type={item.type}
+                key={item.id}
+              />
+            ),
+          )}
         </div>
       </div>
     </div>

@@ -8,11 +8,18 @@ import ChestTabContent from './ChestTabContent';
 export default function PreSale() {
   const [state, setState] = useState({
     currentTabIndex: 0,
+    chestNumber: 2342,
+    chestTotalNumber: 10000,
   });
   const onSelectTab = index => e => {
     e.preventDefault();
+
+    // api.call.then()
+
     setState({
       currentTabIndex: index,
+      chestNumber: 2342,
+      chestTotalNumber: 11000,
     });
   };
   return (
@@ -67,8 +74,8 @@ export default function PreSale() {
             title="Rare Chest"
             titleClass="blue-glow"
             image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/blue-chest.png"
-            chestNumber={2342}
-            chestTotalNumber={10000}
+            chestNumber={state.chestNumber}
+            chestTotalNumber={state.chestTotalNumber}
             active={state.currentTabIndex === 0}
           />
           <ChestTabContent
@@ -76,8 +83,8 @@ export default function PreSale() {
             title="Epic Chest"
             titleClass="purple-glow"
             image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/purple-chest.png"
-            chestNumber={2342}
-            chestTotalNumber={10000}
+            chestNumber={state.chestNumber}
+            chestTotalNumber={state.chestTotalNumber}
             bgClass="purple-bg"
             active={state.currentTabIndex === 1}
           />
@@ -86,8 +93,8 @@ export default function PreSale() {
             title="Legendary Chest"
             titleClass="yellow-glow"
             image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gold-chest.png"
-            chestNumber={2342}
-            chestTotalNumber={10000}
+            chestNumber={state.chestNumber}
+            chestTotalNumber={state.chestTotalNumber}
             bgClass="yellow-bg"
             active={state.currentTabIndex === 2}
           />
@@ -95,8 +102,8 @@ export default function PreSale() {
             tabName="Tab 4"
             title="EVO Legedary Chest"
             image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/white-chest.png"
-            chestNumber={2342}
-            chestTotalNumber={10000}
+            chestNumber={state.chestNumber}
+            chestTotalNumber={state.chestTotalNumber}
             bgClass="white-bg"
             active={state.currentTabIndex === 3}
           />

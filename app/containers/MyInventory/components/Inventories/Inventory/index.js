@@ -7,21 +7,23 @@ import './styles.scss';
 export default function Inventory({ image, icon, type, empty }) {
   return (
     <div>
-      {!empty &&
-        <a href="#" className={classNames('item', 'w-inline-block', type)}>
-        <div className="item-image-wrapper">
-          {image && <img src={image} alt="" className="item-image" />}
-          <div className="category-icon-wrapper">
-            <img src={icon} alt="" className="category-icon" />
+      {!empty && (
+        <a href="/#" className={classNames('item', 'w-inline-block', type)}>
+          <div className="item-image-wrapper">
+            {image && <img src={image} alt="" className="item-image" />}
+            <div className="category-icon-wrapper">
+              <img src={icon} alt="" className="category-icon" />
+            </div>
           </div>
-        </div>
-        <div className="item-tooltip">
-          <div className="item-type"><span className="legendary">Legendary</span> | Item</div>
-          <div className="item-name">Skullhunter Mask</div>
-          <div className="tooltip-arrow"></div>
-        </div>
-      </a>
-      }
+          <div className="item-tooltip">
+            <div className="item-type">
+              <span className="legendary">Legendary</span> | Item
+            </div>
+            <div className="item-name">Skullhunter Mask</div>
+            <div className="tooltip-arrow" />
+          </div>
+        </a>
+      )}
       {empty && <div className="item empty" />}
     </div>
   );
