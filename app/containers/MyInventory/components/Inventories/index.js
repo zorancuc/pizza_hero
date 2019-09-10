@@ -7,7 +7,10 @@ import TabContent from './TabContent';
 export default function Inventories({ currentTab, onChangeCurrentTab }) {
   return (
     <div className="item-tabs w-tabs">
-      <TabMenu currentTab={currentTab} onChangeCurrentTab={onChangeCurrentTab} />
+      <TabMenu
+        currentTab={currentTab}
+        onChangeCurrentTab={onChangeCurrentTab}
+      />
       <TabContent currentTab={currentTab} />
     </div>
   );

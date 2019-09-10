@@ -20,8 +20,8 @@ export default function ChestTabContent({
   const purchase = async e => {
     if (e) e.preventDefault();
     await chest.buyChest(10, 'TNRbh7ZWXNpymf8pcWexeKUh7EFefT6sZA', true, 50);
-    console.log("Purchase test");
-  }
+    console.log('Purchase test');
+  };
   return (
     <div
       data-w-tab={tabName}
@@ -86,7 +86,11 @@ export default function ChestTabContent({
               </div>
               <AmountTab />
               <div>
-                <a href="/#" className="purchase-button w-inline-block" onClick={purchase}>
+                <a
+                  href="/#"
+                  className="purchase-button w-inline-block"
+                  onClick={purchase}
+                >
                   <div className="purchase-text">Purchase 1</div>
                 </a>
                 <a href="/#" className="help-purchasing-link">
