@@ -165,8 +165,8 @@ function App({
       });
     }
 
-    await smartContract.smartContract.setTronWeb(window.tronWeb);
-    await chest.buyChest(10, 'TNRbh7ZWXNpymf8pcWexeKUh7EFefT6sZA', true, 50);
+    await smartContract.setTronWeb(window.tronWeb);
+    // await chest.buyChest(10, 'TNRbh7ZWXNpymf8pcWexeKUh7EFefT6sZA', true, 50);
   };
 
   useEffect(() => {

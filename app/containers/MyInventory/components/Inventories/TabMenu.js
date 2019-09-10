@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import classNames from 'classnames';
+import { chest } from 'utils/tronsc';
+import { createStructuredSelector } from 'reselect';
+import { makeSelectWalletAddress } from 'containers/App/selectors';
 import {
   TAB_MENU_ITEM_ALL,
   TAB_MENU_ITEM_HEROES,
@@ -9,8 +14,8 @@ import {
   TAB_MENU_ITEM_CHEST,
 } from '../../constants';
 
-export default function TabMenu({ currentTab, onChangeCurrentTab }) {
-  const clickTab = tab => e => {
+function TabMenu({ currentTab, onChangeCurrentTab, accountAddress }) {
+  const clickTab = tab => async e => {
     e.preventDefault();
     onChangeCurrentTab(tab);
   };
@@ -20,7 +25,9 @@ export default function TabMenu({ currentTab, onChangeCurrentTab }) {
       <a
         data-w-tab="Tab 1"
         onClick={clickTab('all')}
-        className={classNames('item-tab-link', 'w-inline-block', 'w-tab-link', { 'w--current': currentTab === TAB_MENU_ITEM_ALL })}
+        className={classNames('item-tab-link', 'w-inline-block', 'w-tab-link', {
+          'w--current': currentTab === TAB_MENU_ITEM_ALL,
+        })}
       >
         <div>All Items (8)</div>
       </a>
@@ -58,5 +65,20 @@ export default function TabMenu({ currentTab, onChangeCurrentTab }) {
 
 TabMenu.propTypes = {
   currentTab: PropTypes.string,
+  accountAddress: PropTypes.string,
   onChangeCurrentTab: PropTypes.func,
 };
+
+const mapStateToProps = createStructuredSelector({
+  accountAddress: makeSelectWalletAddress(),
+});
+
+const withConnect = connect(
+  mapStateToProps,
+  // mapDispatchToProps,
+);
+
+export default compose(
+  withConnect,
+  memo,
+)(TabMenu);

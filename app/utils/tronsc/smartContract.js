@@ -9,29 +9,6 @@ const smartContract = {
   pzItemContract: false,
   pzHeroContract: false,
   pzEggContract: false,
-
-  async setTronWeb(tronWeb) {
-    this.tronWeb = tronWeb;
-    this.pzChestContract = await tronWeb.contract().at(pzChestContractAddress);
-    this.pzItemContract = await tronWeb.contract().at(pzItemContractAddress);
-    this.pzHeroContract = await tronWeb.contract().at(pzHeroContractAddress);
-    this.pzEggContract = await tronWeb.contract().at(pzEggContractAddress);
-  },
-  // getChestContract() {
-  //   return this.pzChestContract;
-  // },
-
-  // getItemContract() {
-  //   return this.pzItemContract;
-  // },
-
-  // getHeroContract() {
-  //   return this.pzHeroContract;
-  // },
-
-  // getEggContract() {
-  //   return this.pzEggContract;
-  // },
 };
 
 // const pzChestContract = smartContract.getChestContract();
@@ -45,8 +22,24 @@ const pzItemContract = () => smartContract.pzItemContract;
 const pzHeroContract = () => smartContract.pzHeroContract;
 const pzEggContract = () => smartContract.pzEggContract;
 
+const setTronWeb = async tronWeb => {
+  smartContract.tronWeb = tronWeb;
+  smartContract.pzChestContract = await tronWeb
+    .contract()
+    .at(pzChestContractAddress);
+  smartContract.pzItemContract = await tronWeb
+    .contract()
+    .at(pzItemContractAddress);
+  smartContract.pzHeroContract = await tronWeb
+    .contract()
+    .at(pzHeroContractAddress);
+  smartContract.pzEggContract = await tronWeb
+    .contract()
+    .at(pzEggContractAddress);
+};
+
 export {
-  smartContract,
+  setTronWeb,
   pzChestContract,
   pzItemContract,
   pzHeroContract,

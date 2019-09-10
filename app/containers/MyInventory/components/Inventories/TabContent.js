@@ -1,6 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { createStructuredSelector } from 'reselect';
+import { makeSelectWalletAddress } from 'containers/App/selectors';
+import { chest } from 'utils/tronsc';
 
 import Inventory from './Inventory';
 import {
@@ -11,7 +16,7 @@ import {
   TAB_MENU_ITEM_CHEST,
 } from '../../constants';
 
-export default function TabContent({ currentTab }) {
+function TabContent({ currentTab, accountAddress }) {
   const [state, setState] = useState({
     inventories: [],
   });
@@ -19,40 +24,38 @@ export default function TabContent({ currentTab }) {
   const inventoryCount = 18;
 
   useEffect(() => {
-    // api Call then
-    if (currentTab === TAB_MENU_ITEM_CHEST) {
-      const result = [
-        {
-          image:
-            'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/blue-chest.png',
-          icon:
-            'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/chest-icon.svg',
-          type: 'white',
-        },
-        {
-          image:
-            'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/blue-chest.png',
-          icon:
-            'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/chest-icon.svg',
-          type: 'blue',
-        },
-      ];
-
-      if (result.length > inventoryCount) {
-        result.slice(0, inventoryCount);
-      } else {
-        for (let i = result.length; i < inventoryCount; i += 1) {
-          result[i] = {
-            empty: true,
-          };
+    async function updateNFTs() {
+      // api Call then
+      if (currentTab === TAB_MENU_ITEM_CHEST) {
+        const chests = await chest.getBoughtChests(accountAddress);
+        const result = [];
+        for (let i = 0; i < chests.length; i += 1) {
+          result.push({
+            image:
+              'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/blue-chest.png',
+            icon:
+              'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/chest-icon.svg',
+            type: 'white',
+          });
         }
-      }
 
-      setState({
-        inventories: result,
-      });
+        if (result.length > inventoryCount) {
+          result.slice(0, inventoryCount);
+        } else {
+          for (let i = result.length; i < inventoryCount; i += 1) {
+            result[i] = {
+              empty: true,
+            };
+          }
+        }
+
+        setState({
+          inventories: result,
+        });
+      }
     }
-  }, [currentTab]);
+    updateNFTs();
+  }, [currentTab, accountAddress]);
 
   return (
     <div className="item-tabs-content w-tab-content">
@@ -221,15 +224,17 @@ export default function TabContent({ currentTab }) {
         })}
       >
         <div className="item-grid-wrapper">
-          {state.inventories.map(item =>
+          {state.inventories.map((item, index) =>
             item.empty ? (
-              <Inventory empty />
+              // eslint-disable-next-line react/no-array-index-key
+              <Inventory empty key={index} />
             ) : (
               <Inventory
                 image={item.image}
                 icon={item.icon}
                 type={item.type}
-                key={item.id}
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
               />
             ),
           )}
@@ -241,4 +246,19 @@ export default function TabContent({ currentTab }) {
 
 TabContent.propTypes = {
   currentTab: PropTypes.string,
+  accountAddress: PropTypes.string,
 };
+
+const mapStateToProps = createStructuredSelector({
+  accountAddress: makeSelectWalletAddress(),
+});
+
+const withConnect = connect(
+  mapStateToProps,
+  // mapDispatchToProps,
+);
+
+export default compose(
+  withConnect,
+  memo,
+)(TabContent);
