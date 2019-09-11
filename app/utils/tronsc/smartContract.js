@@ -17,7 +17,6 @@ const smartContract = {
 // const pzEggContract = smartContract.getEggContract();
 
 const pzChestContract = () => smartContract.pzChestContract;
-
 const pzItemContract = () => smartContract.pzItemContract;
 const pzHeroContract = () => smartContract.pzHeroContract;
 const pzEggContract = () => smartContract.pzEggContract;

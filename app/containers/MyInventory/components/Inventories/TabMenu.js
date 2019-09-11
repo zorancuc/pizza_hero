@@ -19,7 +19,7 @@ function TabMenu({ currentTab, onChangeCurrentTab, accountAddress }) {
     e.preventDefault();
     console.log(accountAddress);
     if (tab === TAB_MENU_ITEM_CHEST) {
-      await chest.getBoughtChests(accountAddress);
+      await chest.chestsOfOwner(accountAddress);
     }
     onChangeCurrentTab(tab);
   };

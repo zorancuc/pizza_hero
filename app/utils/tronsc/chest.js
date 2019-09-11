@@ -23,16 +23,22 @@ export const buyChest = async (chestId, refAddr, bTRX, value) => {
     }
   }
 
-  pzChestContract()
+  await pzChestContract()
     .buyChest(i, refAddr, true)
     .send({ shouldPollResponse: true, callValue: value * 1000000 });
 };
 
-export const getBoughtChests = async accountAddress => {
+export const chestsOfOwner = async accountAddress => {
   let result = await pzChestContract()
     .chestsOfOwner(accountAddress)
     .call();
   result = result.ownerChests;
   console.log(result);
   return result;
+};
+
+export const openChest = async chestId => {
+  await pzChestContract()
+    .openChest(chestId)
+    .send({ shouldPollResponse: true, callValue: 0 });
 };
