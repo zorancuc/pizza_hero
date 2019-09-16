@@ -7,11 +7,7 @@ export default function ButtonsWrapper({ liked, toggleLiked, toggleDialog }) {
   return (
     <div className="interaction-buttons-wrapper">
       <a href="/#" className="item-interact-button w-inline-block">
-        <img
-          src="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gear-icon-2-white.svg"
-          alt=""
-          className="item-icon"
-        />
+        <img src="/emote-icon-white.svg" alt="" className="item-icon" />
       </a>
       <LikeToggleButton liked={liked} toggleLiked={toggleLiked} />
       <a

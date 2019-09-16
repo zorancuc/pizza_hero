@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
+import ShareDialog from 'components/ShareDialog';
+
 import ButtonsWrapper from './components/ButtonsWrapper';
 import Details from './components/Details';
-
-import Dialog from './components/Dialog';
 
 export default function ViewItem() {
   const [state, setState] = useState({
@@ -32,10 +32,11 @@ export default function ViewItem() {
   };
   return (
     <div>
-      <Dialog
+      <ShareDialog
         show={state.showDialog}
         toggleDialog={toggleDialog}
         closeDialog={closeDialog}
+        isShareItem
       />
       <div className="section view-character-section">
         <div className="item-header">

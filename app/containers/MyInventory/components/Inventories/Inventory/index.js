@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { chest } from 'utils/tronsc';
+import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
@@ -15,10 +16,10 @@ export default function Inventory({ image, icon, type, empty, id }) {
   return (
     <div>
       {!empty && (
-        <a
-          href="/#"
-          onClick={clickInventory}
+        <Link
+          to="/view-character"
           className={classNames('item', 'w-inline-block', type)}
+          onClick={clickInventory}
         >
           <div className="item-image-wrapper">
             {image && <img src={image} alt="" className="item-image" />}
@@ -33,7 +34,7 @@ export default function Inventory({ image, icon, type, empty, id }) {
             <div className="item-name">Skullhunter Mask</div>
             <div className="tooltip-arrow" />
           </div>
-        </a>
+        </Link>
       )}
       {empty && <div className="item empty" />}
     </div>

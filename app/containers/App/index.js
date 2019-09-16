@@ -15,7 +15,7 @@ import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import localforage from 'localforage';
 import { auth, db } from 'utils/firebase';
-import { smartContract, chest } from 'utils/tronsc';
+import { smartContract } from 'utils/tronsc';
 
 import HomePage from 'containers/HomePage';
 import NotFoundPage from 'containers/NotFoundPage';
@@ -25,6 +25,7 @@ import MyInventory from 'containers/MyInventory';
 import Activity from 'containers/Activity';
 import Settings from 'containers/Settings';
 import ViewItem from 'containers/ViewItem';
+import ViewCharacter from 'containers/ViewCharacter';
 import SignupModal from 'components/SignupModal';
 import LoginModal from 'components/LoginModal';
 import PrivateRoute from 'components/PrivateRoute';
@@ -197,6 +198,7 @@ function App({
         <PrivateRoute path="/activity" component={Activity} />
         <PrivateRoute path="/settings" component={Settings} />
         <PrivateRoute path="/view-item" component={ViewItem} />
+        <PrivateRoute path="/view-character" component={ViewCharacter} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />
