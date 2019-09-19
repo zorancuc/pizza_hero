@@ -6,6 +6,7 @@ export const initialState = {
   currentTab: 'all',
   metaData: {},
   characterType: 0,
+  id: 0,
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -18,6 +19,7 @@ const myInventoryReducer = (state = initialState, action) =>
       case VIEW_CHARACTER:
         draft.metaData = action.metaData;
         draft.characterType = action.characterType;
+        draft.id = action.id;
         break;
     }
   });

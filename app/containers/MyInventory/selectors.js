@@ -20,9 +20,17 @@ const makeSelectCharacterType = () =>
     selectMyInventory,
     myInventoryState => myInventoryState.characterType,
   );
+
+const makeSelectId = () =>
+  createSelector(
+    selectMyInventory,
+    myInventoryState => myInventoryState.id,
+  );
+
 export {
   selectMyInventory,
   makeSelectCurrentTab,
   makeSelectMetaData,
   makeSelectCharacterType,
+  makeSelectId,
 };

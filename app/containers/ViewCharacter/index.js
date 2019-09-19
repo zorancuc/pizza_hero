@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import {
   makeSelectMetaData,
   makeSelectCharacterType,
+  makeSelectId,
 } from 'containers/MyInventory/selectors';
 import {
   TAB_MENU_ITEM_ALL,
@@ -59,7 +60,7 @@ import '!file-loader?name=[name].[ext]!../../images/margarita_1margarita.png';
 import '!file-loader?name=[name].[ext]!../../images/Saucy_1Saucy.png';
 import '!file-loader?name=[name].[ext]!../../images/cow_1cow.png';
 
-function ViewCharacter({ metaData, characterType }) {
+function ViewCharacter({ metaData, characterType, id }) {
   const [state, setState] = useState({
     liked: false,
     showDialog: false,
@@ -86,11 +87,11 @@ function ViewCharacter({ metaData, characterType }) {
   };
   let strMetaData;
   if (characterType === TAB_MENU_ITEM_ALL) {
-    strMetaData = `ItemType: ${metaData.itemType._hex} ItemRarity: ${
-      metaData.itemRarity._hex
-    } ItemName: ${metaData.itemName}`;
+    strMetaData = `ItemID: ${id} ItemType: ${
+      metaData.itemType._hex
+    } ItemRarity: ${metaData.itemRarity._hex} ItemName: ${metaData.itemName}`;
   } else if (characterType === TAB_MENU_ITEM_HEROES) {
-    strMetaData = `MatronId: ${metaData.matronId._hex} SireId: ${
+    strMetaData = `EggID: ${id} MatronId: ${metaData.matronId._hex} SireId: ${
       metaData.sireId._hex
     }`;
   }
@@ -322,11 +323,13 @@ function ViewCharacter({ metaData, characterType }) {
 ViewCharacter.propTypes = {
   metaData: PropTypes.object,
   characterType: PropTypes.number,
+  id: PropTypes.number,
 };
 
 const mapStateToProps = createStructuredSelector({
   metaData: makeSelectMetaData(),
   characterType: makeSelectCharacterType(),
+  id: makeSelectId(),
 });
 
 const withConnect = connect(

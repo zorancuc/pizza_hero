@@ -7,10 +7,11 @@ export function changeCurrentTab(tab) {
   };
 }
 
-export function viewCharacter(metaData, characterType) {
+export function viewCharacter(metaData, characterType, id) {
   return {
     type: VIEW_CHARACTER,
     metaData,
     characterType,
+    id,
   };
 }

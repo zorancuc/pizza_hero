@@ -35,10 +35,10 @@ function Inventory({
       await chest.openChest(id);
     } else if (currentTab === TAB_MENU_ITEM_ALL) {
       const itemData = await item.getItem(id);
-      onViewCharacter(itemData, TAB_MENU_ITEM_ALL);
+      onViewCharacter(itemData, TAB_MENU_ITEM_ALL, id);
     } else if (currentTab === TAB_MENU_ITEM_HEROES) {
       const eggData = await egg.getEgg(id);
-      onViewCharacter(eggData, TAB_MENU_ITEM_HEROES);
+      onViewCharacter(eggData, TAB_MENU_ITEM_HEROES, id);
     }
   };
 
@@ -72,8 +72,8 @@ function Inventory({
 
 export function mapDispatchToProps(dispatch) {
   return {
-    onViewCharacter: (metaData, characterType) => {
-      dispatch(viewCharacter(metaData, characterType));
+    onViewCharacter: (metaData, characterType, id) => {
+      dispatch(viewCharacter(metaData, characterType, id));
     },
   };
 }
