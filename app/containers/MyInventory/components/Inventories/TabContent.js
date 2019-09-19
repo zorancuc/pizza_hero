@@ -265,6 +265,7 @@ function TabContent({ currentTab, accountAddress }) {
                 icon={inventory.icon}
                 type={inventory.type}
                 id={inventory.id}
+                currentTab={currentTab}
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
               />

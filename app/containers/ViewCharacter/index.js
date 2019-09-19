@@ -1,8 +1,22 @@
-import React, { useState } from 'react';
-
+/* eslint-disable no-underscore-dangle */
+import React, { memo, useState } from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { createStructuredSelector } from 'reselect';
+import PropTypes from 'prop-types';
+import {
+  makeSelectMetaData,
+  makeSelectCharacterType,
+} from 'containers/MyInventory/selectors';
+import {
+  TAB_MENU_ITEM_ALL,
+  TAB_MENU_ITEM_HEROES,
+  // TAB_MENU_ITEM_GEAR,
+  // TAB_MENU_ITEM_EMOTES,
+  // TAB_MENU_ITEM_CHEST,
+} from 'containers/MyInventory/constants';
 import ShareDialog from 'components/ShareDialog';
 import FlatButton from 'components/buttons/FlatButton';
-
 import ButtonsWrapper from './components/ButtonsWrapper';
 import PropgressBar from './components/ProgressBar';
 import LevelItem from './components/LevelItem';
@@ -45,7 +59,7 @@ import '!file-loader?name=[name].[ext]!../../images/margarita_1margarita.png';
 import '!file-loader?name=[name].[ext]!../../images/Saucy_1Saucy.png';
 import '!file-loader?name=[name].[ext]!../../images/cow_1cow.png';
 
-export default function ViewCharacter() {
+function ViewCharacter({ metaData, characterType }) {
   const [state, setState] = useState({
     liked: false,
     showDialog: false,
@@ -70,6 +84,21 @@ export default function ViewCharacter() {
       showDialog: false,
     });
   };
+  let strMetaData;
+  if (characterType === TAB_MENU_ITEM_ALL) {
+    strMetaData = `ItemType: ${metaData.itemType._hex} ItemRarity: ${
+      metaData.itemRarity._hex
+    } ItemName: ${metaData.itemName}`;
+  } else if (characterType === TAB_MENU_ITEM_HEROES) {
+    strMetaData = `MatronId: ${metaData.matronId._hex} SireId: ${
+      metaData.sireId._hex
+    }`;
+  }
+  // const { _hex: itemType } = metaData.itemType;
+  // const { _hex: itemRarity } = metaData.itemRarity;
+  // // const { _hex: matronid } = metaData.matronId;
+  // // const { _hex: sireId } = metaData.sireId;
+  // const { itemName } = metaData;
 
   return (
     <div>
@@ -199,11 +228,13 @@ export default function ViewCharacter() {
             </a>
           </div>
           <p className="bio-paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
             varius enim in eros elementum tristique. Duis cursus, mi quis
             viverra ornare, eros dolor interdum nulla, ut commodo diam libero
             vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem
-            imperdiet. Nunc ut sem vitae risus tristique posuere.
+            imperdiet. Nunc ut sem vitae risus tristique posuere. */}
+            {/* CharacterType: {characterType === TAB_MENU_ITEM_ALL ? 'Item' : ''}{' '} */}
+            {strMetaData}
           </p>
           <div className="birthday-wrapper">
             <img
@@ -288,4 +319,22 @@ export default function ViewCharacter() {
   );
 }
 
-ViewCharacter.propTypes = {};
+ViewCharacter.propTypes = {
+  metaData: PropTypes.object,
+  characterType: PropTypes.number,
+};
+
+const mapStateToProps = createStructuredSelector({
+  metaData: makeSelectMetaData(),
+  characterType: makeSelectCharacterType(),
+});
+
+const withConnect = connect(
+  mapStateToProps,
+  null,
+);
+
+export default compose(
+  withConnect,
+  memo,
+)(ViewCharacter);

@@ -8,3 +8,11 @@ export const eggsOfOwner = async accountAddress => {
   console.log(result);
   return result;
 };
+
+export const getEgg = async id => {
+  const result = await pzEggContract()
+    .getEgg(id)
+    .call();
+  console.log(result);
+  return result;
+};

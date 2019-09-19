@@ -5,3 +5,4 @@ export const TAB_MENU_ITEM_EMOTES = 'emotes';
 export const TAB_MENU_ITEM_CHEST = 'chest';
 
 export const CHANGE_CURRENT_TAB = 'pizza_hero/MyInventory/CHANGE_CURRENT_TAB';
+export const VIEW_CHARACTER = 'pizza_hero/MyInventory/VIEW_CHARACTER';

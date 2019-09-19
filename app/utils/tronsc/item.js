@@ -8,3 +8,11 @@ export const itemsOfOwner = async accountAddress => {
   console.log(result);
   return result;
 };
+
+export const getItem = async id => {
+  const result = await pzItemContract()
+    .getItem(id)
+    .call();
+  console.log(result);
+  return result;
+};

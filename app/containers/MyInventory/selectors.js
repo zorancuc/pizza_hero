@@ -9,4 +9,20 @@ const makeSelectCurrentTab = () =>
     myInventoryState => myInventoryState.currentTab,
   );
 
-export { selectMyInventory, makeSelectCurrentTab };
+const makeSelectMetaData = () =>
+  createSelector(
+    selectMyInventory,
+    myInventoryState => myInventoryState.metaData,
+  );
+
+const makeSelectCharacterType = () =>
+  createSelector(
+    selectMyInventory,
+    myInventoryState => myInventoryState.characterType,
+  );
+export {
+  selectMyInventory,
+  makeSelectCurrentTab,
+  makeSelectMetaData,
+  makeSelectCharacterType,
+};
