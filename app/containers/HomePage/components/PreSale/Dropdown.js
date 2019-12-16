@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import OutsideClickHandler from 'react-outside-click-handler';
 
-export default function Dropdown({ onChangePayType }) {
+export default function Dropdown({ onChangePayType, selectedItem }) {
   const [state, setState] = useState({
     dropdown: false,
-    selectedItem: 'TRX',
   });
   const toggleDropDown = () => {
     setState({ ...state, dropdown: !state.dropdown });
@@ -16,7 +15,7 @@ export default function Dropdown({ onChangePayType }) {
   };
   const selectItem = item => e => {
     e.preventDefault();
-    setState({ ...state, dropdown: false, selectedItem: item });
+    setState({ ...state, dropdown: false });
     onChangePayType(item);
   };
 
@@ -38,7 +37,7 @@ export default function Dropdown({ onChangePayType }) {
             alt=""
             className="trx-icon"
           />
-          <div className="currency-type">{state.selectedItem}</div>
+          <div className="currency-type">{selectedItem}</div>
           <div className="dropdown-arrow w-icon-dropdown-toggle" />
         </div>
         <nav
@@ -49,7 +48,7 @@ export default function Dropdown({ onChangePayType }) {
           <a
             href="/#"
             className={classNames('dropdown-link', 'w-dropdown-link', {
-              'w--current': state.selectedItem === 'TRX',
+              'w--current': selectedItem === 'TRX',
             })}
             onClick={selectItem('TRX')}
           >
@@ -58,7 +57,7 @@ export default function Dropdown({ onChangePayType }) {
           <a
             href="/#"
             className={classNames('dropdown-link', 'w-dropdown-link', {
-              'w--current': state.selectedItem === 'EVO',
+              'w--current': selectedItem === 'EVO',
             })}
             onClick={selectItem('EVO')}
           >
@@ -72,4 +71,5 @@ export default function Dropdown({ onChangePayType }) {
 
 Dropdown.propTypes = {
   onChangePayType: PropTypes.func,
+  selectedItem: PropTypes.string,
 };

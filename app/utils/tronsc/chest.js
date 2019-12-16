@@ -23,9 +23,19 @@ export const buyChest = async (chestId, refAddr, bTRX, value) => {
     }
   }
 
-  await pzChestContract()
-    .buyChest(i, refAddr, true)
-    .send({ shouldPollResponse: true, callValue: value * 1000000 });
+  if (bTRX) {
+    await pzChestContract()
+      .buyChest(i, refAddr, true)
+      .send({ shouldPollResponse: true, callValue: value * 1000000 });
+  } else {
+    await pzChestContract()
+      .buyChest(i, refAddr, false)
+      .send({
+        shouldPollResponse: true,
+        tokenValue: value * 1000000,
+        tokenId: '1000027',
+      });
+  }
 };
 
 export const chestsOfOwner = async accountAddress => {

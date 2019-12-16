@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import accounting from 'accounting';
 import classNames from 'classnames';
@@ -17,11 +17,24 @@ export default function ChestTabContent({
   bgClass,
   active,
 }) {
+  const [state, setState] = useState({
+    selectedItem: 'TRX',
+  });
+
   const purchase = async e => {
     if (e) e.preventDefault();
-    await chest.buyChest(10, 'TNRbh7ZWXNpymf8pcWexeKUh7EFefT6sZA', true, 50);
-    console.log('Purchase test');
+
+    console.log('Purchase test', state.selectedItem);
+    if (state.selectedItem === 'TRX') {
+      await chest.buyChest(0, 'TKfB91Xodm5rijBqUsXND5fz5M1Cu8tt9V', true, 50);
+    } else if (state.selectedItem === 'EVO') {
+      await chest.buyChest(0, 'TKfB91Xodm5rijBqUsXND5fz5M1Cu8tt9V', false, 50);
+    }
   };
+  const onChangePayType = item => {
+    setState({ ...state, selectedItem: item });
+  };
+
   return (
     <div
       data-w-tab={tabName}
@@ -82,7 +95,10 @@ export default function ChestTabContent({
               </a>
               <div className="pay-using">
                 <div className="pay-using-text">Pay using:</div>
-                <Dropdown />
+                <Dropdown
+                  onChangePayType={onChangePayType}
+                  selectedItem={state.selectedItem}
+                />
               </div>
               <AmountTab />
               <div>

@@ -1,7 +1,7 @@
-const pzItemContractAddress = 'TCUuXcCoUtWAVdv4EwxADVbZe3scEo6vbP';
-const pzEggContractAddress = 'THzngcVDeggjMjmV81isnZMUK8m8AxiQoN';
-const pzHeroContractAddress = 'THvRpURyddQabLtErtfu2xp7hxLWuJutUc';
-const pzChestContractAddress = 'TNyjLK7HjUj8N3hDNba3sYSkubRnkUznbp';
+const pzItemContractAddress = 'TMpVsyNSYkdP6yjMZnQvMKVDjV7q72fQCj';
+const pzEggContractAddress = 'TUj4QGbrejykh8EZq9DKGSpW49Wi4VNmKJ';
+const pzHeroContractAddress = 'TGhLGJ1ehHefaCEyrKEhuyTWPMNbKjwUw3';
+const pzChestContractAddress = 'TH4mpdSc9LD7sUomX2uuMtjrR9CcNi73VT';
 
 const smartContract = {
   tronWeb: false,
