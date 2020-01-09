@@ -36,7 +36,7 @@ var __wpo = {
     ],
     "additional": [
       "/npm.intl.4f570d628d17626bef82.chunk.js",
-      "/main.d521f5fbc194c7c40eba.chunk.js",
+      "/main.a5d0046889b1ae7609ea.chunk.js",
       "/npm.babel.ce9acbdf343198cd24ba.chunk.js",
       "/npm.core-js.30d7e2862c65bc19c8a8.chunk.js",
       "/npm.es-abstract.641a6d1b7cc6138d122e.chunk.js",
@@ -45,7 +45,7 @@ var __wpo = {
       "/npm.react-alice-carousel.9ffb86bbee7155ff5d11.chunk.js",
       "/npm.react-app-polyfill.2f4229475bedddac6a47.chunk.js",
       "/npm.react-redux.224316212a186d64fed9.chunk.js",
-      "/npm.redux-saga.be9344b74374f7e4b85e.chunk.js",
+      "/npm.redux-saga.889427da8fa32e71eb92.chunk.js",
       "/12.e85530c1149c86b5e89e.chunk.js"
     ],
     "optional": []
@@ -83,7 +83,7 @@ var __wpo = {
     "0570f3c1c47a9fae31c6affdc17569871cbbe7e2": "/margarita_1margarita.png",
     "d375cb92be8cc77de3f353a48fffca034e51ea0b": "/circle-dots-active.svg",
     "dd0a1da9fa779d9ab7980ea9cf6b1801303aa7fd": "/npm.intl.4f570d628d17626bef82.chunk.js",
-    "9d29fe2a1ae7384e5c938c7773bc6eb81f484473": "/main.d521f5fbc194c7c40eba.chunk.js",
+    "c474d9bf7e10ca66013fdf0e98240ad3f8c26913": "/main.a5d0046889b1ae7609ea.chunk.js",
     "d4c3330b6d40a56775d2963513e07143b0a0b661": "/npm.babel.ce9acbdf343198cd24ba.chunk.js",
     "de7cb180c1d0af36cca6ecc7609b05e0b413ee5b": "/npm.core-js.30d7e2862c65bc19c8a8.chunk.js",
     "96b29dfbe29bf3c05b860d2e38a939e77bf9830c": "/npm.es-abstract.641a6d1b7cc6138d122e.chunk.js",
@@ -92,14 +92,14 @@ var __wpo = {
     "60a8f6bd1562055338d6752854b6de1a23d55770": "/npm.react-alice-carousel.9ffb86bbee7155ff5d11.chunk.js",
     "384db8872e57d4e02a0fc63bb58773287cfd3a8a": "/npm.react-app-polyfill.2f4229475bedddac6a47.chunk.js",
     "aa4325bf0bc4ea4bc8c11424c50ef0bab3758156": "/npm.react-redux.224316212a186d64fed9.chunk.js",
-    "5c0e9d2671f4457e1cba9714331db1528e154fd5": "/npm.redux-saga.be9344b74374f7e4b85e.chunk.js",
+    "5c0e9d2671f4457e1cba9714331db1528e154fd5": "/npm.redux-saga.889427da8fa32e71eb92.chunk.js",
     "c0e44cde0672fe2f14725928409c41ddcf8b5bac": "/runtime.fd9503845a78ab8446f1.js",
     "1bf213282292ce0a6ef62f4c9d17b385efcd4e56": "/12.e85530c1149c86b5e89e.chunk.js",
-    "0a3123eb77a8d656b70152a42e67084302f287a3": "/"
+    "1d9dad361cbd22bd7080a26ebf2f19b9f1f5daf5": "/"
   },
   "strategy": "changed",
   "responseStrategy": "cache-first",
-  "version": "12/16/2019, 3:04:16 AM",
+  "version": "1/9/2020, 1:21:51 PM",
   "name": "webpack-offline",
   "pluginVersion": "5.0.6",
   "relativePaths": false
