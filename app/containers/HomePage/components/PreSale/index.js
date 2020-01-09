@@ -77,6 +77,7 @@ export default function PreSale() {
             chestNumber={state.chestNumber}
             chestTotalNumber={state.chestTotalNumber}
             active={state.currentTabIndex === 0}
+            currentTabIndex={state.currentTabIndex}
           />
           <ChestTabContent
             tabName="Tab 2"
@@ -87,6 +88,7 @@ export default function PreSale() {
             chestTotalNumber={state.chestTotalNumber}
             bgClass="purple-bg"
             active={state.currentTabIndex === 1}
+            currentTabIndex={state.currentTabIndex}
           />
           <ChestTabContent
             tabName="Tab 3"
@@ -97,6 +99,7 @@ export default function PreSale() {
             chestTotalNumber={state.chestTotalNumber}
             bgClass="yellow-bg"
             active={state.currentTabIndex === 2}
+            currentTabIndex={state.currentTabIndex}
           />
           <ChestTabContent
             tabName="Tab 4"
@@ -106,6 +109,7 @@ export default function PreSale() {
             chestTotalNumber={state.chestTotalNumber}
             bgClass="white-bg"
             active={state.currentTabIndex === 3}
+            currentTabIndex={state.currentTabIndex}
           />
         </div>
       </div>

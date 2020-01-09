@@ -40,12 +40,6 @@ function TabContent({
     function updateChests() {
       const result = [];
       const chestsInfo = inventories.chestInfo;
-      if (chestsInfo.length >= 4) {
-        chestsInfo[0].name = 'Rare';
-        chestsInfo[1].name = 'Epic';
-        chestsInfo[2].name = 'Legendary';
-        chestsInfo[3].name = 'EVO Legendary';
-      }
 
       console.log(searchStr);
 
@@ -124,30 +118,24 @@ function TabContent({
       const result = [];
       const gears = inventories.gear;
       const gearsInfo = inventories.gearInfo;
-      if (gearsInfo.length > 0) {
-        gearsInfo[0].itemType = 1;
-        gearsInfo[1].itemType = 2;
-        gearsInfo[2].itemType = 3;
-        gearsInfo[3].itemType = 4;
-      }
 
       for (let i = 0; i < gears.length; i += 1) {
         let metaStr = '';
-        metaStr = metaStr.concat(ITEM_TYPE_STR[gearsInfo[i].itemType]);
+        metaStr = metaStr.concat(ITEM_TYPE_STR[gearsInfo[i].itemRarity]);
         metaStr = metaStr.concat(' Item');
         metaStr = metaStr.concat(gearsInfo[i].name);
         metaStr = metaStr.toLowerCase();
         if (metaStr.includes(searchStr.toLowerCase())) {
           result.push({
             image: `https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/${
-              ITEM_PNG_STR[gearsInfo[i].itemType]
+              ITEM_PNG_STR[gearsInfo[i].itemRarity]
             }.png`,
             icon:
               'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/hero-icon.svg',
             type: 'item',
             // eslint-disable-next-line no-underscore-dangle
             id: parseInt(gears[i]._hex, 16),
-            inventorySubType: ITEM_TYPE_STR[gearsInfo[i].itemType],
+            inventorySubType: ITEM_TYPE_STR[gearsInfo[i].itemRarity],
             inventoryType: INVENTORY_TYPE_ITEM,
             inventoryName: gearsInfo[i].itemName,
           });
@@ -162,18 +150,19 @@ function TabContent({
       const emotionsInfo = inventories.emotionInfo;
       for (let i = 0; i < emotions.length; i += 1) {
         let metaStr = '';
-        metaStr = metaStr.concat(ITEM_TYPE_STR[emotionsInfo[i].itemType]);
+        metaStr = metaStr.concat(ITEM_TYPE_STR[emotionsInfo[i].itemRarity]);
         metaStr = metaStr.concat(' Item');
         metaStr = metaStr.concat(emotionsInfo[i].name);
         metaStr = metaStr.toLowerCase();
         if (metaStr.includes(searchStr.toLowerCase())) {
           result.push({
-            icon:
-              'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/hero-icon.svg',
+            image: `https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/${
+              ITEM_PNG_STR[emotionsInfo[i].itemRarity]
+            }.png`,
             type: 'item',
             // eslint-disable-next-line no-underscore-dangle
             id: parseInt(emotions[i]._hex, 16),
-            inventorySubType: ITEM_TYPE_STR[emotionsInfo[i].itemType],
+            inventorySubType: ITEM_TYPE_STR[emotionsInfo[i].itemRarity],
             inventoryType: INVENTORY_TYPE_ITEM,
             inventoryName: emotionsInfo[i].itemName,
           });

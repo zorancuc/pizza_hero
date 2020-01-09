@@ -1,39 +1,31 @@
 import { pzChestContract } from './smartContract';
 
-export const buyChest = async (chestId, refAddr, bTRX, value) => {
-  let i;
-
-  let length = await pzChestContract()
-    .getChestGroupSupply()
+export const buyChest = async (chestGroupId, refAddr, bTRX) => {
+  const chestGroupInfo = await pzChestContract()
+    .getChestGroupById(chestGroupId)
     .call();
-  // eslint-disable-next-line no-underscore-dangle
-  length = parseInt(length._hex, 16);
-  // console.log(length);
 
-  for (i = 0; i < length; i += 1) {
-    // eslint-disable-next-line no-await-in-loop
-    const chestGroupInfo = await pzChestContract()
-      .getChestGroupById(i)
-      .call();
-    // console.log(parseInt(chestGroupInfo.price, 10));
-    if (parseInt(chestGroupInfo.price, 10) === 50 * 1000000) {
-      // console.log(parseInt(chestGroupInfo.price, 10));
-      // console.log(i);
-      break;
-    }
-  }
+  const price = parseInt(chestGroupInfo.price, 10);
+  const tokenPrice = parseInt(chestGroupInfo.tokenPrice, 10);
+  const { tokenId } = chestGroupInfo;
 
+  // console.log('BUY CHESTESTESTSET');
+  // console.log(chestGroupId);
+  // console.log(price);
+  // console.log(tokenPrice);
+  // console.log(tokenId);
+  // console.log(bTRX);
   if (bTRX) {
     await pzChestContract()
-      .buyChest(i, refAddr, true)
-      .send({ shouldPollResponse: true, callValue: value * 1000000 });
+      .buyChest(chestGroupId, refAddr, true)
+      .send({ shouldPollResponse: true, callValue: price });
   } else {
     await pzChestContract()
-      .buyChest(i, refAddr, false)
+      .buyChest(chestGroupId, refAddr, false)
       .send({
         shouldPollResponse: true,
-        tokenValue: value * 1000000,
-        tokenId: '1000027',
+        tokenValue: tokenPrice,
+        tokenId,
       });
   }
 };

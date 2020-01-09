@@ -16,6 +16,7 @@ export default function ChestTabContent({
   chestTotalNumber,
   bgClass,
   active,
+  currentTabIndex,
 }) {
   const [state, setState] = useState({
     selectedItem: 'TRX',
@@ -25,10 +26,23 @@ export default function ChestTabContent({
     if (e) e.preventDefault();
 
     console.log('Purchase test', state.selectedItem);
+
+    // let { chestGroupId } = this.state;
+    console.log(currentTabIndex);
+    const chestGroupId = currentTabIndex;
+
     if (state.selectedItem === 'TRX') {
-      await chest.buyChest(0, 'TKfB91Xodm5rijBqUsXND5fz5M1Cu8tt9V', true, 50);
+      await chest.buyChest(
+        chestGroupId,
+        'TKfB91Xodm5rijBqUsXND5fz5M1Cu8tt9V',
+        true,
+      );
     } else if (state.selectedItem === 'EVO') {
-      await chest.buyChest(0, 'TKfB91Xodm5rijBqUsXND5fz5M1Cu8tt9V', false, 50);
+      await chest.buyChest(
+        chestGroupId,
+        'TKfB91Xodm5rijBqUsXND5fz5M1Cu8tt9V',
+        false,
+      );
     }
   };
   const onChangePayType = item => {
@@ -138,4 +152,5 @@ ChestTabContent.propTypes = {
   chestTotalNumber: PropTypes.number,
   bgClass: PropTypes.string,
   active: PropTypes.bool,
+  currentTabIndex: PropTypes.number,
 };
