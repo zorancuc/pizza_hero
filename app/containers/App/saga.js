@@ -1,4 +1,4 @@
-import { put, call, takeLatest, select } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import localforage from 'localforage';
 
 import {
@@ -12,9 +12,9 @@ import {
   logoutSuccess,
   checkTronlinkStatusSuccess,
   // getTrxBalanceSuccess,
-  getTrxBalanceFail,
+  // getTrxBalanceFail,
 } from './actions';
-import { makeSelectWalletAddress, makeSelectTronWeb } from './selectors';
+// import { makeSelectWalletAddress, makeSelectTronWeb } from './selectors';
 
 export function* login() {
   try {
@@ -90,18 +90,18 @@ export function* checkTronlinkStatus() {
 
 export function* getTrxBalance() {
   try {
-    const address = yield select(makeSelectWalletAddress());
-    const tronWeb = yield select(makeSelectTronWeb());
-    console.log('Address Saga');
-    console.log(address);
-    console.log(tronWeb.trx);
-    const accountInfo = yield call(tronWeb.trx.getAccount, address);
-    console.log(accountInfo);
+    // const address = yield select(makeSelectWalletAddress());
+    // const tronWeb = yield select(makeSelectTronWeb());
+    // console.log('Address Saga');
+    // console.log(address);
+    // console.log(tronWeb.trx);
+    // const accountInfo = yield call(tronWeb.trx.getAccount, address);
+    // console.log(accountInfo);
     // const trxBalance = 1000;
     // yield put(getTrxBalanceSuccess(trxBalance));
   } catch (err) {
-    console.log('FAILEDFAILED');
-    yield put(getTrxBalanceFail(err));
+    // console.log('FAILEDFAILED');
+    // yield put(getTrxBalanceFail(err));
   }
 }
 

@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { changeSearchStr } from '../../actions';
 
-export default function SearchForm({ toggleFilters }) {
+export function SearchForm({ onChangeSearchStr }) {
+  const [state, setState] = useState({
+    searchStr: '',
+  });
+
+  const handleInputChange = e => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const toggleFilter = e => {
     e.preventDefault();
-    toggleFilters();
+    console.log(state.searchStr);
+    onChangeSearchStr(state.searchStr);
+    // toggleFilters();
   };
   return (
     <form action="/search" className="search w-form">
@@ -13,14 +29,17 @@ export default function SearchForm({ toggleFilters }) {
           type="search"
           className="search-input w-input"
           maxLength="256"
-          name="query"
+          name="searchStr"
           placeholder="Search"
           id="search"
           required=""
+          onChange={handleInputChange}
+          value={state.searchStr}
         />
         <input
           type="submit"
           value="Search"
+          onClick={toggleFilter}
           className="search-button w-button"
         />
       </div>
@@ -41,6 +60,24 @@ export default function SearchForm({ toggleFilters }) {
   );
 }
 
+export function mapDispatchToProps(dispatch) {
+  return {
+    onChangeSearchStr: searchStr => {
+      dispatch(changeSearchStr(searchStr));
+    },
+  };
+}
+
 SearchForm.propTypes = {
-  toggleFilters: PropTypes.func,
+  onChangeSearchStr: PropTypes.func,
 };
+
+const withConnect = connect(
+  null,
+  mapDispatchToProps,
+);
+
+export default compose(
+  withConnect,
+  memo,
+)(SearchForm);

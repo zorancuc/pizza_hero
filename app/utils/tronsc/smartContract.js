@@ -22,6 +22,7 @@ const pzHeroContract = () => smartContract.pzHeroContract;
 const pzEggContract = () => smartContract.pzEggContract;
 
 const setTronWeb = async tronWeb => {
+  console.log('SET TRONWEB');
   smartContract.tronWeb = tronWeb;
   smartContract.pzChestContract = await tronWeb
     .contract()

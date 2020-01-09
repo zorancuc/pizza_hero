@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import { makeSelectWalletAddress } from 'containers/App/selectors';
-import { chest, egg, item } from 'utils/tronsc';
 
 import Inventory from './Inventory';
 import {
@@ -14,58 +13,192 @@ import {
   TAB_MENU_ITEM_GEAR,
   TAB_MENU_ITEM_EMOTES,
   TAB_MENU_ITEM_CHEST,
+  CHEST_PNG_STR,
+  ITEM_PNG_STR,
+  INVENTORY_TYPE_ITEM,
+  INVENTORY_TYPE_EGG,
+  INVENTORY_TYPE_HERO,
+  INVENTORY_TYPE_CHEST,
+  ITEM_TYPE_STR,
+  // INVENTORY_TYPE_STRING,
 } from '../../constants';
+import { makeSelectSearchStr } from '../../selectors';
 
-function TabContent({ currentTab, accountAddress }) {
+function TabContent({
+  currentTab,
+  inventories,
+  onUpdateInventories,
+  searchStr,
+}) {
   const [state, setState] = useState({
-    inventories: [],
+    inventoryContents: [],
   });
 
-  const inventoryCount = 18;
+  const inventoryCount = 20;
 
   useEffect(() => {
-    async function updateNFTs() {
-      // api Call then
+    function updateChests() {
       const result = [];
-      if (currentTab === TAB_MENU_ITEM_CHEST) {
-        const chests = await chest.chestsOfOwner(accountAddress);
-        for (let i = 0; i < chests.length; i += 1) {
+      const chestsInfo = inventories.chestInfo;
+      if (chestsInfo.length >= 4) {
+        chestsInfo[0].name = 'Rare';
+        chestsInfo[1].name = 'Epic';
+        chestsInfo[2].name = 'Legendary';
+        chestsInfo[3].name = 'EVO Legendary';
+      }
+
+      console.log(searchStr);
+
+      const chests = inventories.chest;
+      for (let i = 0; i < chestsInfo.length; i += 1) {
+        const imgUrl = `https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/${
+          CHEST_PNG_STR[chestsInfo[i].name]
+        }-chest.png`;
+        // eslint-disable-next-line no-underscore-dangle
+
+        let metaStr = '';
+        metaStr = metaStr.concat(chestsInfo[i].name);
+        metaStr = metaStr.concat(' Chest');
+        metaStr = metaStr.toLowerCase();
+
+        console.log(metaStr);
+        if (metaStr.includes(searchStr.toLowerCase())) {
           result.push({
-            image:
-              'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/blue-chest.png',
+            image: imgUrl,
             icon:
               'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/chest-icon.svg',
-            type: 'white',
+            type: CHEST_PNG_STR[chestsInfo[i].name],
             // eslint-disable-next-line no-underscore-dangle
-            id: chests[i]._hex,
+            id: parseInt(chests[i]._hex, 16),
+            inventorySubType: chestsInfo[i].name,
+            inventoryType: INVENTORY_TYPE_CHEST,
+            inventoryName: '',
           });
         }
-      } else if (currentTab === TAB_MENU_ITEM_HEROES) {
-        console.log(accountAddress);
-        const eggs = await egg.eggsOfOwner(accountAddress);
-        console.log(eggs);
-        for (let i = 0; i < eggs.length; i += 1) {
+      }
+      return result;
+    }
+
+    function updateHeroes() {
+      const result = [];
+      const eggs = inventories.egg;
+      // const eggsInfo = inventories.eggInfo;
+
+      let metaStr = '';
+      metaStr = metaStr.concat(' Egg');
+      metaStr = metaStr.toLowerCase();
+      for (let i = 0; i < eggs.length; i += 1) {
+        if (metaStr.includes(searchStr.toLowerCase())) {
           result.push({
             icon:
               'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/hero-icon.svg',
             type: 'hero',
             // eslint-disable-next-line no-underscore-dangle
-            id: eggs[i]._hex,
+            id: parseInt(eggs[i]._hex, 16),
+            inventoryType: INVENTORY_TYPE_EGG,
           });
         }
-      } else if (currentTab === TAB_MENU_ITEM_ALL) {
-        console.log(accountAddress);
-        const items = await item.itemsOfOwner(accountAddress);
-        console.log(items);
-        for (let i = 0; i < items.length; i += 1) {
+      }
+
+      metaStr = '';
+      metaStr = metaStr.concat(' Hero');
+      metaStr = metaStr.toLowerCase();
+      const heroes = inventories.hero;
+      // const heroesInfo = inventories.heroInfo;
+      for (let i = 0; i < heroes.length; i += 1) {
+        if (metaStr.includes(searchStr.toLowerCase())) {
+          result.push({
+            icon:
+              'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/hero-icon.svg',
+            type: 'hero',
+            // eslint-disable-next-line no-underscore-dangle
+            id: parseInt(heroes[i]._hex, 16),
+            inventoryType: INVENTORY_TYPE_HERO,
+          });
+        }
+      }
+      return result;
+    }
+
+    function updateGears() {
+      const result = [];
+      const gears = inventories.gear;
+      const gearsInfo = inventories.gearInfo;
+      if (gearsInfo.length > 0) {
+        gearsInfo[0].itemType = 1;
+        gearsInfo[1].itemType = 2;
+        gearsInfo[2].itemType = 3;
+        gearsInfo[3].itemType = 4;
+      }
+
+      for (let i = 0; i < gears.length; i += 1) {
+        let metaStr = '';
+        metaStr = metaStr.concat(ITEM_TYPE_STR[gearsInfo[i].itemType]);
+        metaStr = metaStr.concat(' Item');
+        metaStr = metaStr.concat(gearsInfo[i].name);
+        metaStr = metaStr.toLowerCase();
+        if (metaStr.includes(searchStr.toLowerCase())) {
+          result.push({
+            image: `https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/${
+              ITEM_PNG_STR[gearsInfo[i].itemType]
+            }.png`,
+            icon:
+              'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/hero-icon.svg',
+            type: 'item',
+            // eslint-disable-next-line no-underscore-dangle
+            id: parseInt(gears[i]._hex, 16),
+            inventorySubType: ITEM_TYPE_STR[gearsInfo[i].itemType],
+            inventoryType: INVENTORY_TYPE_ITEM,
+            inventoryName: gearsInfo[i].itemName,
+          });
+        }
+      }
+      return result;
+    }
+
+    function updateEmotions() {
+      const result = [];
+      const emotions = inventories.emotion;
+      const emotionsInfo = inventories.emotionInfo;
+      for (let i = 0; i < emotions.length; i += 1) {
+        let metaStr = '';
+        metaStr = metaStr.concat(ITEM_TYPE_STR[emotionsInfo[i].itemType]);
+        metaStr = metaStr.concat(' Item');
+        metaStr = metaStr.concat(emotionsInfo[i].name);
+        metaStr = metaStr.toLowerCase();
+        if (metaStr.includes(searchStr.toLowerCase())) {
           result.push({
             icon:
               'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/hero-icon.svg',
             type: 'item',
             // eslint-disable-next-line no-underscore-dangle
-            id: items[i]._hex,
+            id: parseInt(emotions[i]._hex, 16),
+            inventorySubType: ITEM_TYPE_STR[emotionsInfo[i].itemType],
+            inventoryType: INVENTORY_TYPE_ITEM,
+            inventoryName: emotionsInfo[i].itemName,
           });
         }
+      }
+      return result;
+    }
+
+    function updateNFTs() {
+      // api Call then
+      console.log(inventories);
+      let result = [];
+      if (currentTab === TAB_MENU_ITEM_CHEST) {
+        result = updateChests();
+      } else if (currentTab === TAB_MENU_ITEM_HEROES) {
+        result = updateHeroes();
+      } else if (currentTab === TAB_MENU_ITEM_ALL) {
+        result = updateChests();
+        result = result.concat(updateHeroes());
+        result = result.concat(updateGears());
+        result = result.concat(updateEmotions());
+      } else if (currentTab === TAB_MENU_ITEM_GEAR) {
+        result = updateGears();
+      } else if (currentTab === TAB_MENU_ITEM_EMOTES) {
+        result = updateEmotions();
       }
 
       if (result.length > inventoryCount) {
@@ -78,184 +211,23 @@ function TabContent({ currentTab, accountAddress }) {
         }
       }
 
+      console.log(result);
       setState({
-        inventories: result,
+        ...state,
+        inventoryContents: result,
       });
     }
     updateNFTs();
-  }, [currentTab, accountAddress]);
+  }, [currentTab, inventories, onUpdateInventories, searchStr]);
 
   return (
     <div className="item-tabs-content w-tab-content">
       <div
-        data-w-tab="Tab 1"
-        className={classNames('w-tab-pane', {
-          'w--tab-active': currentTab === 101,
-        })}
-      >
-        <div className="item-grid-wrapper">
-          <Inventory
-            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/dancing-icon_1dancing-icon.png"
-            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/emote-icon.svg"
-          />
-          <Inventory
-            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/blue-chest.png"
-            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/chest-icon.svg"
-            type="blue"
-          />
-          <Inventory
-            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/hero-icon.svg"
-            type="hero"
-          />
-          <Inventory
-            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/blue-chest.png"
-            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/chest-icon.svg"
-            type="white"
-          />
-          <Inventory
-            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/staff_1staff.png"
-            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gear-icon-2.svg"
-          />
-          <Inventory
-            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/bear-mask_1bear-mask.png"
-            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gear-icon-2.svg"
-            type="purple"
-          />
-          <Inventory
-            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/legs_1legs.png"
-            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gear-icon-2.svg"
-            type="gold"
-          />
-          <Inventory
-            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/chest.png"
-            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gear-icon-2.svg"
-            type="gold"
-          />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-        </div>
-      </div>
-      <div
-        data-w-tab="Tab 2"
-        className={classNames('w-tab-pane', {
-          'w--tab-active': currentTab === 100,
-        })}
-      >
-        <div className="item-grid-wrapper">
-          <Inventory
-            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/hero-icon.svg"
-            type="hero"
-          />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-        </div>
-      </div>
-      <div
-        data-w-tab="Tab 3"
-        className={classNames('w-tab-pane', {
-          'w--tab-active': currentTab === TAB_MENU_ITEM_GEAR,
-        })}
-      >
-        <div className="item-grid-wrapper">
-          <Inventory
-            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/staff_1staff.png"
-            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gear-icon-2.svg"
-          />
-          <Inventory
-            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/bear-mask_1bear-mask.png"
-            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gear-icon-2.svg"
-            type="purple"
-          />
-          <Inventory
-            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/legs_1legs.png"
-            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gear-icon-2.svg"
-            type="gold"
-          />
-          <Inventory
-            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/chest.png"
-            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/gear-icon-2.svg"
-            type="gold"
-          />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-        </div>
-      </div>
-      <div
-        data-w-tab="Tab 4"
-        className={classNames('w-tab-pane', {
-          'w--tab-active': currentTab === TAB_MENU_ITEM_EMOTES,
-        })}
-      >
-        <div className="item-grid-wrapper">
-          <Inventory
-            image="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/dancing-icon_1dancing-icon.png"
-            icon="https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/emote-icon.svg"
-          />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-          <Inventory empty />
-        </div>
-      </div>
-      <div
         data-w-tab="Tab 5"
-        className={classNames('w-tab-pane', {
-          'w--tab-active':
-            currentTab === TAB_MENU_ITEM_CHEST ||
-            TAB_MENU_ITEM_HEROES ||
-            TAB_MENU_ITEM_ALL,
-        })}
+        className={classNames('w-tab-pane', 'w--tab-active')}
       >
         <div className="item-grid-wrapper">
-          {state.inventories.map((inventory, index) =>
+          {state.inventoryContents.map((inventory, index) =>
             inventory.empty ? (
               // eslint-disable-next-line react/no-array-index-key
               <Inventory empty key={index} />
@@ -266,6 +238,10 @@ function TabContent({ currentTab, accountAddress }) {
                 type={inventory.type}
                 id={inventory.id}
                 currentTab={currentTab}
+                inventoryType={inventory.inventoryType}
+                inventoryName={inventory.inventoryName}
+                inventorySubType={inventory.inventorySubType}
+                onUpdateInventories={onUpdateInventories}
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
               />
@@ -279,11 +255,14 @@ function TabContent({ currentTab, accountAddress }) {
 
 TabContent.propTypes = {
   currentTab: PropTypes.string,
-  accountAddress: PropTypes.string,
+  onUpdateInventories: PropTypes.func,
+  inventories: PropTypes.object,
+  searchStr: PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({
   accountAddress: makeSelectWalletAddress(),
+  searchStr: makeSelectSearchStr(),
 });
 
 const withConnect = connect(

@@ -8,17 +8,17 @@ export const buyChest = async (chestId, refAddr, bTRX, value) => {
     .call();
   // eslint-disable-next-line no-underscore-dangle
   length = parseInt(length._hex, 16);
-  console.log(length);
+  // console.log(length);
 
   for (i = 0; i < length; i += 1) {
     // eslint-disable-next-line no-await-in-loop
     const chestGroupInfo = await pzChestContract()
       .getChestGroupById(i)
       .call();
-    console.log(parseInt(chestGroupInfo.price, 10));
+    // console.log(parseInt(chestGroupInfo.price, 10));
     if (parseInt(chestGroupInfo.price, 10) === 50 * 1000000) {
-      console.log(parseInt(chestGroupInfo.price, 10));
-      console.log(i);
+      // console.log(parseInt(chestGroupInfo.price, 10));
+      // console.log(i);
       break;
     }
   }
@@ -43,7 +43,22 @@ export const chestsOfOwner = async accountAddress => {
     .chestsOfOwner(accountAddress)
     .call();
   result = result.ownerChests;
-  console.log(result);
+  // console.log(result);
+  return result;
+};
+
+export const balanceOfOwner = async accountAddress => {
+  let result = await pzChestContract()
+    .balanceOf(accountAddress)
+    .call();
+  result = result.count;
+  return result;
+};
+
+export const getChestById = async chestId => {
+  const result = await pzChestContract()
+    .getChestById(chestId)
+    .call();
   return result;
 };
 

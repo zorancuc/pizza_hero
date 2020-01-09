@@ -3,6 +3,12 @@ import { initialState } from './reducer';
 
 const selectMyInventory = state => state.myInventory || initialState;
 
+const makeSelectSearchStr = () =>
+  createSelector(
+    selectMyInventory,
+    myInventoryState => myInventoryState.searchStr,
+  );
+
 const makeSelectCurrentTab = () =>
   createSelector(
     selectMyInventory,
@@ -33,4 +39,5 @@ export {
   makeSelectMetaData,
   makeSelectCharacterType,
   makeSelectId,
+  makeSelectSearchStr,
 };

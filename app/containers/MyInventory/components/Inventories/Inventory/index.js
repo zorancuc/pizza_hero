@@ -13,7 +13,12 @@ import {
   TAB_MENU_ITEM_HEROES,
   // TAB_MENU_ITEM_GEAR,
   // TAB_MENU_ITEM_EMOTES,
-  TAB_MENU_ITEM_CHEST,
+  // TAB_MENU_ITEM_CHEST,
+  INVENTORY_TYPE_ITEM,
+  INVENTORY_TYPE_EGG,
+  INVENTORY_TYPE_HERO,
+  INVENTORY_TYPE_CHEST,
+  INVENTORY_TYPE_STRING,
 } from '../../../constants';
 
 import './styles.scss';
@@ -24,22 +29,31 @@ function Inventory({
   type,
   empty,
   id,
+  inventoryType,
+  inventoryName,
   currentTab,
   onViewCharacter,
+  inventorySubType,
+  onUpdateInventories,
 }) {
   const clickInventory = async e => {
     console.log(id);
     console.log(currentTab);
-    if (currentTab === TAB_MENU_ITEM_CHEST) {
+    console.log(inventoryType);
+    if (inventoryType === INVENTORY_TYPE_CHEST) {
       e.preventDefault();
       await chest.openChest(id);
-    } else if (currentTab === TAB_MENU_ITEM_ALL) {
+    } else if (inventoryType === INVENTORY_TYPE_ITEM) {
       const itemData = await item.getItem(id);
       onViewCharacter(itemData, TAB_MENU_ITEM_ALL, id);
-    } else if (currentTab === TAB_MENU_ITEM_HEROES) {
+    } else if (inventoryType === INVENTORY_TYPE_EGG) {
       const eggData = await egg.getEgg(id);
       onViewCharacter(eggData, TAB_MENU_ITEM_HEROES, id);
+    } else if (inventoryType === INVENTORY_TYPE_HERO) {
+      // const eggData = await egg.getEgg(id);
+      // onViewCharacter(eggData, TAB_MENU_ITEM_HEROES, id);
     }
+    onUpdateInventories();
   };
 
   return (
@@ -58,9 +72,10 @@ function Inventory({
           </div>
           <div className="item-tooltip">
             <div className="item-type">
-              <span className="legendary">Legendary</span> | Item
+              <span className="legendary">{inventorySubType}</span>
+              {INVENTORY_TYPE_STRING[inventoryType]}
             </div>
-            <div className="item-name">Skullhunter Mask</div>
+            <div className="item-name">{inventoryName}</div>
             <div className="tooltip-arrow" />
           </div>
         </Link>
@@ -84,8 +99,12 @@ Inventory.propTypes = {
   type: PropTypes.string,
   empty: PropTypes.bool,
   id: PropTypes.number,
-  currentTab: PropTypes.number,
+  currentTab: PropTypes.string,
   onViewCharacter: PropTypes.func,
+  inventoryType: PropTypes.number,
+  inventoryName: PropTypes.string,
+  inventorySubType: PropTypes.string,
+  onUpdateInventories: PropTypes.func,
 };
 
 const withConnect = connect(

@@ -1,11 +1,9 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import classNames from 'classnames';
-import { chest } from 'utils/tronsc';
 import { createStructuredSelector } from 'reselect';
-import { makeSelectWalletAddress } from 'containers/App/selectors';
 import {
   TAB_MENU_ITEM_ALL,
   TAB_MENU_ITEM_HEROES,
@@ -14,13 +12,39 @@ import {
   TAB_MENU_ITEM_CHEST,
 } from '../../constants';
 
-function TabMenu({ currentTab, onChangeCurrentTab, accountAddress }) {
+function TabMenu({ currentTab, onChangeCurrentTab, inventories }) {
+  const [state, setState] = useState({
+    itemBalance: 0,
+    gearBalance: 0,
+    heroBalance: 0,
+    emotionBalance: 0,
+    chestBalance: 0,
+  });
+
+  useEffect(() => {
+    // async function fetchData() {
+
+    const chestBal = inventories.chest.length;
+    const gearItemBal = inventories.gear.length;
+    const emotionItemBal = inventories.emotion.length;
+    const eggBal = inventories.egg.length;
+    const heroBal = inventories.hero.length;
+
+    setTimeout(() => {
+      setState({
+        ...state,
+        itemBalance: chestBal + gearItemBal + emotionItemBal + eggBal + heroBal,
+        gearBalance: gearItemBal,
+        heroBalance: eggBal + heroBal,
+        emotionBalance: emotionItemBal,
+        chestBalance: chestBal,
+      });
+    }, 500);
+  }, [inventories]);
+
   const clickTab = tab => async e => {
     e.preventDefault();
-    console.log(accountAddress);
-    if (tab === TAB_MENU_ITEM_CHEST) {
-      await chest.chestsOfOwner(accountAddress);
-    }
+
     onChangeCurrentTab(tab);
   };
 
@@ -34,7 +58,7 @@ function TabMenu({ currentTab, onChangeCurrentTab, accountAddress }) {
           'w--current': currentTab === TAB_MENU_ITEM_ALL,
         })}
       >
-        <div>All Items (8)</div>
+        <div>All Items ({state.itemBalance})</div>
       </a>
       <a
         href="/#"
@@ -44,7 +68,7 @@ function TabMenu({ currentTab, onChangeCurrentTab, accountAddress }) {
           'w--current': currentTab === TAB_MENU_ITEM_HEROES,
         })}
       >
-        <div>Heroes (1)</div>
+        <div>Heroes ({state.heroBalance})</div>
       </a>
       <a
         href="/#"
@@ -54,7 +78,7 @@ function TabMenu({ currentTab, onChangeCurrentTab, accountAddress }) {
           'w--current': currentTab === TAB_MENU_ITEM_GEAR,
         })}
       >
-        <div>Gear (4)</div>
+        <div>Gear ({state.gearBalance})</div>
       </a>
       <a
         href="/#"
@@ -64,7 +88,7 @@ function TabMenu({ currentTab, onChangeCurrentTab, accountAddress }) {
           'w--current': currentTab === TAB_MENU_ITEM_EMOTES,
         })}
       >
-        <div>Emotes (1)</div>
+        <div>Emotes ({state.emotionBalance})</div>
       </a>
       <a
         href="/#"
@@ -74,7 +98,7 @@ function TabMenu({ currentTab, onChangeCurrentTab, accountAddress }) {
           'w--current': currentTab === TAB_MENU_ITEM_CHEST,
         })}
       >
-        <div>Chests (2)</div>
+        <div>Chests ({state.chestBalance})</div>
       </a>
     </div>
   );
@@ -82,13 +106,11 @@ function TabMenu({ currentTab, onChangeCurrentTab, accountAddress }) {
 
 TabMenu.propTypes = {
   currentTab: PropTypes.string,
-  accountAddress: PropTypes.string,
   onChangeCurrentTab: PropTypes.func,
+  inventories: PropTypes.object,
 };
 
-const mapStateToProps = createStructuredSelector({
-  accountAddress: makeSelectWalletAddress(),
-});
+const mapStateToProps = createStructuredSelector({});
 
 const withConnect = connect(
   mapStateToProps,
