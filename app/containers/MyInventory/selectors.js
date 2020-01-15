@@ -9,6 +9,24 @@ const makeSelectSearchStr = () =>
     myInventoryState => myInventoryState.searchStr,
   );
 
+const makeSelectSort = () =>
+  createSelector(
+    selectMyInventory,
+    myInventoryState => myInventoryState.sort,
+  );
+
+const makeSelectSireFilter = () =>
+  createSelector(
+    selectMyInventory,
+    myInventoryState => myInventoryState.sireFlag,
+  );
+
+const makeSelectSaleFilter = () =>
+  createSelector(
+    selectMyInventory,
+    myInventoryState => myInventoryState.saleFlag,
+  );
+
 const makeSelectCurrentTab = () =>
   createSelector(
     selectMyInventory,
@@ -40,4 +58,7 @@ export {
   makeSelectCharacterType,
   makeSelectId,
   makeSelectSearchStr,
+  makeSelectSaleFilter,
+  makeSelectSireFilter,
+  makeSelectSort,
 };

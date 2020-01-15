@@ -23,7 +23,6 @@ function TabMenu({ currentTab, onChangeCurrentTab, inventories }) {
 
   useEffect(() => {
     // async function fetchData() {
-
     const chestBal = inventories.chest.length;
     const gearItemBal = inventories.gear.length;
     const emotionItemBal = inventories.emotion.length;

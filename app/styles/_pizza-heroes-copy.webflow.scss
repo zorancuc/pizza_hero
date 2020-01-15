@@ -2926,6 +2926,14 @@ a {
   background-repeat: no-repeat;
 }
 
+.item.egg {
+  border-color: #e5cf6a;
+  background-image: url('https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/Egg.png');
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .item.purple {
   background-image: -webkit-gradient(linear, left bottom, left top, from(#6d006d), to(#8e12c7));
   background-image: linear-gradient(0deg, #6d006d, #8e12c7);
@@ -3048,6 +3056,12 @@ a {
   border: 2px solid #ffc600;
   background-color: #0a2757;
   color: #fff;
+}
+
+.item-id {
+  color: #FFFFFF;
+  font-size: 12px;
+  opacity: 50%;
 }
 
 .legendary {

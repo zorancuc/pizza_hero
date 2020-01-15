@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { changeSort } from '../../actions';
 
-export default function Dropdown() {
+export function Dropdown({ onChangeSort }) {
   const [state, setState] = useState({
     showDropdown: false,
     selectedMenu: 'Most Recent',
@@ -26,6 +30,8 @@ export default function Dropdown() {
       selectedMenu: menu,
       showDropdown: false,
     });
+
+    onChangeSort(menu);
   };
 
   return (
@@ -59,11 +65,11 @@ export default function Dropdown() {
             <a
               href="/#"
               className={classNames('dropdown-link', 'w-dropdown-link', {
-                'w--current': state.selectedMenu === 'Most Relevant',
+                'w--current': state.selectedMenu === 'Most Early',
               })}
-              onClick={selectMenu('Most Relevant')}
+              onClick={selectMenu('Most Early')}
             >
-              Most Relevant
+              Most Early
             </a>
             <a
               href="/#"
@@ -89,3 +95,25 @@ export default function Dropdown() {
     </div>
   );
 }
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    onChangeSort: searchStr => {
+      dispatch(changeSort(searchStr));
+    },
+  };
+}
+
+Dropdown.propTypes = {
+  onChangeSort: PropTypes.func,
+};
+
+const withConnect = connect(
+  null,
+  mapDispatchToProps,
+);
+
+export default compose(
+  withConnect,
+  memo,
+)(Dropdown);

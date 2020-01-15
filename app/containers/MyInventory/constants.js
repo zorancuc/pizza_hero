@@ -12,6 +12,9 @@ export const INVENTORY_TYPE_CHEST = 3;
 export const CHANGE_CURRENT_TAB = 'pizza_hero/MyInventory/CHANGE_CURRENT_TAB';
 export const VIEW_CHARACTER = 'pizza_hero/MyInventory/VIEW_CHARACTER';
 export const CHANGE_SEARCH_STR = 'pizza_hero/MyInventory/CHANGE_SEARCH_STR';
+export const CHANGE_SIRE_FILTER = 'pizza_hero/MyInventory/CHANGE_SIRE_FILTER';
+export const CHANGE_SALE_FILTER = 'pizza_hero/MyInventory/CHANGE_SALE_FILTER';
+export const CHANGE_SORT = 'pizza_hero/MyInventory/CHANGE_SORT';
 
 export const CHEST_PNG_STR = {
   Rare: 'blue',
@@ -19,6 +22,8 @@ export const CHEST_PNG_STR = {
   Legendary: 'gold',
   'EVO Legendary': 'white',
 };
+
+export const ITEM_BCK_STR = ['grey', 'orange', 'blue', 'purp', 'gold'];
 
 export const INVENTORY_TYPE_STRING = [' Item', ' Egg', ' Hero', ' Chest'];
 export const ITEM_PNG_STR = [

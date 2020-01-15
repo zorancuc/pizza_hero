@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { changeSearchStr } from '../../actions';
 
-export function SearchForm({ onChangeSearchStr }) {
+export function SearchForm({ onChangeSearchStr, toggleFilters }) {
   const [state, setState] = useState({
     searchStr: '',
   });
@@ -16,12 +16,17 @@ export function SearchForm({ onChangeSearchStr }) {
     });
   };
 
-  const toggleFilter = e => {
+  const searchInventory = e => {
     e.preventDefault();
     console.log(state.searchStr);
     onChangeSearchStr(state.searchStr);
-    // toggleFilters();
   };
+
+  const toggleFilter = e => {
+    e.preventDefault();
+    toggleFilters();
+  };
+
   return (
     <form action="/search" className="search w-form">
       <div className="search-field-wrapper">
@@ -39,7 +44,7 @@ export function SearchForm({ onChangeSearchStr }) {
         <input
           type="submit"
           value="Search"
-          onClick={toggleFilter}
+          onClick={searchInventory}
           className="search-button w-button"
         />
       </div>
@@ -70,6 +75,7 @@ export function mapDispatchToProps(dispatch) {
 
 SearchForm.propTypes = {
   onChangeSearchStr: PropTypes.func,
+  toggleFilters: PropTypes.func,
 };
 
 const withConnect = connect(

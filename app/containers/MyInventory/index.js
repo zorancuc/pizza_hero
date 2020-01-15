@@ -13,13 +13,18 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Inventories from './components/Inventories';
 import { makeSelectCurrentTab } from './selectors';
-import { changeCurrentTab } from './actions';
+import { changeCurrentTab, changeSearchStr } from './actions';
 
 // import Inventory from './components/Inventories/Inventory';
 import { PZ_ITEM_GEAR, PZ_ITEM_EMOTE } from './constants';
 const key = 'myInventory';
 
-function MyInventory({ currentTab, onChangeCurrentTab, accountAddress }) {
+function MyInventory({
+  currentTab,
+  onChangeCurrentTab,
+  onChangeSearchStr,
+  accountAddress,
+}) {
   useInjectReducer({ key, reducer });
   const [count, setCount] = useState(0);
   const [state, setState] = useState({
@@ -135,8 +140,9 @@ function MyInventory({ currentTab, onChangeCurrentTab, accountAddress }) {
   };
 
   useEffect(() => {
+    onChangeSearchStr('');
     updateNFTs();
-  }, [accountAddress]);
+  }, [accountAddress, onChangeSearchStr]);
 
   return (
     <div>
@@ -166,6 +172,7 @@ function MyInventory({ currentTab, onChangeCurrentTab, accountAddress }) {
 MyInventory.propTypes = {
   currentTab: PropTypes.string,
   onChangeCurrentTab: PropTypes.func,
+  onChangeSearchStr: PropTypes.func,
   accountAddress: PropTypes.string,
 
   // onUpdateInventories: PropTypes.func,
@@ -179,6 +186,7 @@ const mapStateToProps = createStructuredSelector({
 export function mapDispatchToProps(dispatch) {
   return {
     onChangeCurrentTab: tab => dispatch(changeCurrentTab(tab)),
+    onChangeSearchStr: searchStr => dispatch(changeSearchStr(searchStr)),
   };
 }
 

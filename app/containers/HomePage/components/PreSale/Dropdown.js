@@ -57,11 +57,11 @@ export default function Dropdown({ onChangePayType, selectedItem }) {
           <a
             href="/#"
             className={classNames('dropdown-link', 'w-dropdown-link', {
-              'w--current': selectedItem === 'EVO',
+              'w--current': selectedItem === 'TRC10 Token',
             })}
-            onClick={selectItem('EVO')}
+            onClick={selectItem('TRC10 Token')}
           >
-            EVO
+            TRC10 Token
           </a>
         </nav>
       </div>

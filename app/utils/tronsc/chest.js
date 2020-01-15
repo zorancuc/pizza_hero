@@ -1,6 +1,6 @@
 import { pzChestContract } from './smartContract';
 
-export const buyChest = async (chestGroupId, refAddr, bTRX) => {
+export const buyChest = async (chestGroupId, refAddr, chestAmount, bTRX) => {
   const chestGroupInfo = await pzChestContract()
     .getChestGroupById(chestGroupId)
     .call();
@@ -17,14 +17,14 @@ export const buyChest = async (chestGroupId, refAddr, bTRX) => {
   // console.log(bTRX);
   if (bTRX) {
     await pzChestContract()
-      .buyChest(chestGroupId, refAddr, true)
-      .send({ shouldPollResponse: true, callValue: price });
+      .buyChest(chestGroupId, refAddr, chestAmount, true)
+      .send({ shouldPollResponse: true, callValue: price * chestAmount });
   } else {
     await pzChestContract()
-      .buyChest(chestGroupId, refAddr, false)
+      .buyChest(chestGroupId, refAddr, chestAmount, false)
       .send({
         shouldPollResponse: true,
-        tokenValue: tokenPrice,
+        tokenValue: tokenPrice * chestAmount,
         tokenId,
       });
   }
@@ -59,3 +59,26 @@ export const openChest = async chestId => {
     .openChest(chestId)
     .send({ shouldPollResponse: true, callValue: 0 });
 };
+
+export const getChestGroupInfo = async () => {
+  let chestGroupInfo = [];
+  if (!pzChestContract()) {
+    return [];
+  }
+  let chestGroupSupply = await pzChestContract()
+    .getChestGroupSupply()
+    .call();
+  // eslint-disable-next-line no-underscore-dangle
+  chestGroupSupply = parseInt(chestGroupSupply._hex, 16);
+  for (let i = 0; i < chestGroupSupply; i += 1) {
+    chestGroupInfo.push(
+      pzChestContract()
+        .getChestGroupById(i)
+        .call(),
+    );
+  }
+  chestGroupInfo = await Promise.all(chestGroupInfo);
+  return chestGroupInfo;
+};
+
+export const instance = pzChestContract();

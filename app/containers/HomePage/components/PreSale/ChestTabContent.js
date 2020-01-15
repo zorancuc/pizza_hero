@@ -17,10 +17,20 @@ export default function ChestTabContent({
   bgClass,
   active,
   currentTabIndex,
+  trxPrice,
+  tokenPrice,
 }) {
   const [state, setState] = useState({
     selectedItem: 'TRX',
+    chestAmount: 1,
   });
+
+  const changeChestAmount = amount => {
+    setState({
+      ...state,
+      chestAmount: amount,
+    });
+  };
 
   const purchase = async e => {
     if (e) e.preventDefault();
@@ -29,18 +39,21 @@ export default function ChestTabContent({
 
     // let { chestGroupId } = this.state;
     console.log(currentTabIndex);
+    console.log(state.chestAmount);
     const chestGroupId = currentTabIndex;
 
     if (state.selectedItem === 'TRX') {
       await chest.buyChest(
         chestGroupId,
         'TKfB91Xodm5rijBqUsXND5fz5M1Cu8tt9V',
+        state.chestAmount,
         true,
       );
-    } else if (state.selectedItem === 'EVO') {
+    } else if (state.selectedItem === 'TRC10 Token') {
       await chest.buyChest(
         chestGroupId,
         'TKfB91Xodm5rijBqUsXND5fz5M1Cu8tt9V',
+        state.chestAmount,
         false,
       );
     }
@@ -114,7 +127,12 @@ export default function ChestTabContent({
                   selectedItem={state.selectedItem}
                 />
               </div>
-              <AmountTab />
+              <AmountTab
+                payType={state.selectedItem}
+                trxPrice={trxPrice}
+                tokenPrice={tokenPrice}
+                changeChestAmount={changeChestAmount}
+              />
               <div>
                 <a
                   href="/#"
@@ -153,4 +171,6 @@ ChestTabContent.propTypes = {
   bgClass: PropTypes.string,
   active: PropTypes.bool,
   currentTabIndex: PropTypes.number,
+  trxPrice: PropTypes.number,
+  tokenPrice: PropTypes.number,
 };

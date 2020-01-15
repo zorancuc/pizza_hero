@@ -20,15 +20,24 @@ import {
   INVENTORY_TYPE_HERO,
   INVENTORY_TYPE_CHEST,
   ITEM_TYPE_STR,
+  ITEM_BCK_STR,
   // INVENTORY_TYPE_STRING,
 } from '../../constants';
-import { makeSelectSearchStr } from '../../selectors';
+import {
+  makeSelectSearchStr,
+  makeSelectSaleFilter,
+  makeSelectSireFilter,
+  makeSelectSort,
+} from '../../selectors';
 
 function TabContent({
   currentTab,
   inventories,
   onUpdateInventories,
   searchStr,
+  saleFlag,
+  sireFlag,
+  sort,
 }) {
   const [state, setState] = useState({
     inventoryContents: [],
@@ -85,8 +94,8 @@ function TabContent({
         if (metaStr.includes(searchStr.toLowerCase())) {
           result.push({
             icon:
-              'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/hero-icon.svg',
-            type: 'hero',
+              'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/Egg.png',
+            type: 'egg',
             // eslint-disable-next-line no-underscore-dangle
             id: parseInt(eggs[i]._hex, 16),
             inventoryType: INVENTORY_TYPE_EGG,
@@ -125,14 +134,15 @@ function TabContent({
         metaStr = metaStr.concat(' Item');
         metaStr = metaStr.concat(gearsInfo[i].name);
         metaStr = metaStr.toLowerCase();
+        // eslint-disable-next-line no-underscore-dangle
+        const itemid = gearsInfo[i].itemGroupId;
         if (metaStr.includes(searchStr.toLowerCase())) {
           result.push({
-            image: `https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/${
+            image: `https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/itemid_${itemid}.png`,
+            icon: `https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/${
               ITEM_PNG_STR[gearsInfo[i].itemRarity]
             }.png`,
-            icon:
-              'https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/hero-icon.svg',
-            type: 'item',
+            type: ITEM_BCK_STR[gearsInfo[i].itemRarity],
             // eslint-disable-next-line no-underscore-dangle
             id: parseInt(gears[i]._hex, 16),
             inventorySubType: ITEM_TYPE_STR[gearsInfo[i].itemRarity],
@@ -154,14 +164,16 @@ function TabContent({
         metaStr = metaStr.concat(' Item');
         metaStr = metaStr.concat(emotionsInfo[i].name);
         metaStr = metaStr.toLowerCase();
+        // eslint-disable-next-line no-underscore-dangle
+        const itemid = emotionsInfo[i].itemGroupId;
         if (metaStr.includes(searchStr.toLowerCase())) {
           result.push({
-            image: `https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/${
+            image: `https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/itemid_${itemid}.png`,
+            icon: `https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/${
               ITEM_PNG_STR[emotionsInfo[i].itemRarity]
             }.png`,
-            type: 'item',
-            // eslint-disable-next-line no-underscore-dangle
-            id: parseInt(emotions[i]._hex, 16),
+            type: ITEM_BCK_STR[emotionsInfo[i].itemRarity],
+            id: itemid,
             inventorySubType: ITEM_TYPE_STR[emotionsInfo[i].itemRarity],
             inventoryType: INVENTORY_TYPE_ITEM,
             inventoryName: emotionsInfo[i].itemName,
@@ -173,21 +185,29 @@ function TabContent({
 
     function updateNFTs() {
       // api Call then
-      console.log(inventories);
+      // console.log(inventories);
+      // console.log(sireFlag, saleFlag);
       let result = [];
-      if (currentTab === TAB_MENU_ITEM_CHEST) {
-        result = updateChests();
-      } else if (currentTab === TAB_MENU_ITEM_HEROES) {
-        result = updateHeroes();
-      } else if (currentTab === TAB_MENU_ITEM_ALL) {
-        result = updateChests();
-        result = result.concat(updateHeroes());
-        result = result.concat(updateGears());
-        result = result.concat(updateEmotions());
-      } else if (currentTab === TAB_MENU_ITEM_GEAR) {
-        result = updateGears();
-      } else if (currentTab === TAB_MENU_ITEM_EMOTES) {
-        result = updateEmotions();
+      if (sireFlag === 1) {
+        result = [];
+      } else if (saleFlag === 1) {
+        result = [];
+      } else {
+        // eslint-disable-next-line no-lonely-if
+        if (currentTab === TAB_MENU_ITEM_CHEST) {
+          result = updateChests();
+        } else if (currentTab === TAB_MENU_ITEM_HEROES) {
+          result = updateHeroes();
+        } else if (currentTab === TAB_MENU_ITEM_ALL) {
+          result = updateChests();
+          result = result.concat(updateHeroes());
+          result = result.concat(updateGears());
+          result = result.concat(updateEmotions());
+        } else if (currentTab === TAB_MENU_ITEM_GEAR) {
+          result = updateGears();
+        } else if (currentTab === TAB_MENU_ITEM_EMOTES) {
+          result = updateEmotions();
+        }
       }
 
       if (result.length > inventoryCount) {
@@ -201,13 +221,22 @@ function TabContent({
       }
 
       console.log(result);
+      console.log(sort);
       setState({
         ...state,
         inventoryContents: result,
       });
     }
     updateNFTs();
-  }, [currentTab, inventories, onUpdateInventories, searchStr]);
+  }, [
+    currentTab,
+    inventories,
+    onUpdateInventories,
+    searchStr,
+    saleFlag,
+    sireFlag,
+    sort,
+  ]);
 
   return (
     <div className="item-tabs-content w-tab-content">
@@ -247,11 +276,17 @@ TabContent.propTypes = {
   onUpdateInventories: PropTypes.func,
   inventories: PropTypes.object,
   searchStr: PropTypes.string,
+  saleFlag: PropTypes.number,
+  sireFlag: PropTypes.number,
+  sort: PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({
   accountAddress: makeSelectWalletAddress(),
   searchStr: makeSelectSearchStr(),
+  saleFlag: makeSelectSaleFilter(),
+  sireFlag: makeSelectSireFilter(),
+  sort: makeSelectSort(),
 });
 
 const withConnect = connect(

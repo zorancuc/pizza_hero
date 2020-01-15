@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { chest, item, egg } from 'utils/tronsc';
+import { chest, item, egg, hero } from 'utils/tronsc';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -47,11 +47,11 @@ function Inventory({
       const itemData = await item.getItem(id);
       onViewCharacter(itemData, TAB_MENU_ITEM_ALL, id);
     } else if (inventoryType === INVENTORY_TYPE_EGG) {
-      const eggData = await egg.getEgg(id);
-      onViewCharacter(eggData, TAB_MENU_ITEM_HEROES, id);
+      e.preventDefault();
+      await egg.openEgg(id);
     } else if (inventoryType === INVENTORY_TYPE_HERO) {
-      // const eggData = await egg.getEgg(id);
-      // onViewCharacter(eggData, TAB_MENU_ITEM_HEROES, id);
+      const heroData = await hero.getHero(id);
+      onViewCharacter(heroData, TAB_MENU_ITEM_HEROES, id);
     }
     onUpdateInventories();
   };
@@ -76,6 +76,7 @@ function Inventory({
               {INVENTORY_TYPE_STRING[inventoryType]}
             </div>
             <div className="item-name">{inventoryName}</div>
+            <div className="item-id">#{id}</div>
             <div className="tooltip-arrow" />
           </div>
         </Link>

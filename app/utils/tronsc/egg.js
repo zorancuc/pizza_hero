@@ -24,3 +24,10 @@ export const balanceOfOwner = async accountAddress => {
   result = result.count;
   return result;
 };
+
+export const openEgg = async id => {
+  const result = await pzEggContract()
+    .giveBirth(id)
+    .send({ shouldPollResponse: true, callValue: 0 });
+  return result;
+};

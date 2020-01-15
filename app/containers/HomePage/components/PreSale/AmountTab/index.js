@@ -1,17 +1,51 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import TabItem from './TabItem';
 import TabPaneItem from './TabPaneItem';
 
-export default function AmountTab() {
+export default function AmountTab({
+  trxPrice,
+  tokenPrice,
+  payType,
+  changeChestAmount,
+}) {
   const [state, setState] = useState({
     currentAmount: 1,
+    totalPrice: 0,
   });
+
+  useEffect(() => {
+    console.log(tokenPrice);
+    console.log(trxPrice);
+    console.log(payType);
+    if (payType === 'TRX') {
+      setState({
+        ...state,
+        totalPrice: trxPrice * state.currentAmount,
+      });
+    } else if (payType === 'TRC10 Token') {
+      setState({
+        ...state,
+        totalPrice: tokenPrice * state.currentAmount,
+      });
+    }
+  }, [tokenPrice, trxPrice, payType]);
   const onChangeAmount = amount => e => {
     e.preventDefault();
-    setState({
-      currentAmount: amount,
-    });
+    changeChestAmount(amount);
+    if (payType === 'TRX') {
+      setState({
+        ...state,
+        currentAmount: amount,
+        totalPrice: trxPrice * amount,
+      });
+    } else if (payType === 'TRC10 Token') {
+      setState({
+        ...state,
+        currentAmount: amount,
+        totalPrice: tokenPrice * amount,
+      });
+    }
   };
   return (
     <div className="amount-tabs w-tabs">
@@ -44,25 +78,18 @@ export default function AmountTab() {
       <div className="tabs-content w-tab-content">
         <TabPaneItem
           tabName="Tab 1"
-          amountTrx={100}
-          active={state.currentAmount === 1}
-        />
-        <TabPaneItem
-          tabName="Tab 2"
-          amountTrx={500}
-          active={state.currentAmount === 5}
-        />
-        <TabPaneItem
-          tabName="Tab 3"
-          amountTrx={2000}
-          active={state.currentAmount === 20}
-        />
-        <TabPaneItem
-          tabName="Tab 4"
-          amountTrx={10000}
-          active={state.currentAmount === 100}
+          amountTrx={state.totalPrice}
+          active
+          payType={payType}
         />
       </div>
     </div>
   );
 }
+
+AmountTab.propTypes = {
+  trxPrice: PropTypes.number,
+  tokenPrice: PropTypes.number,
+  payType: PropTypes.string,
+  changeChestAmount: PropTypes.func,
+};
