@@ -65,6 +65,16 @@ function TabContent({
         metaStr = metaStr.toLowerCase();
 
         console.log(metaStr);
+        // eslint-disable-next-line no-underscore-dangle
+        const date = parseInt(chestsInfo[i].date._hex, 16);
+        const price =
+          // eslint-disable-next-line no-underscore-dangle
+          parseInt(chestsInfo[i].price._hex, 16) +
+          // eslint-disable-next-line no-underscore-dangle
+          parseInt(chestsInfo[i].tokenPrice._hex, 16);
+
+        console.log(date);
+        console.log(price);
         if (metaStr.includes(searchStr.toLowerCase())) {
           result.push({
             image: imgUrl,
@@ -76,6 +86,8 @@ function TabContent({
             inventorySubType: chestsInfo[i].name,
             inventoryType: INVENTORY_TYPE_CHEST,
             inventoryName: '',
+            date,
+            price,
           });
         }
       }
@@ -85,12 +97,25 @@ function TabContent({
     function updateHeroes() {
       const result = [];
       const eggs = inventories.egg;
+      const eggsInfo = inventories.eggInfo;
       // const eggsInfo = inventories.eggInfo;
 
       let metaStr = '';
       metaStr = metaStr.concat(' Egg');
       metaStr = metaStr.toLowerCase();
       for (let i = 0; i < eggs.length; i += 1) {
+        console.log(eggsInfo[i]);
+        // eslint-disable-next-line no-underscore-dangle
+        const date = parseInt(eggsInfo[i].date._hex, 16);
+        const price =
+          // eslint-disable-next-line no-underscore-dangle
+          parseInt(eggsInfo[i].price._hex, 16) +
+          // eslint-disable-next-line no-underscore-dangle
+          parseInt(eggsInfo[i].tokenPrice._hex, 16);
+
+        console.log(date);
+        console.log(price);
+
         if (metaStr.includes(searchStr.toLowerCase())) {
           result.push({
             icon:
@@ -99,6 +124,8 @@ function TabContent({
             // eslint-disable-next-line no-underscore-dangle
             id: parseInt(eggs[i]._hex, 16),
             inventoryType: INVENTORY_TYPE_EGG,
+            date,
+            price,
           });
         }
       }
@@ -107,8 +134,21 @@ function TabContent({
       metaStr = metaStr.concat(' Hero');
       metaStr = metaStr.toLowerCase();
       const heroes = inventories.hero;
+      const heroesInfo = inventories.heroInfo;
       // const heroesInfo = inventories.heroInfo;
       for (let i = 0; i < heroes.length; i += 1) {
+        console.log(heroesInfo[i]);
+        // eslint-disable-next-line no-underscore-dangle
+        const date = parseInt(heroesInfo[i].date._hex, 16);
+        const price =
+          // eslint-disable-next-line no-underscore-dangle
+          parseInt(heroesInfo[i].price._hex, 16) +
+          // eslint-disable-next-line no-underscore-dangle
+          parseInt(heroesInfo[i].tokenPrice._hex, 16);
+
+        console.log(date);
+        console.log(price);
+
         if (metaStr.includes(searchStr.toLowerCase())) {
           result.push({
             icon:
@@ -117,6 +157,8 @@ function TabContent({
             // eslint-disable-next-line no-underscore-dangle
             id: parseInt(heroes[i]._hex, 16),
             inventoryType: INVENTORY_TYPE_HERO,
+            date,
+            price,
           });
         }
       }
@@ -137,6 +179,17 @@ function TabContent({
         // eslint-disable-next-line no-underscore-dangle
         const itemid = gearsInfo[i].itemGroupId;
         if (metaStr.includes(searchStr.toLowerCase())) {
+          console.log(gearsInfo[i]);
+          // eslint-disable-next-line no-underscore-dangle
+          const date = parseInt(gearsInfo[i].date._hex, 16);
+          const price =
+            // eslint-disable-next-line no-underscore-dangle
+            parseInt(gearsInfo[i].price._hex, 16) +
+            // eslint-disable-next-line no-underscore-dangle
+            parseInt(gearsInfo[i].tokenPrice._hex, 16);
+
+          console.log(date);
+          console.log(price);
           result.push({
             image: `https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/itemid_${itemid}.png`,
             icon: `https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/${
@@ -148,6 +201,8 @@ function TabContent({
             inventorySubType: ITEM_TYPE_STR[gearsInfo[i].itemRarity],
             inventoryType: INVENTORY_TYPE_ITEM,
             inventoryName: gearsInfo[i].itemName,
+            date,
+            price,
           });
         }
       }
@@ -167,6 +222,14 @@ function TabContent({
         // eslint-disable-next-line no-underscore-dangle
         const itemid = emotionsInfo[i].itemGroupId;
         if (metaStr.includes(searchStr.toLowerCase())) {
+          console.log(emotionsInfo[i]);
+          // eslint-disable-next-line no-underscore-dangle
+          const date = parseInt(emotionsInfo[i].date._hex, 16);
+          const price =
+            // eslint-disable-next-line no-underscore-dangle
+            parseInt(emotionsInfo[i].price._hex, 16) +
+            // eslint-disable-next-line no-underscore-dangle
+            parseInt(emotionsInfo[i].tokenPrice._hex, 16);
           result.push({
             image: `https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/itemid_${itemid}.png`,
             icon: `https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/${
@@ -177,6 +240,8 @@ function TabContent({
             inventorySubType: ITEM_TYPE_STR[emotionsInfo[i].itemRarity],
             inventoryType: INVENTORY_TYPE_ITEM,
             inventoryName: emotionsInfo[i].itemName,
+            date,
+            price,
           });
         }
       }
@@ -209,7 +274,19 @@ function TabContent({
           result = updateEmotions();
         }
       }
+      console.log(sort);
+      console.log(result);
+      if (sort === 'Most Recent') {
+        result = result.sort((a, b) => (a.date > b.date ? 1 : -1));
+      } else if (sort === 'Most Early') {
+        result = result.sort((a, b) => (a.date < b.date ? 1 : -1));
+      } else if (sort === 'Price High to Low') {
+        result = result.sort((a, b) => (a.price > b.price ? 1 : -1));
+      } else if (sort === 'Price Low to High') {
+        result = result.sort((a, b) => (a.price < b.price ? 1 : -1));
+      }
 
+      console.log(result);
       if (result.length > inventoryCount) {
         result.slice(0, inventoryCount);
       } else {

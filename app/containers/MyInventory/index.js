@@ -13,7 +13,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Inventories from './components/Inventories';
 import { makeSelectCurrentTab } from './selectors';
-import { changeCurrentTab, changeSearchStr } from './actions';
+import { changeCurrentTab, changeSearchStr, changeSort } from './actions';
 
 // import Inventory from './components/Inventories/Inventory';
 import { PZ_ITEM_GEAR, PZ_ITEM_EMOTE } from './constants';
@@ -24,6 +24,7 @@ function MyInventory({
   onChangeCurrentTab,
   onChangeSearchStr,
   accountAddress,
+  onChangeSort,
 }) {
   useInjectReducer({ key, reducer });
   const [count, setCount] = useState(0);
@@ -141,6 +142,7 @@ function MyInventory({
 
   useEffect(() => {
     onChangeSearchStr('');
+    onChangeSort('Most Recent');
     updateNFTs();
   }, [accountAddress, onChangeSearchStr]);
 
@@ -173,6 +175,7 @@ MyInventory.propTypes = {
   currentTab: PropTypes.string,
   onChangeCurrentTab: PropTypes.func,
   onChangeSearchStr: PropTypes.func,
+  onChangeSort: PropTypes.func,
   accountAddress: PropTypes.string,
 
   // onUpdateInventories: PropTypes.func,
@@ -187,6 +190,7 @@ export function mapDispatchToProps(dispatch) {
   return {
     onChangeCurrentTab: tab => dispatch(changeCurrentTab(tab)),
     onChangeSearchStr: searchStr => dispatch(changeSearchStr(searchStr)),
+    onChangeSort: sort => dispatch(changeSort(sort)),
   };
 }
 
