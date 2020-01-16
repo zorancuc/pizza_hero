@@ -36,7 +36,7 @@ var __wpo = {
     ],
     "additional": [
       "/npm.intl.4f570d628d17626bef82.chunk.js",
-      "/main.a5d0046889b1ae7609ea.chunk.js",
+      "/main.c984afd9107cb5fbd687.chunk.js",
       "/npm.babel.ce9acbdf343198cd24ba.chunk.js",
       "/npm.core-js.30d7e2862c65bc19c8a8.chunk.js",
       "/npm.es-abstract.641a6d1b7cc6138d122e.chunk.js",
@@ -83,7 +83,7 @@ var __wpo = {
     "0570f3c1c47a9fae31c6affdc17569871cbbe7e2": "/margarita_1margarita.png",
     "d375cb92be8cc77de3f353a48fffca034e51ea0b": "/circle-dots-active.svg",
     "dd0a1da9fa779d9ab7980ea9cf6b1801303aa7fd": "/npm.intl.4f570d628d17626bef82.chunk.js",
-    "c474d9bf7e10ca66013fdf0e98240ad3f8c26913": "/main.a5d0046889b1ae7609ea.chunk.js",
+    "0459f035b15c8ad1369b4aad78896a16965b43ac": "/main.c984afd9107cb5fbd687.chunk.js",
     "d4c3330b6d40a56775d2963513e07143b0a0b661": "/npm.babel.ce9acbdf343198cd24ba.chunk.js",
     "de7cb180c1d0af36cca6ecc7609b05e0b413ee5b": "/npm.core-js.30d7e2862c65bc19c8a8.chunk.js",
     "96b29dfbe29bf3c05b860d2e38a939e77bf9830c": "/npm.es-abstract.641a6d1b7cc6138d122e.chunk.js",
@@ -95,11 +95,11 @@ var __wpo = {
     "5c0e9d2671f4457e1cba9714331db1528e154fd5": "/npm.redux-saga.889427da8fa32e71eb92.chunk.js",
     "c0e44cde0672fe2f14725928409c41ddcf8b5bac": "/runtime.fd9503845a78ab8446f1.js",
     "1bf213282292ce0a6ef62f4c9d17b385efcd4e56": "/12.e85530c1149c86b5e89e.chunk.js",
-    "1d9dad361cbd22bd7080a26ebf2f19b9f1f5daf5": "/"
+    "9b540fb15993cf2da3247e7c35e9657bc122d552": "/"
   },
   "strategy": "changed",
   "responseStrategy": "cache-first",
-  "version": "1/9/2020, 1:21:51 PM",
+  "version": "1/15/2020, 7:14:10 PM",
   "name": "webpack-offline",
   "pluginVersion": "5.0.6",
   "relativePaths": false
