@@ -139,7 +139,9 @@ export default function ChestTabContent({
                   className="purchase-button w-inline-block"
                   onClick={purchase}
                 >
-                  <div className="purchase-text">Purchase 1</div>
+                  <div className="purchase-text">
+                    Purchase {state.chestAmount}
+                  </div>
                 </a>
                 <a href="/#" className="help-purchasing-link">
                   Need help buying?
