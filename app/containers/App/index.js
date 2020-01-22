@@ -92,7 +92,8 @@ function App({
         // this.setState({ tronWeb: tronWebState });
         onUpdateTronlinkStatus(tmpTronWebState);
         onSetTronWeb(window.tronWeb);
-        onSetWalletAddress(window.tronWeb.defaultAddress.base58);
+        if (window.tronWeb.defaultAddress.base58)
+          onSetWalletAddress(window.tronWeb.defaultAddress.base58);
         getAccountInfo(window.tronWeb.defaultAddress.base58);
         console.log('TronLink Status123');
         console.log(tmpTronWebState);

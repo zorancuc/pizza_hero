@@ -19,6 +19,7 @@ export default function ChestTabContent({
   currentTabIndex,
   trxPrice,
   tokenPrice,
+  onUpdateChestGroup,
 }) {
   const [state, setState] = useState({
     selectedItem: 'TRX',
@@ -42,6 +43,11 @@ export default function ChestTabContent({
     console.log(state.chestAmount);
     const chestGroupId = currentTabIndex;
 
+    if (chestNumber < state.chestAmount) {
+      alert('Insufficient Amount Balance');
+      return;
+    }
+    console.log('OKOKOKOKOK');
     if (state.selectedItem === 'TRX') {
       await chest.buyChest(
         chestGroupId,
@@ -57,6 +63,8 @@ export default function ChestTabContent({
         false,
       );
     }
+    console.log('OKOKOKOKOK');
+    onUpdateChestGroup();
   };
   const onChangePayType = item => {
     setState({ ...state, selectedItem: item });
@@ -120,33 +128,41 @@ export default function ChestTabContent({
               <a href="/#" className="view-all-chest-items-link">
                 View all Items Available in Chest
               </a>
-              <div className="pay-using">
-                <div className="pay-using-text">Pay using:</div>
-                <Dropdown
-                  onChangePayType={onChangePayType}
-                  selectedItem={state.selectedItem}
-                />
-              </div>
-              <AmountTab
-                payType={state.selectedItem}
-                trxPrice={trxPrice}
-                tokenPrice={tokenPrice}
-                changeChestAmount={changeChestAmount}
-              />
-              <div>
-                <a
-                  href="/#"
-                  className="purchase-button w-inline-block"
-                  onClick={purchase}
-                >
-                  <div className="purchase-text">
-                    Purchase {state.chestAmount}
+              {chestNumber > 0 ? (
+                <div>
+                  <div className="pay-using">
+                    <div className="pay-using-text">Pay using:</div>
+                    <Dropdown
+                      onChangePayType={onChangePayType}
+                      selectedItem={state.selectedItem}
+                    />
                   </div>
-                </a>
-                <a href="/#" className="help-purchasing-link">
-                  Need help buying?
-                </a>
-              </div>
+                  <AmountTab
+                    payType={state.selectedItem}
+                    trxPrice={trxPrice}
+                    tokenPrice={tokenPrice}
+                    changeChestAmount={changeChestAmount}
+                  />
+                  <div>
+                    <a
+                      href="/#"
+                      className="purchase-button w-inline-block"
+                      onClick={purchase}
+                    >
+                      <div className="purchase-text">
+                        Purchase {state.chestAmount}
+                      </div>
+                    </a>
+                    <a href="/#" className="help-purchasing-link">
+                      Need help buying?
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <h3 className="chests-available">SOLD OUT</h3>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -175,4 +191,5 @@ ChestTabContent.propTypes = {
   currentTabIndex: PropTypes.number,
   trxPrice: PropTypes.number,
   tokenPrice: PropTypes.number,
+  onUpdateChestGroup: PropTypes.func,
 };

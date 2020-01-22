@@ -6,6 +6,7 @@ import {
   CHANGE_SIRE_FILTER,
   CHANGE_SALE_FILTER,
   CHANGE_SORT,
+  CHANGE_CURRENT_PAGE,
 } from './constants';
 
 // The initial state of the App
@@ -18,13 +19,23 @@ export const initialState = {
   sireFlag: 0,
   saleFlag: 0,
   sort: '',
+  currentPage: 0,
 };
 
 /* eslint-disable default-case, no-param-reassign */
 const myInventoryReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
+      case CHANGE_CURRENT_PAGE:
+        if (action.changePage === 0) {
+          if (draft.currentPage > 0) draft.currentPage -= 1;
+        } else if (action.changePage === 1) {
+          draft.currentPage += 1;
+        }
+        console.log(draft.currentPage);
+        break;
       case CHANGE_SORT:
+        console.log(draft.sort);
         draft.sort = action.menu;
         break;
       case CHANGE_SEARCH_STR:

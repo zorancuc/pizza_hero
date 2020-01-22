@@ -22,3 +22,13 @@ export const balanceOfOwner = async accountAddress => {
   result = result.count;
   return result;
 };
+
+export const getHeroTraits = async heroId => {
+  const result = await pzHeroContract()
+    .getHeroTraits(heroId)
+    .call();
+  console.log(
+    'hero traithero traithero traithero traithero traithero traithero trait',
+  );
+  return result;
+};

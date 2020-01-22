@@ -5,7 +5,15 @@ import {
   CHANGE_SIRE_FILTER,
   CHANGE_SALE_FILTER,
   CHANGE_SORT,
+  CHANGE_CURRENT_PAGE,
 } from './constants';
+
+export function changeCurrentPage(changePage) {
+  return {
+    type: CHANGE_CURRENT_PAGE,
+    changePage,
+  };
+}
 
 export function changeCurrentTab(tab) {
   return {

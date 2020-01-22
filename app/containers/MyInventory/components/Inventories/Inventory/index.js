@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { chest, item, egg, hero } from 'utils/tronsc';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 // import { push } from 'connected-react-router';
@@ -35,23 +35,32 @@ function Inventory({
   onViewCharacter,
   inventorySubType,
   onUpdateInventories,
+  history,
 }) {
+  // console.log("OKOKOK");
+  // console.log(useHistory());
+  // const history = useHistory();
   const clickInventory = async e => {
     console.log(id);
     console.log(currentTab);
     console.log(inventoryType);
+    console.log(history);
     if (inventoryType === INVENTORY_TYPE_CHEST) {
       e.preventDefault();
       await chest.openChest(id);
     } else if (inventoryType === INVENTORY_TYPE_ITEM) {
+      e.preventDefault();
       const itemData = await item.getItem(id);
       onViewCharacter(itemData, TAB_MENU_ITEM_ALL, id);
+      history.push('/view-item');
     } else if (inventoryType === INVENTORY_TYPE_EGG) {
       e.preventDefault();
       await egg.openEgg(id);
     } else if (inventoryType === INVENTORY_TYPE_HERO) {
+      e.preventDefault();
       const heroData = await hero.getHero(id);
       onViewCharacter(heroData, TAB_MENU_ITEM_HEROES, id);
+      history.push('/view-character');
     }
     onUpdateInventories();
   };
@@ -60,9 +69,9 @@ function Inventory({
     <div>
       {!empty && (
         <Link
+          onClick={clickInventory}
           to="/view-character"
           className={classNames('item', 'w-inline-block', type)}
-          onClick={clickInventory}
         >
           <div className="item-image-wrapper">
             {image && <img src={image} alt="" className="item-image" />}
@@ -106,6 +115,7 @@ Inventory.propTypes = {
   inventoryName: PropTypes.string,
   inventorySubType: PropTypes.string,
   onUpdateInventories: PropTypes.func,
+  history: PropTypes.object,
 };
 
 const withConnect = connect(
@@ -116,4 +126,4 @@ const withConnect = connect(
 export default compose(
   withConnect,
   memo,
-)(Inventory);
+)(withRouter(Inventory));

@@ -3,6 +3,12 @@ import { initialState } from './reducer';
 
 const selectMyInventory = state => state.myInventory || initialState;
 
+const makeSelectCurrentPage = () =>
+  createSelector(
+    selectMyInventory,
+    myInventoryState => myInventoryState.currentPage,
+  );
+
 const makeSelectSearchStr = () =>
   createSelector(
     selectMyInventory,
@@ -61,4 +67,5 @@ export {
   makeSelectSaleFilter,
   makeSelectSireFilter,
   makeSelectSort,
+  makeSelectCurrentPage,
 };

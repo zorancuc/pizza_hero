@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import { makeSelectWalletAddress } from 'containers/App/selectors';
+import { changeCurrentPage } from '../../actions';
 
 import Inventory from './Inventory';
 import {
@@ -28,22 +29,25 @@ import {
   makeSelectSaleFilter,
   makeSelectSireFilter,
   makeSelectSort,
+  makeSelectCurrentPage,
 } from '../../selectors';
 
 function TabContent({
   currentTab,
   inventories,
   onUpdateInventories,
+  onChangeCurrentPage,
   searchStr,
   saleFlag,
   sireFlag,
   sort,
+  currentPage,
 }) {
   const [state, setState] = useState({
     inventoryContents: [],
   });
 
-  const inventoryCount = 20;
+  const inventoryCount = 18;
 
   useEffect(() => {
     function updateChests() {
@@ -73,8 +77,8 @@ function TabContent({
           // eslint-disable-next-line no-underscore-dangle
           parseInt(chestsInfo[i].tokenPrice._hex, 16);
 
-        console.log(date);
-        console.log(price);
+        // console.log(date);
+        // console.log(price);
         if (metaStr.includes(searchStr.toLowerCase())) {
           result.push({
             image: imgUrl,
@@ -113,8 +117,8 @@ function TabContent({
           // eslint-disable-next-line no-underscore-dangle
           parseInt(eggsInfo[i].tokenPrice._hex, 16);
 
-        console.log(date);
-        console.log(price);
+        // console.log(date);
+        // console.log(price);
 
         if (metaStr.includes(searchStr.toLowerCase())) {
           result.push({
@@ -146,8 +150,8 @@ function TabContent({
           // eslint-disable-next-line no-underscore-dangle
           parseInt(heroesInfo[i].tokenPrice._hex, 16);
 
-        console.log(date);
-        console.log(price);
+        // console.log(date);
+        // console.log(price);
 
         if (metaStr.includes(searchStr.toLowerCase())) {
           result.push({
@@ -188,8 +192,8 @@ function TabContent({
             // eslint-disable-next-line no-underscore-dangle
             parseInt(gearsInfo[i].tokenPrice._hex, 16);
 
-          console.log(date);
-          console.log(price);
+          // console.log(date);
+          // console.log(price);
           result.push({
             image: `https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/itemid_${itemid}.png`,
             icon: `https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/${
@@ -287,9 +291,22 @@ function TabContent({
       }
 
       console.log(result);
-      if (result.length > inventoryCount) {
-        result.slice(0, inventoryCount);
+      console.log(currentPage);
+      const totalPage = result.length / inventoryCount;
+      if (currentPage > totalPage) {
+        onChangeCurrentPage(0);
+        // result = result.slice(
+        //   (totalPage - 1) * inventoryCount,
+        //   totalPage * inventoryCount,
+        // );
+        result = [];
       } else {
+        result = result.slice(
+          currentPage * inventoryCount,
+          currentPage * inventoryCount + inventoryCount,
+        );
+      }
+      if (result.length < inventoryCount) {
         for (let i = result.length; i < inventoryCount; i += 1) {
           result[i] = {
             empty: true,
@@ -313,6 +330,7 @@ function TabContent({
     saleFlag,
     sireFlag,
     sort,
+    currentPage,
   ]);
 
   return (
@@ -356,7 +374,17 @@ TabContent.propTypes = {
   saleFlag: PropTypes.number,
   sireFlag: PropTypes.number,
   sort: PropTypes.string,
+  currentPage: PropTypes.number,
+  onChangeCurrentPage: PropTypes.func,
 };
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    onChangeCurrentPage: changePage => {
+      dispatch(changeCurrentPage(changePage));
+    },
+  };
+}
 
 const mapStateToProps = createStructuredSelector({
   accountAddress: makeSelectWalletAddress(),
@@ -364,11 +392,12 @@ const mapStateToProps = createStructuredSelector({
   saleFlag: makeSelectSaleFilter(),
   sireFlag: makeSelectSireFilter(),
   sort: makeSelectSort(),
+  currentPage: makeSelectCurrentPage(),
 });
 
 const withConnect = connect(
   mapStateToProps,
-  // mapDispatchToProps,
+  mapDispatchToProps,
 );
 
 export default compose(

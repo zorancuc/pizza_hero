@@ -29,6 +29,11 @@ export default function PreSale() {
     },
   });
 
+  const onUpdateChestGroup = () => {
+    console.log('CHSET GROUP UDATE');
+    updateChestGroupInfo();
+  };
+
   async function updateChestGroupInfo() {
     setTimeout(async () => {
       const chestGroupInfo = await chest.getChestGroupInfo();
@@ -169,6 +174,7 @@ export default function PreSale() {
             currentTabIndex={state.currentTabIndex}
             trxPrice={state.trxPrice.Rare}
             tokenPrice={state.tokenPrice.Rare}
+            onUpdateChestGroup={onUpdateChestGroup}
           />
           <ChestTabContent
             tabName="Tab 2"
@@ -182,6 +188,7 @@ export default function PreSale() {
             currentTabIndex={state.currentTabIndex}
             trxPrice={state.trxPrice.Epic}
             tokenPrice={state.tokenPrice.Epic}
+            onUpdateChestGroup={onUpdateChestGroup}
           />
           <ChestTabContent
             tabName="Tab 3"
@@ -195,6 +202,7 @@ export default function PreSale() {
             currentTabIndex={state.currentTabIndex}
             trxPrice={state.trxPrice.Legendary}
             tokenPrice={state.tokenPrice.Legendary}
+            onUpdateChestGroup={onUpdateChestGroup}
           />
           <ChestTabContent
             tabName="Tab 4"
@@ -207,6 +215,7 @@ export default function PreSale() {
             currentTabIndex={state.currentTabIndex}
             trxPrice={state.trxPrice['EVO Legendary']}
             tokenPrice={state.tokenPrice['EVO Legendary']}
+            onUpdateChestGroup={onUpdateChestGroup}
           />
         </div>
       </div>

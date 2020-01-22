@@ -143,7 +143,9 @@ function MyInventory({
   useEffect(() => {
     onChangeSearchStr('');
     onChangeSort('Most Recent');
-    updateNFTs();
+    setTimeout(() => {
+      updateNFTs();
+    }, 1000);
   }, [accountAddress, onChangeSearchStr]);
 
   return (
@@ -157,7 +159,7 @@ function MyInventory({
       </Helmet>
       <div className="section my-inventory-section">
         <div className="container">
-          <Header />
+          <Header currentTab={currentTab} inventories={state.inventories} />
           <Inventories
             currentTab={currentTab}
             inventories={state.inventories}

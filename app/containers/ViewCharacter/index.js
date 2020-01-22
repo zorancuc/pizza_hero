@@ -1,30 +1,25 @@
 /* eslint-disable no-underscore-dangle */
-import React, { memo, useState } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 import {
   makeSelectMetaData,
-  makeSelectCharacterType,
   makeSelectId,
 } from 'containers/MyInventory/selectors';
-import {
-  TAB_MENU_ITEM_ALL,
-  TAB_MENU_ITEM_HEROES,
-  // TAB_MENU_ITEM_GEAR,
-  // TAB_MENU_ITEM_EMOTES,
-  // TAB_MENU_ITEM_CHEST,
-} from 'containers/MyInventory/constants';
+
 import ShareDialog from 'components/ShareDialog';
 import FlatButton from 'components/buttons/FlatButton';
+import { hero } from 'utils/tronsc';
 import ButtonsWrapper from './components/ButtonsWrapper';
 import PropgressBar from './components/ProgressBar';
-import LevelItem from './components/LevelItem';
+// import LevelItem from './components/LevelItem';
 import ItemDetails from './components/ItemDetails';
 import Attribute from './components/Attribute';
 import Graph from './components/Graph';
 import GearItem from './components/GearItem';
+import { HERO_CHARACTER, HERO_TRAITS_CODE, HERO_TRAITS_NAME } from './constant';
 
 import '!file-loader?name=[name].[ext]!../../images/price-icon.svg';
 import '!file-loader?name=[name].[ext]!../../images/block-bear.png';
@@ -60,11 +55,67 @@ import '!file-loader?name=[name].[ext]!../../images/margarita_1margarita.png';
 import '!file-loader?name=[name].[ext]!../../images/Saucy_1Saucy.png';
 import '!file-loader?name=[name].[ext]!../../images/cow_1cow.png';
 
-function ViewCharacter({ metaData, characterType, id }) {
+function ViewCharacter({ metaData, id }) {
   const [state, setState] = useState({
     liked: false,
     showDialog: false,
+    price: 0,
+    attributes: [],
+    gender: '',
   });
+
+  async function getHeroTraits() {
+    const traits = await hero.getHeroTraits(id);
+    const appearance = [];
+    const percentage = [];
+    const attributes = [];
+    let str = '';
+    console.log(traits);
+    console.log(HERO_CHARACTER);
+    console.log(HERO_TRAITS_NAME);
+    for (let i = 0; i < 14; i += 1) {
+      appearance[i] = traits[i * 4];
+      percentage[i] = 75;
+      if (traits[i * 4 + 1] === traits[i * 4]) percentage[i] += 3 / 16;
+      if (traits[i * 4 + 2] === traits[i * 4]) percentage[i] += 3 / 64;
+      if (traits[i * 4 + 3] === traits[i * 4]) percentage[i] += 1 / 256;
+      console.log(
+        `${HERO_CHARACTER[i]}: ${HERO_TRAITS_NAME[i][appearance[i]]}`,
+      );
+
+      str += HERO_TRAITS_CODE[i][traits[i * 4] % 6];
+      str += HERO_TRAITS_CODE[i][traits[i * 4 + 1] % 6];
+      str += HERO_TRAITS_CODE[i][traits[i * 4 + 2] % 6];
+      str += HERO_TRAITS_CODE[i][traits[i * 4 + 3] % 6];
+      attributes.push({
+        appearance: HERO_TRAITS_NAME[i][appearance[i]],
+        percentage: percentage[i],
+      });
+    }
+
+    console.log(appearance);
+    console.log(str);
+    console.log(percentage);
+    setState({
+      ...state,
+      price: parseInt(metaData.price._hex, 16) / 1000000,
+      gender: attributes[0].appearance,
+      attributes,
+    });
+    return appearance;
+  }
+  useEffect(() => {
+    console.log('view_character');
+    console.log(metaData);
+    console.log(id);
+    setTimeout(() => {
+      getHeroTraits();
+    }, 500);
+    setState({
+      ...state,
+      price: parseInt(metaData.price._hex, 16) / 1000000,
+    });
+  }, []);
   const toggleLiked = e => {
     e.preventDefault();
     setState({
@@ -85,21 +136,6 @@ function ViewCharacter({ metaData, characterType, id }) {
       showDialog: false,
     });
   };
-  let strMetaData;
-  if (characterType === TAB_MENU_ITEM_ALL) {
-    strMetaData = `ItemID: ${id} ItemType: ${
-      metaData.itemType._hex
-    } ItemRarity: ${metaData.itemRarity._hex} ItemName: ${metaData.itemName}`;
-  } else if (characterType === TAB_MENU_ITEM_HEROES) {
-    strMetaData = `EggID: ${id} MatronId: ${metaData.matronId._hex} SireId: ${
-      metaData.sireId._hex
-    }`;
-  }
-  // const { _hex: itemType } = metaData.itemType;
-  // const { _hex: itemRarity } = metaData.itemRarity;
-  // // const { _hex: matronid } = metaData.matronId;
-  // // const { _hex: sireId } = metaData.sireId;
-  // const { itemName } = metaData;
 
   return (
     <div>
@@ -115,7 +151,7 @@ function ViewCharacter({ metaData, characterType, id }) {
             <img src="/price-icon.svg" alt="" className="price-icon" />
             <div className="for-sale">For Sale</div>
             <img src="/tron-icon-red.svg" alt="" className="tron-icon" />
-            <div className="price">200</div>
+            <div className="price">{state.price}</div>
           </a>
           <img
             src="/block-bear.png"
@@ -129,10 +165,10 @@ function ViewCharacter({ metaData, characterType, id }) {
               <div className="equipped-gear">Equipped Gear</div>
               <div className="equipped-gear-buttons">
                 <GearItem isEmpty />
-                <GearItem image="/bear-mask_1bear-mask.png" />
+                {/* <GearItem image="/bear-mask_1bear-mask.png" />
                 <GearItem image="/chest.png" />
                 <GearItem image="/legs_1legs.png" />
-                <GearItem image="/hand-icon.svg" isHand />
+                <GearItem image="/hand-icon.svg" isHand /> */}
               </div>
             </div>
           </div>
@@ -146,7 +182,12 @@ function ViewCharacter({ metaData, characterType, id }) {
           <div className="item-main-info-wrapper">
             <div className="item-details-wrapper">
               <h2 className="item-main-title">Mel Slicksta</h2>
-              <ItemDetails />
+              <ItemDetails
+                gender={state.gender}
+                id={id}
+                generation={metaData.generation}
+                cooldown={metaData.cooldownIndex}
+              />
               <div className="item-interact-buttons-wrapper-b">
                 <FlatButton image="/heart-icon-2.svg">Breed</FlatButton>
                 <FlatButton image="/price-icon.svg">Sell</FlatButton>
@@ -176,19 +217,19 @@ function ViewCharacter({ metaData, characterType, id }) {
             </a>
           </div>
           <PropgressBar
-            minLevel="9"
+            minLevel="0"
             maxLevel="10"
-            currentValue="300"
-            maxValue="10000"
-            percent="3"
+            currentValue="0"
+            maxValue="0"
+            percent="0"
           />
           <div className="level-wrapper">
             <h3 className="level">Level</h3>
             <div className="level-number-wrapper">
-              <div className="text-block-5">9</div>
+              <div className="text-block-5">{metaData.level}</div>
             </div>
           </div>
-          <div className="level-stats-wrapper">
+          {/* <div className="level-stats-wrapper">
             <LevelItem title="Mojo" value="4.3" />
             <LevelItem
               title="Treasure Hunting Skill"
@@ -210,7 +251,7 @@ function ViewCharacter({ metaData, characterType, id }) {
               value="20"
               itemClass="xp-bonus"
             />
-          </div>
+          </div> */}
           <Graph />
           <div className="bio-title-wrapper">
             <h3 className="bio">Bio</h3>
@@ -229,13 +270,13 @@ function ViewCharacter({ metaData, characterType, id }) {
             </a>
           </div>
           <p className="bio-paragraph">
-            {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
             varius enim in eros elementum tristique. Duis cursus, mi quis
             viverra ornare, eros dolor interdum nulla, ut commodo diam libero
             vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem
-            imperdiet. Nunc ut sem vitae risus tristique posuere. */}
-            {/* CharacterType: {characterType === TAB_MENU_ITEM_ALL ? 'Item' : ''}{' '} */}
-            {strMetaData}
+            imperdiet. Nunc ut sem vitae risus tristique posuere.
+            {/* CharacterType: {characterType === TAB_MENU_ITEM_ALL ? 'Item' : ''}{' '}
+            {/* {strMetaData} */}
           </p>
           <div className="birthday-wrapper">
             <img
@@ -262,46 +303,19 @@ function ViewCharacter({ metaData, characterType, id }) {
             </a>
           </div>
           <div className="attributes-wrapper">
-            <Attribute
-              image="/dough-daddy_1dough-daddy.png"
-              name="Dough Daddy"
-              percent="42"
-            />
-            <Attribute
-              image="/margarita_1margarita.png"
-              name="Margarita"
-              percent="5.3"
-              bgClass="margarita"
-            />
-            <Attribute
-              image="/dough-daddy_1dough-daddy.png"
-              name="Hawaiian"
-              percent="16"
-              bgClass="hawaiian"
-            />
-            <Attribute
-              image="/Saucy_1Saucy.png"
-              name="Saucy"
-              percent="42"
-              bgClass="saucy"
-            />
-            <Attribute
-              image="/cow_1cow.png"
-              name="Cow"
-              percent="1.2"
-              bgClass="cow"
-            />
-            <Attribute
-              image="/dough-daddy_1dough-daddy.png"
-              name="Hawaiian"
-              percent="16"
-              bgClass="hawaiian"
-            />
-            <Attribute
-              image="/dough-daddy_1dough-daddy.png"
-              name="Dough Daddy"
-              percent="42"
-            />
+            {state.attributes.map((attribute, index) =>
+              index > 0 && attribute.appearance !== undefined ? (
+                <Attribute
+                  image={`https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/attributeid${id}.png`}
+                  name={attribute.appearance}
+                  percent={attribute.percentage}
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={index}
+                />
+              ) : (
+                <div />
+              ),
+            )}
           </div>
           <h3 className="parents-heading">Parents</h3>
           <div className="parent-wrapper">
@@ -322,13 +336,12 @@ function ViewCharacter({ metaData, characterType, id }) {
 
 ViewCharacter.propTypes = {
   metaData: PropTypes.object,
-  characterType: PropTypes.number,
+  // characterType: PropTypes.string,
   id: PropTypes.number,
 };
 
 const mapStateToProps = createStructuredSelector({
   metaData: makeSelectMetaData(),
-  characterType: makeSelectCharacterType(),
   id: makeSelectId(),
 });
 

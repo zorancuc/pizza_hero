@@ -1,15 +1,33 @@
-import React, { useState } from 'react';
-
+import React, { memo, useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { createStructuredSelector } from 'reselect';
+import PropTypes from 'prop-types';
 import ShareDialog from 'components/ShareDialog';
 
+import {
+  makeSelectMetaData,
+  makeSelectId,
+} from 'containers/MyInventory/selectors';
 import ButtonsWrapper from './components/ButtonsWrapper';
 import Details from './components/Details';
 
-export default function ViewItem() {
+export function ViewItem({ metaData, id }) {
   const [state, setState] = useState({
     liked: false,
     showDialog: false,
   });
+
+  useEffect(() => {
+    console.log('view_itemview_itemview_itemview_item');
+    console.log(metaData);
+    console.log(id);
+
+    setState({
+      ...state,
+    });
+  }, []);
+
   const toggleLiked = e => {
     e.preventDefault();
     setState({
@@ -53,8 +71,28 @@ export default function ViewItem() {
             toggleDialog={toggleDialog}
           />
         </div>
-        <Details />
+        <Details metaData={metaData} id={id} />
       </div>
     </div>
   );
 }
+
+ViewItem.propTypes = {
+  metaData: PropTypes.object,
+  id: PropTypes.number,
+};
+
+const mapStateToProps = createStructuredSelector({
+  metaData: makeSelectMetaData(),
+  id: makeSelectId(),
+});
+
+const withConnect = connect(
+  mapStateToProps,
+  null,
+);
+
+export default compose(
+  withConnect,
+  memo,
+)(ViewItem);

@@ -15,6 +15,7 @@ export const CHANGE_SEARCH_STR = 'pizza_hero/MyInventory/CHANGE_SEARCH_STR';
 export const CHANGE_SIRE_FILTER = 'pizza_hero/MyInventory/CHANGE_SIRE_FILTER';
 export const CHANGE_SALE_FILTER = 'pizza_hero/MyInventory/CHANGE_SALE_FILTER';
 export const CHANGE_SORT = 'pizza_hero/MyInventory/CHANGE_SORT';
+export const CHANGE_CURRENT_PAGE = 'pizza_hero/MyInventory/CHANGE_CURRENT_PAGE';
 
 export const CHEST_PNG_STR = {
   Rare: 'blue',

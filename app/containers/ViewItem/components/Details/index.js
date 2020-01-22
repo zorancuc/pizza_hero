@@ -1,24 +1,31 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function Details() {
+import { ITEM_TYPE, ITEM_RARITY } from '../../constant';
+
+export default function Details({ metaData, id }) {
   return (
     <div className="container character-info">
       <div className="item-main-info-wrapper">
         <div className="item-details-wrapper">
-          <h2 className="item-main-title">Fancy Crown</h2>
+          <h2 className="item-main-title">{metaData.itemName}</h2>
           <div className="item-details">
             <div className="item-detail">
               <div className="detail-icon-wrapper">
                 <div className="number-icon">#</div>
               </div>
               <div className="item-detail-text">
-                148/4500 <span className="items-remaining">(32 Remaining)</span>
+                {id} <span className="items-remaining">(32 Remaining)</span>
               </div>
             </div>
             <div className="item-detail-separator">/</div>
-            <div className="item-kind">Kind: Gear</div>
+            <div className="item-kind">
+              Kind: {ITEM_TYPE[metaData.itemType]}
+            </div>
             <div className="item-detail-separator">/</div>
-            <div className="item-rarity">Raritiy: Epic</div>
+            <div className="item-rarity">
+              Raritiy: {ITEM_RARITY[metaData.itemRarity]}
+            </div>
           </div>
           <div className="item-interact-buttons-wrapper-b">
             <a href="/#" className="item-interact-button-b w-inline-block">
@@ -96,3 +103,8 @@ export default function Details() {
     </div>
   );
 }
+
+Details.propTypes = {
+  metaData: PropTypes.object,
+  id: PropTypes.number,
+};
