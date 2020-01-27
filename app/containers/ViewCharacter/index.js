@@ -9,16 +9,18 @@ import {
   makeSelectId,
 } from 'containers/MyInventory/selectors';
 
+import { makeSelectAccountName } from 'containers/App/selectors';
+
 import ShareDialog from 'components/ShareDialog';
-import FlatButton from 'components/buttons/FlatButton';
+// import FlatButton from 'components/buttons/FlatButton';
 import { hero } from 'utils/tronsc';
 import ButtonsWrapper from './components/ButtonsWrapper';
-import PropgressBar from './components/ProgressBar';
+// import PropgressBar from './components/ProgressBar';
 // import LevelItem from './components/LevelItem';
 import ItemDetails from './components/ItemDetails';
 import Attribute from './components/Attribute';
-import Graph from './components/Graph';
-import GearItem from './components/GearItem';
+// import Graph from './components/Graph';
+// import GearItem from './components/GearItem';
 import { HERO_CHARACTER, HERO_TRAITS_CODE, HERO_TRAITS_NAME } from './constant';
 
 import '!file-loader?name=[name].[ext]!../../images/price-icon.svg';
@@ -55,7 +57,7 @@ import '!file-loader?name=[name].[ext]!../../images/margarita_1margarita.png';
 import '!file-loader?name=[name].[ext]!../../images/Saucy_1Saucy.png';
 import '!file-loader?name=[name].[ext]!../../images/cow_1cow.png';
 
-function ViewCharacter({ metaData, id }) {
+function ViewCharacter({ metaData, id, accountName, match }) {
   const [state, setState] = useState({
     liked: false,
     showDialog: false,
@@ -106,6 +108,7 @@ function ViewCharacter({ metaData, id }) {
   }
   useEffect(() => {
     console.log('view_character');
+    console.log(match.params.id);
     console.log(metaData);
     console.log(id);
     setTimeout(() => {
@@ -147,12 +150,12 @@ function ViewCharacter({ metaData, id }) {
       />
       <div className="section view-character-section">
         <div className="item-header">
-          <a href="/#" className="for-sale-wrapper w-inline-block">
+          {/* <a href="/#" className="for-sale-wrapper w-inline-block">
             <img src="/price-icon.svg" alt="" className="price-icon" />
             <div className="for-sale">For Sale</div>
             <img src="/tron-icon-red.svg" alt="" className="tron-icon" />
             <div className="price">{state.price}</div>
-          </a>
+          </a> */}
           <img
             src="/block-bear.png"
             srcSet="/block-bear-p-500.png 500w, /block-bear.png 740w"
@@ -164,7 +167,7 @@ function ViewCharacter({ metaData, id }) {
             <div className="equipped-gear-wrapper">
               <div className="equipped-gear">Equipped Gear</div>
               <div className="equipped-gear-buttons">
-                <GearItem isEmpty />
+                {/* <GearItem isEmpty /> */}
                 {/* <GearItem image="/bear-mask_1bear-mask.png" />
                 <GearItem image="/chest.png" />
                 <GearItem image="/legs_1legs.png" />
@@ -188,15 +191,15 @@ function ViewCharacter({ metaData, id }) {
                 generation={metaData.generation}
                 cooldown={metaData.cooldownIndex}
               />
-              <div className="item-interact-buttons-wrapper-b">
+              {/* <div className="item-interact-buttons-wrapper-b">
                 <FlatButton image="/heart-icon-2.svg">Breed</FlatButton>
                 <FlatButton image="/price-icon.svg">Sell</FlatButton>
                 <FlatButton image="/gift-icon.svg">Gift</FlatButton>
-              </div>
+              </div> */}
             </div>
             <a href="/#" className="owner-info-wrapper w-inline-block">
               <div className="owner-name-wrapper">
-                <div className="owner-name">JR Tellem</div>
+                <div className="owner-name">{accountName}</div>
                 <div className="owner">Owner</div>
               </div>
               <div className="owner-image-wrapper">
@@ -216,7 +219,7 @@ function ViewCharacter({ metaData, id }) {
               </div>
             </a>
           </div>
-          <PropgressBar
+          {/* <PropgressBar
             minLevel="0"
             maxLevel="10"
             currentValue="0"
@@ -228,7 +231,7 @@ function ViewCharacter({ metaData, id }) {
             <div className="level-number-wrapper">
               <div className="text-block-5">{metaData.level}</div>
             </div>
-          </div>
+          </div> */}
           {/* <div className="level-stats-wrapper">
             <LevelItem title="Mojo" value="4.3" />
             <LevelItem
@@ -252,7 +255,7 @@ function ViewCharacter({ metaData, id }) {
               itemClass="xp-bonus"
             />
           </div> */}
-          <Graph />
+          {/* <Graph /> */}
           <div className="bio-title-wrapper">
             <h3 className="bio">Bio</h3>
             <a href="/#" className="info-button w-inline-block">
@@ -317,7 +320,7 @@ function ViewCharacter({ metaData, id }) {
               ),
             )}
           </div>
-          <h3 className="parents-heading">Parents</h3>
+          {/* <h3 className="parents-heading">Parents</h3>
           <div className="parent-wrapper">
             <div className="parent">
               <div className="parent-title">Mother</div>
@@ -327,7 +330,7 @@ function ViewCharacter({ metaData, id }) {
               <div className="parent-title">Father</div>
               <a href="/#" className="parent-image w-inline-block" />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
@@ -338,11 +341,14 @@ ViewCharacter.propTypes = {
   metaData: PropTypes.object,
   // characterType: PropTypes.string,
   id: PropTypes.number,
+  accountName: PropTypes.string,
+  match: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
   metaData: makeSelectMetaData(),
   id: makeSelectId(),
+  accountName: makeSelectAccountName(),
 });
 
 const withConnect = connect(

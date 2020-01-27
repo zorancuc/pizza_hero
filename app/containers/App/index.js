@@ -198,8 +198,8 @@ function App({
         <PrivateRoute path="/my-inventory" component={MyInventory} />
         <PrivateRoute path="/activity" component={Activity} />
         <PrivateRoute path="/settings" component={Settings} />
-        <PrivateRoute path="/view-item" component={ViewItem} />
-        <PrivateRoute path="/view-character" component={ViewCharacter} />
+        <PrivateRoute path="/view-item/:id" component={ViewItem} />
+        <PrivateRoute path="/view-character/:id" component={ViewCharacter} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />

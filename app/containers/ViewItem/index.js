@@ -12,7 +12,7 @@ import {
 import ButtonsWrapper from './components/ButtonsWrapper';
 import Details from './components/Details';
 
-export function ViewItem({ metaData, id }) {
+export function ViewItem({ metaData, id, match }) {
   const [state, setState] = useState({
     liked: false,
     showDialog: false,
@@ -20,6 +20,7 @@ export function ViewItem({ metaData, id }) {
 
   useEffect(() => {
     console.log('view_itemview_itemview_itemview_item');
+    console.log(match.params.id);
     console.log(metaData);
     console.log(id);
 
@@ -80,6 +81,7 @@ export function ViewItem({ metaData, id }) {
 ViewItem.propTypes = {
   metaData: PropTypes.object,
   id: PropTypes.number,
+  match: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({

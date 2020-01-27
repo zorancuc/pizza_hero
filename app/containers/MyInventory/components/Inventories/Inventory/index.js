@@ -52,7 +52,7 @@ function Inventory({
       e.preventDefault();
       const itemData = await item.getItem(id);
       onViewCharacter(itemData, TAB_MENU_ITEM_ALL, id);
-      history.push('/view-item');
+      history.push(`/view-item/${id}`);
     } else if (inventoryType === INVENTORY_TYPE_EGG) {
       e.preventDefault();
       await egg.openEgg(id);
@@ -60,7 +60,7 @@ function Inventory({
       e.preventDefault();
       const heroData = await hero.getHero(id);
       onViewCharacter(heroData, TAB_MENU_ITEM_HEROES, id);
-      history.push('/view-character');
+      history.push(`/view-character/${id}`);
     }
     onUpdateInventories();
   };
