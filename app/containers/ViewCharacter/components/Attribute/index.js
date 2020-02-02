@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import accounting from 'accounting';
+// import accounting from 'accounting';
 
 export default function Attribute({ image, name, percent }) {
   return (
@@ -16,11 +16,11 @@ export default function Attribute({ image, name, percent }) {
     >
       <img src={image} alt="" className="att-icon" />
       <div className="att-name">{name}</div>
-      <div className="att-percent-wrapper">
+      {/* <div className="att-percent-wrapper">
         <div className="text-block-8">
           {accounting.formatNumber(percent, 2, ',')}%
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

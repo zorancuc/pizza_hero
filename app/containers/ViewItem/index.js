@@ -4,30 +4,47 @@ import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 import ShareDialog from 'components/ShareDialog';
+import { item } from 'utils/tronsc';
 
 import {
-  makeSelectMetaData,
-  makeSelectId,
-} from 'containers/MyInventory/selectors';
+  makeSelectAccountName,
+  makeSelectTronWebState,
+} from 'containers/App/selectors';
+
+// import {
+//   makeSelectMetaData,
+//   makeSelectId,
+// } from 'containers/MyInventory/selectors';
 import ButtonsWrapper from './components/ButtonsWrapper';
 import Details from './components/Details';
 
-export function ViewItem({ metaData, id, match }) {
+export function ViewItem({ tronWebState, match, accountName }) {
   const [state, setState] = useState({
     liked: false,
     showDialog: false,
+    itemData: false,
   });
+
+  async function getItem() {
+    const itemDT = await item.getItem(match.params.id);
+    setState({
+      ...state,
+      itemData: itemDT,
+    });
+    console.log(itemDT);
+  }
 
   useEffect(() => {
     console.log('view_itemview_itemview_itemview_item');
     console.log(match.params.id);
-    console.log(metaData);
-    console.log(id);
 
+    if (tronWebState.installed && tronWebState.loggedIn) {
+      getItem();
+    }
     setState({
       ...state,
     });
-  }, []);
+  }, [tronWebState]);
 
   const toggleLiked = e => {
     e.preventDefault();
@@ -72,21 +89,27 @@ export function ViewItem({ metaData, id, match }) {
             toggleDialog={toggleDialog}
           />
         </div>
-        <Details metaData={metaData} id={id} />
+        <Details
+          metaData={state.itemData}
+          id={match.params.id}
+          accountName={accountName}
+        />
       </div>
     </div>
   );
 }
 
 ViewItem.propTypes = {
-  metaData: PropTypes.object,
-  id: PropTypes.number,
   match: PropTypes.object,
+  tronWebState: PropTypes.object,
+  accountName: PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({
-  metaData: makeSelectMetaData(),
-  id: makeSelectId(),
+  tronWebState: makeSelectTronWebState(),
+  accountName: makeSelectAccountName(),
+  // metaData: makeSelectMetaData(),
+  // id: makeSelectId(),
 });
 
 const withConnect = connect(

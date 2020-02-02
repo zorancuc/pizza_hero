@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { ITEM_TYPE, ITEM_RARITY } from '../../constant';
 
-export default function Details({ metaData, id }) {
+export default function Details({ metaData, id, accountName }) {
   return (
     <div className="container character-info">
       <div className="item-main-info-wrapper">
@@ -53,7 +53,7 @@ export default function Details({ metaData, id }) {
         </div>
         <a href="/#" className="owner-info-wrapper w-inline-block">
           <div className="owner-name-wrapper">
-            <div className="owner-name">JR Tellem</div>
+            <div className="owner-name">{accountName}</div>
             <div className="owner">Owner</div>
           </div>
           <div className="owner-image-wrapper">
@@ -107,4 +107,5 @@ export default function Details({ metaData, id }) {
 Details.propTypes = {
   metaData: PropTypes.object,
   id: PropTypes.number,
+  accountName: PropTypes.string,
 };

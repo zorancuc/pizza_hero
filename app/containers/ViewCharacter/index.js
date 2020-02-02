@@ -4,12 +4,11 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
-import {
-  makeSelectMetaData,
-  makeSelectId,
-} from 'containers/MyInventory/selectors';
 
-import { makeSelectAccountName } from 'containers/App/selectors';
+import {
+  makeSelectAccountName,
+  makeSelectTronWebState,
+} from 'containers/App/selectors';
 
 import ShareDialog from 'components/ShareDialog';
 // import FlatButton from 'components/buttons/FlatButton';
@@ -57,17 +56,24 @@ import '!file-loader?name=[name].[ext]!../../images/margarita_1margarita.png';
 import '!file-loader?name=[name].[ext]!../../images/Saucy_1Saucy.png';
 import '!file-loader?name=[name].[ext]!../../images/cow_1cow.png';
 
-function ViewCharacter({ metaData, id, accountName, match }) {
+function ViewCharacter({ accountName, match, tronWebState }) {
   const [state, setState] = useState({
     liked: false,
     showDialog: false,
     price: 0,
     attributes: [],
     gender: '',
+    heroData: {},
+    id: 0,
   });
 
   async function getHeroTraits() {
-    const traits = await hero.getHeroTraits(id);
+    let traits = [];
+    try {
+      traits = await hero.getHeroTraits(state.id);
+    } catch (err) {
+      console.log(err);
+    }
     const appearance = [];
     const percentage = [];
     const attributes = [];
@@ -94,31 +100,40 @@ function ViewCharacter({ metaData, id, accountName, match }) {
         percentage: percentage[i],
       });
     }
-
-    console.log(appearance);
     console.log(str);
-    console.log(percentage);
-    setState({
-      ...state,
-      price: parseInt(metaData.price._hex, 16) / 1000000,
-      gender: attributes[0].appearance,
-      attributes,
-    });
-    return appearance;
+    let heroData = [];
+    try {
+      heroData = await hero.getHero(state.id);
+      setState({
+        ...state,
+        heroData,
+      });
+      setState({
+        ...state,
+        price: parseInt(heroData.price._hex, 16) / 1000000,
+        gender: attributes[0].appearance,
+        attributes,
+      });
+      return appearance;
+    } catch (err) {
+      console.log(err);
+    }
+    return 0;
   }
   useEffect(() => {
     console.log('view_character');
     console.log(match.params.id);
-    console.log(metaData);
-    console.log(id);
-    setTimeout(() => {
-      getHeroTraits();
-    }, 500);
     setState({
       ...state,
-      price: parseInt(metaData.price._hex, 16) / 1000000,
+      id: match.params.id,
     });
-  }, []);
+    if (tronWebState.installed && tronWebState.loggedIn) {
+      console.log('TronlinkTronlinkTronlinkTronlinkTronlinkTronlink');
+      setTimeout(() => {
+        getHeroTraits();
+      }, 100);
+    }
+  }, [tronWebState]);
   const toggleLiked = e => {
     e.preventDefault();
     setState({
@@ -187,9 +202,9 @@ function ViewCharacter({ metaData, id, accountName, match }) {
               <h2 className="item-main-title">Mel Slicksta</h2>
               <ItemDetails
                 gender={state.gender}
-                id={id}
-                generation={metaData.generation}
-                cooldown={metaData.cooldownIndex}
+                id={state.id}
+                generation={state.heroData.generation}
+                cooldown={state.heroData.cooldownIndex}
               />
               {/* <div className="item-interact-buttons-wrapper-b">
                 <FlatButton image="/heart-icon-2.svg">Breed</FlatButton>
@@ -309,7 +324,9 @@ function ViewCharacter({ metaData, id, accountName, match }) {
             {state.attributes.map((attribute, index) =>
               index > 0 && attribute.appearance !== undefined ? (
                 <Attribute
-                  image={`https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/attributeid${id}.png`}
+                  image={`https://storage.googleapis.com/geometric-watch-246204.appspot.com/images/attributeid${
+                    state.id
+                  }.png`}
                   name={attribute.appearance}
                   percent={attribute.percentage}
                   // eslint-disable-next-line react/no-array-index-key
@@ -338,17 +355,19 @@ function ViewCharacter({ metaData, id, accountName, match }) {
 }
 
 ViewCharacter.propTypes = {
-  metaData: PropTypes.object,
+  // metaData: PropTypes.object,
   // characterType: PropTypes.string,
-  id: PropTypes.number,
+  // id: PropTypes.number,
   accountName: PropTypes.string,
   match: PropTypes.object,
+  tronWebState: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
-  metaData: makeSelectMetaData(),
-  id: makeSelectId(),
+  // metaData: makeSelectMetaData(),
+  // id: makeSelectId(),
   accountName: makeSelectAccountName(),
+  tronWebState: makeSelectTronWebState(),
 });
 
 const withConnect = connect(

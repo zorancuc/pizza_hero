@@ -80,17 +80,17 @@ function App({
     console.log('TronWeb Test');
   };
 
+  const tmpTronWebState = {
+    installed: !!window.tronWeb,
+    loggedIn: window.tronWeb && window.tronWeb.ready,
+  };
   const process = async () => {
     await new Promise(resolve => {
-      const tmpTronWebState = {
-        installed: !!window.tronWeb,
-        loggedIn: window.tronWeb && window.tronWeb.ready,
-      };
       console.log('OKOK');
       console.log(tmpTronWebState);
       if (tmpTronWebState.installed) {
         // this.setState({ tronWeb: tronWebState });
-        onUpdateTronlinkStatus(tmpTronWebState);
+        // onUpdateTronlinkStatus(tmpTronWebState);
         onSetTronWeb(window.tronWeb);
         if (window.tronWeb.defaultAddress.base58)
           onSetWalletAddress(window.tronWeb.defaultAddress.base58);
@@ -117,8 +117,9 @@ function App({
           tmpTronWebState.installed = false;
           tmpTronWebState.loggedIn = false;
 
-          onUpdateTronlinkStatus(tmpTronWebState);
+          // onUpdateTronlinkStatus(tmpTronWebState);
           onSetTronWeb(window.tronWeb);
+          smartContract.setTronWeb(window.tronWeb);
           console.log(window.tronWeb.defaultAddress.base58);
           onSetWalletAddress(window.tronWeb.defaultAddress.base58);
           getAccountInfo(window.tronWeb.defaultAddress.base58);
@@ -133,8 +134,9 @@ function App({
         if (!tmpTronWebState.installed) return tries++;
 
         // this.setState({ tronWeb: tronWebState });
-        onUpdateTronlinkStatus(tmpTronWebState);
+        // onUpdateTronlinkStatus(tmpTronWebState);
         onSetTronWeb(window.tronWeb);
+        smartContract.setTronWeb(window.tronWeb);
         onSetWalletAddress(window.tronWeb.defaultAddress.base58);
         getAccountInfo(window.tronWeb.defaultAddress.base58);
         console.log('TronLink Status OKOKOK');
@@ -168,6 +170,7 @@ function App({
     }
 
     await smartContract.setTronWeb(window.tronWeb);
+    onUpdateTronlinkStatus(tmpTronWebState);
     // await chest.buyChest(10, 'TNRbh7ZWXNpymf8pcWexeKUh7EFefT6sZA', true, 50);
   };
 
@@ -198,8 +201,8 @@ function App({
         <PrivateRoute path="/my-inventory" component={MyInventory} />
         <PrivateRoute path="/activity" component={Activity} />
         <PrivateRoute path="/settings" component={Settings} />
-        <PrivateRoute path="/view-item/:id" component={ViewItem} />
-        <PrivateRoute path="/view-character/:id" component={ViewCharacter} />
+        <Route path="/view-item/:id" component={ViewItem} />
+        <Route path="/view-character/:id" component={ViewCharacter} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />
